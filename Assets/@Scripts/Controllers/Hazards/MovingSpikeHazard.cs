@@ -23,8 +23,6 @@ public class MovingSpikeHazard : HazardBase
 
     void Awake()
     {
-        _a = pointA ? pointA.position : transform.position; // pointA가 null이면 → pointA.position을 쓰지 않고 here를 사용
-        _b = pointB ? pointB.position : transform.position + Vector3.right * 3f; // 임시값
         RecalcEndpoints();
         _t = 0f;
     }
