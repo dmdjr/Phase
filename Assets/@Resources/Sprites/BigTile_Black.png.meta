@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 962baed102a093a48ae70c80d88bc447
+guid: 3f1ba4471a598d74d8c59e2e1f33fbcc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2157411801321056961
-    second: circle0_0
+      213: -5089877034541207488
+    second: Tile_Black_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,22 +139,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: circle0_0
+      name: Tile_Black_0
       rect:
         serializedVersion: 2
-        x: 24
+        x: 0
         y: 0
-        width: 277
-        height: 266
-      alignment: 0
+        width: 160
+        height: 160
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ca2af35a9aa0fd10800000000000000
-      internalID: 2157411801321056961
+      spriteID: 040b0cdedcf1d59b0800000000000000
+      internalID: -5089877034541207488
       vertices: []
       indices: 
       edges: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 79a1414900b058446b5bb2459711eca2
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      circle0_0: 2157411801321056961
+      Tile_Black_0: -5089877034541207488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

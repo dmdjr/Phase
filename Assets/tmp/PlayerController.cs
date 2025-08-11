@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 10f;
 
     Rigidbody2D Rigidbody2D;
-
+    SpriteRenderer spriteRenderer;
     [Header("[GroundCheck]")]
     public Transform groundCheck;
     public float groundRadius = 0.15f;

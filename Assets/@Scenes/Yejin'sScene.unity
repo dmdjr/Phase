@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 157372455}
   - component: {fileID: 157372457}
   - component: {fileID: 157372456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 656709575}
   - component: {fileID: 656709577}
   - component: {fileID: 656709576}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 965067558}
   - component: {fileID: 965067560}
   - component: {fileID: 965067559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 1371123159}
   - component: {fileID: 1371123161}
   - component: {fileID: 1371123160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 1695763226}
   - component: {fileID: 1695763228}
   - component: {fileID: 1695763227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -913,9 +913,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  cameraTargetPosition: {x: 0, y: -14, z: -1}
-  player0Sprite: {fileID: -889739676950766307, guid: d5e0ac62a8065804ea3b02bcae098111, type: 3}
-  player1Sprite: {fileID: 4334783836991956000, guid: 805925d302b8d1d42ad30a29d1a67f47, type: 3}
+  jumpPower: 10
+  groundCheck: {fileID: 1910426554}
+  groundRadius: 0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &1728894159
 Rigidbody2D:
   serializedVersion: 4
@@ -1045,8 +1048,40 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1910426554}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1910426553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910426554}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1910426554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910426553}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728894162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015661513
 GameObject:
@@ -1059,7 +1094,7 @@ GameObject:
   - component: {fileID: 2015661514}
   - component: {fileID: 2015661516}
   - component: {fileID: 2015661515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (4)
   m_TagString: Escape
   m_Icon: {fileID: 0}
@@ -1192,7 +1227,7 @@ GameObject:
   - component: {fileID: 2056693419}
   - component: {fileID: 2056693421}
   - component: {fileID: 2056693420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -1361,7 +1396,7 @@ GameObject:
   - component: {fileID: 2076028845}
   - component: {fileID: 2076028847}
   - component: {fileID: 2076028846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Map
   m_Icon: {fileID: 0}
