@@ -6,7 +6,7 @@ public abstract class HazardBase : MonoBehaviour
 {
     public abstract void OnPlayerEnter(PlayerController player);
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
         if (player != null)
