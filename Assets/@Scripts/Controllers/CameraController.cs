@@ -13,19 +13,19 @@ public class CameraController : MonoBehaviour
     // 다음 스테이지로 카메라를 이동시키는 함수
     public void MoveToNextStage()
     {
-        // 다음 스테이지로 인덱스를 1 증가시킵니다.
+        // 다음 스테이지로 인덱스를 1 증가시킴
         currentStageIndex++;
 
-        // 만약 마지막 스테이지를 넘어서려고 하면, 오류 방지를 위해 더 이상 진행하지 않습니다.
+        // 마지막 스테이지를 넘어서려고 하면, 오류 방지를 위해 더 이상 진행 X
         if (currentStageIndex >= cameraStages.Count)
         {
-            Debug.Log("마지막 스테이지입니다!");
+            Debug.Log("마지막 스테이지임!");
             // 인덱스가 리스트 범위를 벗어나지 않도록 마지막 인덱스로 고정
             currentStageIndex = cameraStages.Count - 1;
             return;
         }
 
-        // 리스트에서 다음 스테이지의 위치(Transform)를 가져옵니다.
+        // 리스트에서 다음 스테이지의 위치(Transform)를 가져옴
         Transform nextStage = cameraStages[currentStageIndex];
 
         // 해당 위치로 카메라를 이동
