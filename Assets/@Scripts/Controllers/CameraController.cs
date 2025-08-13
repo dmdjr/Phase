@@ -13,10 +13,9 @@ public class CameraController : MonoBehaviour
     // 다음 스테이지로 카메라를 이동시키는 함수
     public void MoveToNextStage()
     {
-        // 다음 스테이지로 인덱스를 1 증가시킵니다.
         currentStageIndex++;
 
-        // 만약 마지막 스테이지를 넘어서려고 하면, 오류 방지를 위해 더 이상 진행하지 않습니다.
+        // 만약 마지막 스테이지를 넘어서려고 하면, 오류 방지를 위해 더 이상 진행 X
         if (currentStageIndex >= cameraStages.Count)
         {
             Debug.Log("마지막 스테이지임");

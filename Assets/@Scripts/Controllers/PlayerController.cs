@@ -9,10 +9,16 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D Rigidbody2D;
     SpriteRenderer spriteRenderer;
-    [Header("[GroundCheck]")]
+    [Header("[바닥 체크]")]
     public Transform groundCheck;
     public float groundRadius = 0.15f;
     public LayerMask groundLayer;
+
+    [Header("[써클 오브젝트]")]
+    public GameObject timeCircleObject;
+    bool isTimeStopped = false;
+
+    private float originalGravityScale;
 
     bool isGrounded;
     private CameraController cameraController;
@@ -20,24 +26,56 @@ public class PlayerController : MonoBehaviour
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         cameraController = Camera.main.GetComponent<CameraController>();
-    }
 
+        originalGravityScale = Rigidbody2D.gravityScale;
+    }
+    void Start()
+    {
+        if (timeCircleObject != null)
+        {
+            timeCircleObject.SetActive(false);
+        }
+    }
     void Update()
     {
         // 바닥 체크
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
         // 이동 처리
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        if (!isTimeStopped)
         {
-            Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
+            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+            {
+                Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position += (Vector3)Vector2.left * moveSpeed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += (Vector3)Vector2.right * moveSpeed * Time.deltaTime;
+            }
+
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        // 스페이스바 동작 기능
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position += (Vector3)Vector2.left * moveSpeed * Time.deltaTime;
+            isTimeStopped = true;
+            if (timeCircleObject != null)
+            {
+                timeCircleObject.SetActive(true);
+                Rigidbody2D.velocity = Vector2.zero;
+                Rigidbody2D.gravityScale = 0f;
+            }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            transform.position += (Vector3)Vector2.right * moveSpeed * Time.deltaTime;
+            isTimeStopped = false;
+            if (timeCircleObject != null)
+            {
+                timeCircleObject.SetActive(false);
+                Rigidbody2D.gravityScale = originalGravityScale;
+            }
         }
 
 
