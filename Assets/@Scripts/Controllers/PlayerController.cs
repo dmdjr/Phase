@@ -15,8 +15,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     bool isGrounded;
-
-    CameraController cameraController;
+    private CameraController cameraController;
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -48,8 +47,8 @@ public class PlayerController : MonoBehaviour
         // 부딪힌 오브젝트의 태그가 "Escape"인지 확인
         if (collision.CompareTag("Escape"))
         {
-            // CameraController에게 다음 스테이지로 이동하라고 신호만 보냄
-            // 어느 위치로 가야하는지는 CameraController가 알아서 처리
+            // CameraController에게 다음 스테이지로 이동하라고 신호만 보낸다.
+            // 어느 위치로 가야하는지는 CameraController가 알아서 처리한다.
             cameraController.MoveToNextStage();
         }
     }
