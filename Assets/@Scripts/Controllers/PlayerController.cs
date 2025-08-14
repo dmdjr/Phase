@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D Rigidbody2D;
     SpriteRenderer spriteRenderer;
+    Animator animator;
     [Header("[바닥 체크]")]
     public Transform groundCheck;
     public float groundRadius = 0.15f;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
         Rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraController = Camera.main.GetComponent<CameraController>();
-
+        animator = GetComponent<Animator>();
         originalGravityScale = Rigidbody2D.gravityScale;
     }
     void Start()
@@ -44,26 +45,43 @@ public class PlayerController : MonoBehaviour
         // 이동 처리
         if (!isTimeStopped)
         {
+            // 수평 이동 처리
+            float horizontalInput = 0;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                horizontalInput = -1f;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                horizontalInput = 1f;
+            }
+            transform.position += new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime;
+
+            // 좌우 반전 및 Walk 애니메이션
+            if (horizontalInput == -1)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (horizontalInput == 1)
+            {
+                spriteRenderer.flipX = true; 
+            }
+            animator.SetBool("isWalking", horizontalInput != 0);
+
+            // 점프 처리
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {
                 Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.position += (Vector3)Vector2.left * moveSpeed * Time.deltaTime;
-                spriteRenderer.flipX = false;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.position += (Vector3)Vector2.right * moveSpeed * Time.deltaTime;
-                spriteRenderer.flipX = true;
-            }
-
         }
         // 스페이스바 동작 기능
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isTimeStopped = true;
+
+            // 스페이스바 누를 시 Walk 애니메이션 강제 종료
+            animator.SetBool("isWalking", false);
             if (timeCircleObject != null)
             {
                 timeCircleObject.SetActive(true);
@@ -88,8 +106,6 @@ public class PlayerController : MonoBehaviour
         // 부딪힌 오브젝트의 태그가 "Escape"인지 확인
         if (collision.CompareTag("Escape"))
         {
-            // CameraController에게 다음 스테이지로 이동하라고 신호만 보낸다.
-            // 어느 위치로 가야하는지는 CameraController가 알아서 처리한다.
             cameraController.MoveToNextStage();
         }
     }

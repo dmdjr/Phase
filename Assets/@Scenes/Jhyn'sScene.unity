@@ -3459,6 +3459,7 @@ GameObject:
   - component: {fileID: 827749841}
   - component: {fileID: 827749842}
   - component: {fileID: 827749843}
+  - component: {fileID: 827749844}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3637,13 +3638,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827749836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 637673446431378737, guid: 742916544682b3f44b43386d193ef695, type: 3}
   invertedSprite: {fileID: -7520836577938765224, guid: d1f1dff6849ee194c9be983bced44e08, type: 3}
+--- !u!95 &827749844
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827749836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80652ba5b326b764387555ff652b0d67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &837123060
 GameObject:
   m_ObjectHideFlags: 0
