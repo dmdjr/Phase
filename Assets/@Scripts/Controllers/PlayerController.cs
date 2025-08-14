@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         cameraController = Camera.main.GetComponent<CameraController>();
 
         originalGravityScale = Rigidbody2D.gravityScale;
@@ -50,10 +51,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += (Vector3)Vector2.left * moveSpeed * Time.deltaTime;
+                spriteRenderer.flipX = false;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position += (Vector3)Vector2.right * moveSpeed * Time.deltaTime;
+                spriteRenderer.flipX = true;
             }
 
         }
