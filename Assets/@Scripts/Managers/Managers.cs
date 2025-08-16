@@ -13,10 +13,12 @@ public class Managers : MonoBehaviour
     private ResourceManager _resource = new ResourceManager();
     private SoundManager _sound = new SoundManager();
     private UIManager _ui = new UIManager();
+    // private InversionManager _inversion = new InversionManager();
 
     public static ResourceManager Resource { get { return Instance?._resource; } }
     public static SoundManager Sound { get { return Instance?._sound; } }
     public static UIManager UI { get { return Instance?._ui; } }
+    // public static InversionManager Inversion { get { return Instance?._inversion; } }
 
     public static void Init()
     {
