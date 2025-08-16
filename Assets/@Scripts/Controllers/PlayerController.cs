@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     {
         // 바닥 체크
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
+
+
+        animator.SetBool("isGrounded", isGrounded);
         // 이동 처리
         if (!isTimeStopped)
         {
@@ -65,15 +68,17 @@ public class PlayerController : MonoBehaviour
             }
             else if (horizontalInput == 1)
             {
-                spriteRenderer.flipX = true; 
+                spriteRenderer.flipX = true;
             }
-            animator.SetBool("isWalking", horizontalInput != 0);
+            animator.SetBool("isWalking", horizontalInput != 0 && isGrounded);
 
             // 점프 처리
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {
                 Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
+                animator.SetTrigger("isJumping");
             }
+
         }
         // 스페이스바 동작 기능
         if (Input.GetKeyDown(KeyCode.Space))
