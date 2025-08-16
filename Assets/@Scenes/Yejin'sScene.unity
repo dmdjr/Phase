@@ -1416,6 +1416,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  timeCircleObject: {fileID: 0}
 --- !u!50 &2090958737
 Rigidbody2D:
   serializedVersion: 4
@@ -1863,6 +1864,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 1437758929}
+    - target: {fileID: 2207999654909691641, guid: 518ec118adf11467e8dbae85b4e37f4e, type: 3}
+      propertyPath: loopMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2362074859203726782, guid: 518ec118adf11467e8dbae85b4e37f4e, type: 3}
       propertyPath: m_Name
       value: MovingSpike
@@ -1887,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 973282258738994332, guid: 04ee3c6bd87dc47d8a69f3bceb0cb8db, type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 973282258738994332, guid: 04ee3c6bd87dc47d8a69f3bceb0cb8db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3463022982838885374, guid: 04ee3c6bd87dc47d8a69f3bceb0cb8db, type: 3}
       propertyPath: m_LocalPosition.x
