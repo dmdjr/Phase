@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MisslieHazard : HazardBase
 {
@@ -12,6 +13,8 @@ public class MisslieHazard : HazardBase
     Transform _target;
     Rigidbody2D _rb;
     float _timer;
+
+    public Sprite brokenTile;
 
     void Awake()
     {
@@ -64,6 +67,13 @@ public class MisslieHazard : HazardBase
 
     private new void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("LockCore"))
+        {
+            Debug.Log("Lock core is broken");
+            LockObject lockObject = other.GetComponent<LockObject>();
+            lockObject.isBroken = true;
+        }
+
         // Ground 충돌 처리
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
@@ -75,3 +85,5 @@ public class MisslieHazard : HazardBase
         base.OnTriggerEnter2D(other);
     }
 }
+
+

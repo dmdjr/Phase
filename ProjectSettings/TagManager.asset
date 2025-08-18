@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Escape
+  - Map
+  - LockCore
   layers:
   - Default
   - TransparentFX
