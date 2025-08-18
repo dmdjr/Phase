@@ -17,12 +17,24 @@ public class PlayerController : MonoBehaviour
 
     [Header("[써클 오브젝트]")]
     public GameObject timeCircleObject;
+    public GameObject aimingCircleObject;
+    public GameObject releasePointObject;
+    public float releasePointMoveSpeed = 7f;
+    public float circleShrinkSpeed = 0.5f;
+
     bool isTimeStopped = false;
-
     private float originalGravityScale;
-
     bool isGrounded;
     private CameraController cameraController;
+
+    private SpriteRenderer timeCircleRenderer;
+    private SpriteRenderer aimingCircleRenderer;
+    private Vector3 originalCircleScale;
+    private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
+    private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
+
+    private Vector3 timeStopCenterPosition;
+    private float maxReleaseDistance;
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -30,23 +42,53 @@ public class PlayerController : MonoBehaviour
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
         originalGravityScale = Rigidbody2D.gravityScale;
+
+
+        if (timeCircleObject != null)
+        {
+            timeCircleRenderer = timeCircleObject.GetComponent<SpriteRenderer>();
+            originalCircleScale = timeCircleObject.transform.localScale;
+        }
+        if (aimingCircleObject != null)
+        {
+            aimingCircleRenderer = aimingCircleObject.GetComponent<SpriteRenderer>();
+        }
     }
     void Start()
     {
         if (timeCircleObject != null)
         {
-            timeCircleObject.SetActive(false);
+            timeCircleObject.SetActive(true);
+            timeCircleRenderer.color = circleDefaultColor;
         }
+        if (aimingCircleObject != null)
+        {
+            aimingCircleObject.SetActive(false);
+        }
+        if (releasePointObject != null)
+        {
+            releasePointObject.SetActive(false);
+        }
+
     }
     void Update()
     {
         // 바닥 체크
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
-
-
         animator.SetBool("isGrounded", isGrounded);
+
         // 이동 처리
         if (!isTimeStopped)
+        {
+            HandleMovement();
+        }
+
+        // 스페이스바 기능 처리
+        HandleTimeStop();
+
+
+
+        void HandleMovement()
         {
             // 수평 이동 처리
             float horizontalInput = 0;
@@ -78,32 +120,64 @@ public class PlayerController : MonoBehaviour
                 Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
                 animator.SetTrigger("isJumping");
             }
-
         }
-        // 스페이스바 동작 기능
-        if (Input.GetKeyDown(KeyCode.Space))
+        void HandleTimeStop()
         {
-            isTimeStopped = true;
-
-            // 스페이스바 누를 시 Walk 애니메이션 강제 종료
-            animator.SetBool("isWalking", false);
-            if (timeCircleObject != null)
+            // 스페이스바 동작 기능
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                timeCircleObject.SetActive(true);
+                isTimeStopped = true;
+                animator.SetBool("isWalking", false);
                 Rigidbody2D.velocity = Vector2.zero;
                 Rigidbody2D.gravityScale = 0f;
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isTimeStopped = false;
-            if (timeCircleObject != null)
-            {
-                timeCircleObject.SetActive(false);
-                Rigidbody2D.gravityScale = originalGravityScale;
-            }
-        }
 
+                timeStopCenterPosition = transform.position;
+                maxReleaseDistance = originalCircleScale.x / 2.0f;
+
+                releasePointObject.SetActive(true);
+                releasePointObject.transform.position = transform.position; // 플레이어 위치에서 생성
+
+                aimingCircleObject.SetActive(true);
+                aimingCircleRenderer.color = circleAimingColor;
+                aimingCircleObject.transform.localScale = originalCircleScale * 0.3f;
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                // 원 계속 줄어들게 하기
+                if (aimingCircleObject.transform.localScale.x > 0)
+                {
+                    aimingCircleObject.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
+                }
+                // 릴리스 포인트 이동
+                float h = Input.GetAxisRaw("Horizontal"); // A,D 또는 좌우 화살표 키
+                float v = Input.GetAxisRaw("Vertical"); // W,S 또는 위아래 화살표 키
+                Vector3 moveInput = new Vector2(h, v) * releasePointMoveSpeed * Time.deltaTime;
+
+                Vector3 nextPos = releasePointObject.transform.position + moveInput;
+                Vector3 offset = nextPos - timeStopCenterPosition;
+
+                if (offset.magnitude > maxReleaseDistance)
+                {
+                    offset = offset.normalized * maxReleaseDistance;
+                    nextPos = timeStopCenterPosition + offset;
+                }
+                releasePointObject.transform.position = nextPos;
+                aimingCircleObject.transform.position = releasePointObject.transform.position;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isTimeStopped = false;
+                Rigidbody2D.gravityScale = originalGravityScale;
+                // 플레이어를 릴리스 포인트 위치로 순간이동
+                if (aimingCircleObject.transform.localScale.x > 0)
+                {
+                    transform.position = releasePointObject.transform.position;
+                }
+                releasePointObject.SetActive(false);
+                aimingCircleObject.SetActive(false);
+            }
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
