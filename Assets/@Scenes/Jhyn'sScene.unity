@@ -144,8 +144,8 @@ Transform:
   m_GameObject: {fileID: 283946775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827749838}
@@ -3230,7 +3230,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827749838}
@@ -3531,7 +3531,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 283946776}
@@ -3589,8 +3589,10 @@ MonoBehaviour:
   timeCircleObject: {fileID: 447584266}
   aimingCircleObject: {fileID: 1054820843}
   releasePointObject: {fileID: 2127375325}
-  releasePointMoveSpeed: 2
-  circleShrinkSpeed: 0.5
+  releasePointMoveSpeed: 5
+  circleShrinkSpeed: 1
+  circleGrowSpeed: 1
+  teleportRadius: 5
 --- !u!61 &827749842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3629,13 +3631,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2916666, y: 1.2916666}
+    oldSize: {x: 0.6458333, y: 0.6458333}
     newSize: {x: 1.2916666, y: 1.2916666}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1875, y: 1.2916666}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &827749843
 MonoBehaviour:
@@ -3869,7 +3871,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827749838}
@@ -7157,7 +7159,7 @@ GameObject:
   - component: {fileID: 2127375326}
   - component: {fileID: 2127375327}
   m_Layer: 0
-  m_Name: ReleasePoint_0
+  m_Name: ReleasePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

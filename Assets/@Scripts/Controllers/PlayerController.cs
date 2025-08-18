@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public GameObject releasePointObject;
     public float releasePointMoveSpeed = 7f;
     public float circleShrinkSpeed = 0.5f;
+    public float circleGrowSpeed = 1f;
+    public float teleportRadius = 5f;
 
     bool isTimeStopped = false;
     private float originalGravityScale;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 timeStopCenterPosition;
     private float maxReleaseDistance;
+    private bool isCircleGrowing = false;
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -47,7 +50,8 @@ public class PlayerController : MonoBehaviour
         if (timeCircleObject != null)
         {
             timeCircleRenderer = timeCircleObject.GetComponent<SpriteRenderer>();
-            originalCircleScale = timeCircleObject.transform.localScale;
+            originalCircleScale = new Vector3(2f, 2f, 1f);
+            timeCircleObject.transform.localScale = originalCircleScale;
         }
         if (aimingCircleObject != null)
         {
@@ -77,6 +81,10 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
         animator.SetBool("isGrounded", isGrounded);
 
+        if (timeCircleObject != null)
+        {
+            timeCircleObject.transform.position = transform.position;
+        }
         // 이동 처리
         if (!isTimeStopped)
         {
@@ -85,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         // 스페이스바 기능 처리
         HandleTimeStop();
-
+        HandleCircleGrowth();
 
 
         void HandleMovement()
@@ -127,19 +135,19 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 isTimeStopped = true;
+                isCircleGrowing = false;
                 animator.SetBool("isWalking", false);
                 Rigidbody2D.velocity = Vector2.zero;
                 Rigidbody2D.gravityScale = 0f;
 
                 timeStopCenterPosition = transform.position;
-                maxReleaseDistance = originalCircleScale.x / 2.0f;
-
+                maxReleaseDistance = teleportRadius;
                 releasePointObject.SetActive(true);
                 releasePointObject.transform.position = transform.position; // 플레이어 위치에서 생성
 
                 aimingCircleObject.SetActive(true);
                 aimingCircleRenderer.color = circleAimingColor;
-                aimingCircleObject.transform.localScale = originalCircleScale * 0.3f;
+                aimingCircleObject.transform.localScale = timeCircleObject.transform.localScale * 0.9f;
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -173,12 +181,35 @@ public class PlayerController : MonoBehaviour
                 if (aimingCircleObject.transform.localScale.x > 0)
                 {
                     transform.position = releasePointObject.transform.position;
+                    // [변경/추가된 부분] timeCircle의 크기를 aimingCircle의 크기로 변경
+                    timeCircleObject.transform.localScale = aimingCircleObject.transform.localScale;
+                    isCircleGrowing = true; // 원이 커지기 시작하도록 설정
                 }
                 releasePointObject.SetActive(false);
                 aimingCircleObject.SetActive(false);
             }
         }
-
+        void HandleCircleGrowth()
+        {
+            if (isCircleGrowing)
+            {
+                // 현재 크기와 원래 크기를 비교하여 거의 같아지면 멈춤
+                if (Vector3.Distance(timeCircleObject.transform.localScale, originalCircleScale) < 0.01f)
+                {
+                    timeCircleObject.transform.localScale = originalCircleScale; // 정확한 값으로 맞춰줌
+                    isCircleGrowing = false;
+                }
+                else
+                {
+                    // Lerp를 사용하여 부드럽게 크기를 키움
+                    timeCircleObject.transform.localScale = Vector3.Lerp(
+                        timeCircleObject.transform.localScale,
+                        originalCircleScale,
+                        circleGrowSpeed * Time.deltaTime
+                    );
+                }
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
