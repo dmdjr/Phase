@@ -113,16 +113,16 @@ public class PlayerController : MonoBehaviour
         if (!isTimeStopped)
         {
             // 플레이어 이동 처리 함수
-            HandleMovement();
+            Movment();
         }
 
         // 스페이스바 입력에 따른 스킬 함수
-        HandleTimeStop();
+        MovingStop();
         // 조준 원의 크기 복구 관련 함수
         CircleGrowth();
 
 
-        void HandleMovement()
+        void Movment()
         {
             // 수평 이동 처리
             float horizontalInput = 0;
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        void HandleTimeStop()
+        void MovingStop()
         {
             // 스페이스바를 누르는 순간 (최초 1회 실행)
             if (Input.GetKeyDown(KeyCode.Space))
