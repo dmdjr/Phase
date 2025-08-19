@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     [Header("[써클 오브젝트]")]
-    public GameObject timeCircleObject;
-    public GameObject aimingCircleObject;
-    public GameObject releasePointObject;
-    public float releasePointMoveSpeed = 7f;
-    public float circleShrinkSpeed = 0.5f;
-    public float circleGrowSpeed = 1f;
-    public float teleportRadius = 5f;
+    public GameObject timeCircleObject; // 기준 원
+    public GameObject aimingCircleObject; // 다음 원(후에 이 원이 기준이 됨)
+    public GameObject releasePointObject; // 순간이동할 지점(릴리즈 포인트라고 함)
+    public float releasePointMoveSpeed = 5f; // 릴리즈 포인트의 이동 속도
+    public float circleShrinkSpeed = 1f; // 다음 원이 닫히는 속도
+    public float circleGrowSpeed = 1f; // 다음 원이 기준 원이 되는 속도
+    public float teleportRadius = 5f; // 릴리즈 포인트의 범위
 
     bool isTimeStopped = false;
     private float originalGravityScale;
@@ -157,9 +157,14 @@ public class PlayerController : MonoBehaviour
                 {
                     aimingCircleObject.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
                 }
-                // 릴리스 포인트 이동
-                float h = Input.GetAxisRaw("Horizontal"); // A,D 또는 좌우 화살표 키
-                float v = Input.GetAxisRaw("Vertical"); // W,S 또는 위아래 화살표 키
+                else
+                {
+                    aimingCircleObject.transform.localScale = Vector3.zero;
+                }
+
+                // 릴리스 포인트 이동 (기존과 동일)
+                float h = Input.GetAxisRaw("Horizontal");
+                float v = Input.GetAxisRaw("Vertical");
                 Vector3 moveInput = new Vector2(h, v) * releasePointMoveSpeed * Time.deltaTime;
 
                 Vector3 nextPos = releasePointObject.transform.position + moveInput;
@@ -173,18 +178,20 @@ public class PlayerController : MonoBehaviour
                 releasePointObject.transform.position = nextPos;
                 aimingCircleObject.transform.position = releasePointObject.transform.position;
             }
+
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 isTimeStopped = false;
                 Rigidbody2D.gravityScale = originalGravityScale;
-                // 플레이어를 릴리스 포인트 위치로 순간이동
+
                 if (aimingCircleObject.transform.localScale.x > 0)
                 {
                     transform.position = releasePointObject.transform.position;
-                    // [변경/추가된 부분] timeCircle의 크기를 aimingCircle의 크기로 변경
-                    timeCircleObject.transform.localScale = aimingCircleObject.transform.localScale;
-                    isCircleGrowing = true; // 원이 커지기 시작하도록 설정
                 }
+
+                timeCircleObject.transform.localScale = aimingCircleObject.transform.localScale;
+                isCircleGrowing = true;
+
                 releasePointObject.SetActive(false);
                 aimingCircleObject.SetActive(false);
             }
