@@ -18,15 +18,20 @@ public class PlayerController : MonoBehaviour
     [Header("[써클 오브젝트]")]
     public GameObject timeCircleObject; // 플레이어를 따라다니는 '기준 원' 
     public GameObject aimingCircleObject; // 스페이스바를 누르면 생기는 '조준 원'
-    public GameObject releasePointObject; // 순간이동 목표 지점을 나타내는 '릴리즈 포인트'
-    public float releasePointMoveSpeed = 5f; // 릴리즈 포인트의 이동 속도
-    public float circleShrinkSpeed = 1f; // 조준 원이 닫히는 속도
+    public float circleShrinkSpeed = 0.7f; // 조준 원이 닫히는 속도
     public float circleGrowSpeed = 1f; // 조준 원이 기준 원의 크기로 복구되는 속도
+
+    [Header("[릴리즈 포인트 오브젝트")]
+    public GameObject releasePointObject; // 순간이동 목표 지점을 나타내는 '릴리즈 포인트'
+    public Sprite invalidReleasePointSprite; // 타일맵에 닿았을 때 표기될 '릴리즈 포인트' 스프라이트
+    public LayerMask tilemapLayer; // 충돌을 감지할 레이어(타일맵에 할당된 레이어 값)
+    public float releasePointCollisionRadius = 0.1f; // 릴리즈 포인트의 충돌 판정 범위
+    public float releasePointMoveSpeed = 5f; // 릴리즈 포인트의 이동 속도
     public float teleportRadius = 5f; // 릴리즈 포인트가 움직일 수 있는 최대 반경
 
     bool isTimeStopped = false; // 시간이 멈췄는지(스킬을 사용 중인지) 확인하는 상태 변수
     private float originalGravityScale; // 원래의 중력 값을 저장하기 위한 변수
-    bool isGrounded;
+    bool isGrounded; // 바닥 감지 상태 변수
     private CameraController cameraController;
 
     private SpriteRenderer timeCircleRenderer;
@@ -38,6 +43,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 timeStopCenterPosition; // 스킬 사용 시 릴리즈 포인트를 기준으로 생기는 원의 중심점 위치
     private float maxReleaseDistance; // 릴리즈 포인트가 중심점에서 벗어날 수 있는 최대 거리(반지름)
     private bool isCircleGrowing = false; // 조준 원이 기준 원의 크기로 다시 커지는 중인지 확인하는 상태 변수
+
+    private Sprite originalReleasePointSprite; // 원래의 릴리즈 포인트 스프라이트를 저장할 변수
+    private SpriteRenderer releasePointRenderer; // 릴리즈 포인트의 스프라이트를 바꾸기 위한 변수
+    private Vector3 lastValidReleasePosition; // 마지막으로 유효했던(타일맵에 닿지 않았던) 릴리즈 포인트 위치
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -58,6 +67,14 @@ public class PlayerController : MonoBehaviour
         if (aimingCircleObject != null)
         {
             aimingCircleRenderer = aimingCircleObject.GetComponent<SpriteRenderer>();
+        }
+
+        if (releasePointObject != null)
+        {
+            // 기존 릴리즈 포인트의 렌더러 컴포넌트 할당
+            releasePointRenderer = releasePointObject.GetComponent<SpriteRenderer>();
+            // 기존 릴리즈 포인트의 스프라이트 저장 (나중에 되돌리기 위해)
+            originalReleasePointSprite = releasePointRenderer.sprite;
         }
     }
     void Start()
@@ -160,6 +177,11 @@ public class PlayerController : MonoBehaviour
                 // 릴리즈 포인트와 조준 원 활성화
                 releasePointObject.SetActive(true);
                 releasePointObject.transform.position = transform.position; // 릴리즈 포인트를 플레이어 위치에서 생성
+                // 현재 플레이어의 위치를 마지막 위치로 초기화
+                lastValidReleasePosition = transform.position;
+                // 스프라이트를 원래대로 되돌림
+                releasePointRenderer.sprite = originalReleasePointSprite;
+
                 aimingCircleObject.SetActive(true);
                 aimingCircleRenderer.color = circleAimingColor; // 조준 원의 색상 설정
                 // 조준 원의 시작 크기를 현재 기준 원의 90%로 설정
@@ -194,7 +216,7 @@ public class PlayerController : MonoBehaviour
                 else if (Input.GetKey(KeyCode.UpArrow)) verticalInput = 1f;
 
                 // 최종 이동 벡터 계산 
-                Vector3 moveInput = new Vector3(horizontalInput, verticalInput, 0f) * releasePointMoveSpeed * Time.deltaTime;
+                Vector3 moveInput = new Vector2(horizontalInput, verticalInput).normalized * releasePointMoveSpeed * Time.deltaTime;
 
                 // 다음 릴리즈 포인트의 위치를 저장하는 변수
                 Vector3 nextPos = releasePointObject.transform.position + moveInput;
@@ -211,7 +233,17 @@ public class PlayerController : MonoBehaviour
                     // 다음 릴리즈 포인트의 위치를 처음 릴리즈포인트의 중심점에서 offset만큼 더함
                     nextPos = timeStopCenterPosition + offset;
                 }
-
+                // 릴리즈 포인트를 움직이기 전에 타일맵인지 확인
+                if (Physics2D.OverlapCircle(nextPos, releasePointCollisionRadius, tilemapLayer))
+                {
+                    // 타일맵에 닿았다면 릴리즈 포인트 스프라이트 갈아끼우기
+                    releasePointRenderer.sprite = invalidReleasePointSprite;
+                }
+                else
+                {
+                    releasePointRenderer.sprite = originalReleasePointSprite;
+                    lastValidReleasePosition = nextPos;
+                }
                 // 최종 위치 오브젝트에 적용
                 releasePointObject.transform.position = nextPos;
                 aimingCircleObject.transform.position = releasePointObject.transform.position;
@@ -229,7 +261,7 @@ public class PlayerController : MonoBehaviour
                 if (aimingCircleObject.transform.localScale.x > 0)
                 {
                     // 플레이어의 위치를 릴리즈 포인트의 최종 위치로 변경
-                    transform.position = releasePointObject.transform.position;
+                    transform.position = lastValidReleasePosition;
                 }
 
                 // 기준 원의 크기를 마지막 순간의 조준 원의 크기로 변경

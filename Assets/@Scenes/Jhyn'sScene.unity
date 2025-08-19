@@ -3587,10 +3587,15 @@ MonoBehaviour:
     m_Bits: 64
   timeCircleObject: {fileID: 447584266}
   aimingCircleObject: {fileID: 1054820843}
-  releasePointObject: {fileID: 2127375325}
-  releasePointMoveSpeed: 5
-  circleShrinkSpeed: 1
+  circleShrinkSpeed: 0.7
   circleGrowSpeed: 1
+  releasePointObject: {fileID: 2127375325}
+  invalidReleasePointSprite: {fileID: 5308431421370826863, guid: 1bed71e211e2f3449b5dcd9173a11450, type: 3}
+  tilemapLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  releasePointCollisionRadius: 0.1
+  releasePointMoveSpeed: 5
   teleportRadius: 5
 --- !u!61 &827749842
 BoxCollider2D:
