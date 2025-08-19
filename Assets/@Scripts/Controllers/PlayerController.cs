@@ -16,28 +16,28 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     [Header("[써클 오브젝트]")]
-    public GameObject timeCircleObject; // 기준 원
-    public GameObject aimingCircleObject; // 다음 원(후에 이 원이 기준이 됨)
-    public GameObject releasePointObject; // 순간이동할 지점(릴리즈 포인트라고 함)
+    public GameObject timeCircleObject; // 플레이어를 따라다니는 '기준 원' 
+    public GameObject aimingCircleObject; // 스페이스바를 누르면 생기는 '조준 원'
+    public GameObject releasePointObject; // 순간이동 목표 지점을 나타내는 '릴리즈 포인트'
     public float releasePointMoveSpeed = 5f; // 릴리즈 포인트의 이동 속도
-    public float circleShrinkSpeed = 1f; // 다음 원이 닫히는 속도
-    public float circleGrowSpeed = 1f; // 다음 원이 기준 원이 되는 속도
-    public float teleportRadius = 5f; // 릴리즈 포인트의 범위
+    public float circleShrinkSpeed = 1f; // 조준 원이 닫히는 속도
+    public float circleGrowSpeed = 1f; // 조준 원이 기준 원의 크기로 복구되는 속도
+    public float teleportRadius = 5f; // 릴리즈 포인트가 움직일 수 있는 최대 반경
 
-    bool isTimeStopped = false;
-    private float originalGravityScale;
+    bool isTimeStopped = false; // 시간이 멈췄는지(스킬을 사용 중인지) 확인하는 상태 변수
+    private float originalGravityScale; // 원래의 중력 값을 저장하기 위한 변수
     bool isGrounded;
     private CameraController cameraController;
 
     private SpriteRenderer timeCircleRenderer;
     private SpriteRenderer aimingCircleRenderer;
-    private Vector3 originalCircleScale;
-    private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
-    private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
+    private Vector3 originalCircleScale; // 기준원의 크기를 저장하는 변수
+    private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f); // 기준 원의 색상(투명도 10)
+    private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f); // 조준 원의 색상(투명도 50)
 
-    private Vector3 timeStopCenterPosition;
-    private float maxReleaseDistance;
-    private bool isCircleGrowing = false;
+    private Vector3 timeStopCenterPosition; // 스킬 사용 시 릴리즈 포인트를 기준으로 생기는 원의 중심점 위치
+    private float maxReleaseDistance; // 릴리즈 포인트가 중심점에서 벗어날 수 있는 최대 거리(반지름)
+    private bool isCircleGrowing = false; // 조준 원이 기준 원의 크기로 다시 커지는 중인지 확인하는 상태 변수
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour
         if (timeCircleObject != null)
         {
             timeCircleRenderer = timeCircleObject.GetComponent<SpriteRenderer>();
+            // 기준 원의 크기를 (2,2,1)로 고정하여 저장하려는 변수
             originalCircleScale = new Vector3(2f, 2f, 1f);
+            // 기준 원의 크기를 originalCircleScale로 저장
             timeCircleObject.transform.localScale = originalCircleScale;
         }
         if (aimingCircleObject != null)
@@ -62,15 +64,19 @@ public class PlayerController : MonoBehaviour
     {
         if (timeCircleObject != null)
         {
+            // 기준 원은 항상 보이도록 활성화
             timeCircleObject.SetActive(true);
+            // 기준 원의 색상과 알파값을 설정
             timeCircleRenderer.color = circleDefaultColor;
         }
         if (aimingCircleObject != null)
         {
+            // 조준 원은 게임 시작 시 보이지 않도록
             aimingCircleObject.SetActive(false);
         }
         if (releasePointObject != null)
         {
+            // 릴리즈 포인트도 게임 시작 시 보이지 않도록
             releasePointObject.SetActive(false);
         }
 
@@ -83,17 +89,20 @@ public class PlayerController : MonoBehaviour
 
         if (timeCircleObject != null)
         {
+            // 기준 원이 매 프레임 플레이어의 위치를 따라다니록 함
             timeCircleObject.transform.position = transform.position;
         }
-        // 이동 처리
+        // isTimeStopped가 false일 경우에만 플레이어 이동 처리
         if (!isTimeStopped)
         {
+            // 플레이어 이동 처리 함수
             HandleMovement();
         }
 
-        // 스페이스바 기능 처리
+        // 스페이스바 입력에 따른 스킬 함수
         HandleTimeStop();
-        HandleCircleGrowth();
+        // 조준 원의 크기 복구 관련 함수
+        CircleGrowth();
 
 
         void HandleMovement()
@@ -129,83 +138,122 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("isJumping");
             }
         }
+
         void HandleTimeStop()
         {
-            // 스페이스바 동작 기능
+            // 스페이스바를 누르는 순간 (최초 1회 실행)
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // 상태 변경: 시간을 멈추고 원이 커지는 것을 중단시킴
                 isTimeStopped = true;
                 isCircleGrowing = false;
+
+                // 플레이어 정지: 이동 애니메이션을 멈추고, 속도와 중력을 0으로 만듦
                 animator.SetBool("isWalking", false);
                 Rigidbody2D.velocity = Vector2.zero;
                 Rigidbody2D.gravityScale = 0f;
 
-                timeStopCenterPosition = transform.position;
-                maxReleaseDistance = teleportRadius;
-                releasePointObject.SetActive(true);
-                releasePointObject.transform.position = transform.position; // 플레이어 위치에서 생성
+                // 릴리즈포인트 이동 범위 설정 
+                timeStopCenterPosition = transform.position; // 현재 플레이어의 위치를 이동 범위의 중심점으로 설정
+                maxReleaseDistance = teleportRadius; // 릴리즈 포인트의 최대 이동 반경을 설정
 
+                // 릴리즈 포인트와 조준 원 활성화
+                releasePointObject.SetActive(true);
+                releasePointObject.transform.position = transform.position; // 릴리즈 포인트를 플레이어 위치에서 생성
                 aimingCircleObject.SetActive(true);
-                aimingCircleRenderer.color = circleAimingColor;
+                aimingCircleRenderer.color = circleAimingColor; // 조준 원의 색상 설정
+                // 조준 원의 시작 크기를 현재 기준 원의 90%로 설정
                 aimingCircleObject.transform.localScale = timeCircleObject.transform.localScale * 0.9f;
             }
 
+
+            // 스페이스바를 누르고 있는 동안 (매 프레임 실행)
             if (Input.GetKey(KeyCode.Space))
             {
-                // 원 계속 줄어들게 하기
+                // 조준 원 크기 줄이기 
                 if (aimingCircleObject.transform.localScale.x > 0)
                 {
+                    // circleShrinkSpeed에 따라 매 프레임 크기를 조금 씩 줄임
                     aimingCircleObject.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
                 }
                 else
                 {
+                    // 조준원의 크기가 0보다 작아지면 크기를 0으로 고정(음수값 방지)
                     aimingCircleObject.transform.localScale = Vector3.zero;
                 }
 
-                // 릴리스 포인트 이동 (기존과 동일)
-                float h = Input.GetAxisRaw("Horizontal");
-                float v = Input.GetAxisRaw("Vertical");
-                Vector3 moveInput = new Vector2(h, v) * releasePointMoveSpeed * Time.deltaTime;
+                // 릴리즈 포인트 이동 
+                // 이동 방향을 계산할 변수
+                float horizontalInput = 0f;
+                float verticalInput = 0f;
 
+                // 어떤 방향키를 누르고 있는지에 따라 값 저장
+                if (Input.GetKey(KeyCode.LeftArrow)) horizontalInput = -1f;
+                else if (Input.GetKey(KeyCode.RightArrow)) horizontalInput = 1f;
+                if (Input.GetKey(KeyCode.DownArrow)) verticalInput = -1f;
+                else if (Input.GetKey(KeyCode.UpArrow)) verticalInput = 1f;
+
+                // 최종 이동 벡터 계산 
+                Vector3 moveInput = new Vector3(horizontalInput, verticalInput, 0f) * releasePointMoveSpeed * Time.deltaTime;
+
+                // 다음 릴리즈 포인트의 위치를 저장하는 변수
                 Vector3 nextPos = releasePointObject.transform.position + moveInput;
+
+                // 처음 릴리즈 포인트의 중심점에서 다음 릴리즈 포인트까지 거리를 저장하는 변수
                 Vector3 offset = nextPos - timeStopCenterPosition;
 
+
+                // 만약 offset의 길이가 내가 지정한 최대 거리보다 길다면
                 if (offset.magnitude > maxReleaseDistance)
                 {
+                    // 방향은 그대로 두고 offset의 거리를 최대 거리만큼 제한함
                     offset = offset.normalized * maxReleaseDistance;
+                    // 다음 릴리즈 포인트의 위치를 처음 릴리즈포인트의 중심점에서 offset만큼 더함
                     nextPos = timeStopCenterPosition + offset;
                 }
+
+                // 최종 위치 오브젝트에 적용
                 releasePointObject.transform.position = nextPos;
                 aimingCircleObject.transform.position = releasePointObject.transform.position;
             }
 
+
+            // 스페이스바 키를 떼면 (최소 1회 실행)
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                // 시간 정지를 풀고, 원래 중력으로 복구
                 isTimeStopped = false;
                 Rigidbody2D.gravityScale = originalGravityScale;
 
+                // 순간이동 실행(단, 조준 원이 남아 있을 경우만) -> 조준 원의 크기가 0이 되면 플레이어는 순간이동을 할 수 없음
                 if (aimingCircleObject.transform.localScale.x > 0)
                 {
+                    // 플레이어의 위치를 릴리즈 포인트의 최종 위치로 변경
                     transform.position = releasePointObject.transform.position;
                 }
 
+                // 기준 원의 크기를 마지막 순간의 조준 원의 크기로 변경
                 timeCircleObject.transform.localScale = aimingCircleObject.transform.localScale;
+                // 기준 원의 상태 복구 시작
                 isCircleGrowing = true;
 
                 releasePointObject.SetActive(false);
                 aimingCircleObject.SetActive(false);
             }
         }
-        void HandleCircleGrowth()
+
+        // 기준 원의 상태 복구 함수
+        void CircleGrowth()
         {
             if (isCircleGrowing)
             {
-                // 현재 크기와 원래 크기를 비교하여 거의 같아지면 멈춤
+                // 현재 크기와 원래 크기를 비교하여 거의 같아졌다면
                 if (Vector3.Distance(timeCircleObject.transform.localScale, originalCircleScale) < 0.01f)
                 {
                     timeCircleObject.transform.localScale = originalCircleScale; // 정확한 값으로 맞춰줌
-                    isCircleGrowing = false;
+                    isCircleGrowing = false; // 원 크기 키우기 종료
                 }
+                // 현재 크기와 원래 크기를 비교하여 현재 크기가 원래 크기보다 작다면
                 else
                 {
                     // Lerp를 사용하여 부드럽게 크기를 키움
