@@ -3595,7 +3595,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   releasePointCollisionRadius: 0.1
-  releasePointMoveSpeed: 5
+  releasePointMoveSpeed: 7
   teleportRadius: 5
 --- !u!61 &827749842
 BoxCollider2D:

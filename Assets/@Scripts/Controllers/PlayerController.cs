@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public Sprite invalidReleasePointSprite; // 타일맵에 닿았을 때 표기될 '릴리즈 포인트' 스프라이트
     public LayerMask tilemapLayer; // 충돌을 감지할 레이어(타일맵에 할당된 레이어 값)
     public float releasePointCollisionRadius = 0.1f; // 릴리즈 포인트의 충돌 판정 범위
-    public float releasePointMoveSpeed = 5f; // 릴리즈 포인트의 이동 속도
+    public float releasePointMoveSpeed = 7f; // 릴리즈 포인트의 이동 속도
     public float teleportRadius = 5f; // 릴리즈 포인트가 움직일 수 있는 최대 반경
 
     bool isTimeStopped = false; // 시간이 멈췄는지(스킬을 사용 중인지) 확인하는 상태 변수
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", horizontalInput != 0 && isGrounded);
 
             // 점프 처리
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+            if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
             {
                 Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
                 animator.SetTrigger("isJumping");
