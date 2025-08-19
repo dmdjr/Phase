@@ -135,9 +135,11 @@ public class PlayerController : MonoBehaviour
             {
                 horizontalInput = 1f;
             }
-            transform.position += new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime;
 
-            // 좌우 반전 및 Walk 애니메이션
+            float currentYVelocity = Rigidbody2D.velocity.y;
+            Rigidbody2D.velocity = new Vector2(horizontalInput * moveSpeed, currentYVelocity);
+
+            // 좌우 반전 및 Move 애니메이션
             if (horizontalInput == -1)
             {
                 spriteRenderer.flipX = false;
