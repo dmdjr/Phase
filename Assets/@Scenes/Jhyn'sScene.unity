@@ -3159,8 +3159,8 @@ GameObject:
   - component: {fileID: 447584268}
   - component: {fileID: 447584267}
   - component: {fileID: 447584269}
-  m_Layer: 0
-  m_Name: Circle
+  m_Layer: 7
+  m_Name: StandardCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3670,7 +3670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837123062}
   - component: {fileID: 837123061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stage3
   m_TagString: Escape
   m_Icon: {fileID: 0}
@@ -3749,7 +3749,7 @@ GameObject:
   - component: {fileID: 1054820846}
   - component: {fileID: 1054820845}
   - component: {fileID: 1054820844}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AimingCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3902,7 +3902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343322413}
   - component: {fileID: 1343322414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stage2
   m_TagString: Escape
   m_Icon: {fileID: 0}
