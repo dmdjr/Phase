@@ -5,11 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class EscapeTriggerController : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (CanEnableEscapeTrigger())

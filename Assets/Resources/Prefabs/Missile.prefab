@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3831622322331968194}
   - component: {fileID: 8075492761745416802}
   - component: {fileID: 6534633052794473542}
-  - component: {fileID: 5077496786095574834}
   - component: {fileID: 8976655693593782882}
+  - component: {fileID: -3539275840608929391}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -4478703775913692564, guid: 11825fb4f995a4025b05af12a5a559c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,8 +116,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &5077496786095574834
-CircleCollider2D:
+--- !u!114 &8976655693593782882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311638249727198445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e76e8c344774a4c955886c42b67f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotateSpeed: 300
+  lifeTime: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  brokenTile: {fileID: -2138743572502155685, guid: 04fab461305af4cea8d1304aefefd08e, type: 3}
+--- !u!60 &-3539275840608929391
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,23 +170,33 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &8976655693593782882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5311638249727198445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e76e8c344774a4c955886c42b67f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rotateSpeed: 300
-  lifeTime: 100
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  brokenTile: {fileID: -2138743572502155685, guid: 04fab461305af4cea8d1304aefefd08e, type: 3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.484375}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.34375, y: -0.15625}
+      - {x: 0.359375, y: -0.140625}
+      - {x: 0.4140625, y: -0.1328125}
+      - {x: 0.4765625, y: -0.1015625}
+      - {x: 0.5, y: -0.078125}
+      - {x: 0.5, y: 0.0625}
+      - {x: 0.4765625, y: 0.09375}
+      - {x: 0.34375, y: 0.15625}
+      - {x: -0.1015625, y: 0.15625}
+      - {x: -0.1171875, y: 0.1953125}
+      - {x: -0.2265625, y: 0.2421875}
+      - {x: -0.4921875, y: 0.2421875}
+      - {x: -0.5, y: 0.234375}
+      - {x: -0.5, y: -0.21875}
+      - {x: -0.4765625, y: -0.2421875}
+      - {x: -0.2109375, y: -0.2421875}
+      - {x: -0.1171875, y: -0.1953125}
+      - {x: -0.1015625, y: -0.1640625}
+  m_UseDelaunayMesh: 0
