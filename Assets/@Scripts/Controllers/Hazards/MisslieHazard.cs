@@ -13,7 +13,7 @@ public class MisslieHazard : HazardBase
     Transform _target;
     Rigidbody2D _rb;
     float _timer;
-
+    TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
     public Sprite brokenTile;
 
     void Awake()
@@ -22,7 +22,7 @@ public class MisslieHazard : HazardBase
         _rb.gravityScale = 0f;
         _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-
+        _timeAffected = GetComponent<TimeAffected>(); // 컴포넌트 할당
         var player = FindFirstObjectByType<PlayerController>();
         if (player != null) _target = player.transform;
     }
@@ -46,17 +46,22 @@ public class MisslieHazard : HazardBase
         _timer += Time.fixedDeltaTime;
         if (_timer >= lifeTime) { Destroy(gameObject); return; }
 
+
+        // TimeAffected의 시간 배율을 적용한 현재 속도/회전속도를 계산
+        float currentSpeed = speed * _timeAffected.currentTimeScale;
+        float currentRotateSpeed = rotateSpeed * _timeAffected.currentTimeScale;
+
         if (_target == null)
         {
-            _rb.velocity = transform.right * speed;
+            _rb.velocity = transform.right * currentSpeed;
             return;
         }
 
         Vector2 toTarget = ((Vector2)_target.position - _rb.position).normalized;
         float rotateAmount = Vector3.Cross(toTarget, transform.right).z;
 
-        _rb.angularVelocity = -rotateAmount * rotateSpeed;
-        _rb.velocity = (Vector2)transform.right * speed;
+        _rb.angularVelocity = -rotateAmount * currentRotateSpeed;
+        _rb.velocity = (Vector2)transform.right * currentSpeed;
     }
 
     public override void OnPlayerEnter(PlayerController player)

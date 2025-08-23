@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeEffected : MonoBehaviour
+public class TimeAffected : MonoBehaviour
 {
     public float currentTimeScale = 1.0f; // 기존의 시간 배율(정속도)
     Rigidbody2D rb; 

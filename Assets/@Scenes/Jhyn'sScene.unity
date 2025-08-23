@@ -162,6 +162,19 @@ CustomCollider2D:
   m_CustomShapes:
     m_Shapes: []
     m_Vertices: []
+--- !u!114 &75429214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75429206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1
 --- !u!1 &283946775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,6 +3215,8 @@ GameObject:
   - component: {fileID: 447584268}
   - component: {fileID: 447584267}
   - component: {fileID: 447584269}
+  - component: {fileID: 447584271}
+  - component: {fileID: 447584272}
   m_Layer: 7
   m_Name: StandardCircle
   m_TagString: Untagged
@@ -3314,6 +3329,46 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 3.3333333
+--- !u!50 &447584271
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447584266}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &447584272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447584266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56824b2dd8ef6c49aef404c6e9a913a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScaleInCircle: 0.3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,17 +3683,17 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  timeCircleObject: {fileID: 447584266}
-  aimingCircleObject: {fileID: 1054820843}
-  circleShrinkSpeed: 0.7
+  timeCircle: {fileID: 447584266}
+  aimingCircle: {fileID: 1054820843}
+  circleShrinkSpeed: 0.2
   circleGrowSpeed: 1
-  releasePointObject: {fileID: 2127375325}
+  releasePoint: {fileID: 2127375325}
   invalidReleasePointSprite: {fileID: 5308431421370826863, guid: 1bed71e211e2f3449b5dcd9173a11450, type: 3}
   tilemapLayer:
     serializedVersion: 2
     m_Bits: 64
   releasePointCollisionRadius: 0.1
-  releasePointMoveSpeed: 7
+  releasePointMoveSpeed: 5
   teleportRadius: 5
 --- !u!61 &827749842
 BoxCollider2D:
@@ -3846,6 +3901,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4257659150768052408, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 75429207}
+    - targetCorrespondingSourceObject: {fileID: 4257659150768052408, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 75429214}
   m_SourcePrefab: {fileID: 100100000, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
 --- !u!1 &1054820843
 GameObject:
