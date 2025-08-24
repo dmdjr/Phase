@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7248748060526411929}
   - component: {fileID: 1727282970308524779}
   - component: {fileID: 2207999654909691641}
+  - component: {fileID: -5744075719156063913}
   m_Layer: 0
   m_Name: MovingSpike
   m_TagString: Untagged
@@ -183,3 +184,16 @@ MonoBehaviour:
   pointB: {fileID: 0}
   speed: 5
   waitAtNode: 0
+--- !u!114 &-5744075719156063913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362074859203726782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1

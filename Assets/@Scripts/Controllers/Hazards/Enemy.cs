@@ -20,6 +20,9 @@ public class Enemy : HazardBase
     float _waitTimer;
 
     Rigidbody2D _rb;
+
+    private Transform missilePos;
+    Quaternion missileRot;
     
     void Awake()
     {
@@ -29,6 +32,13 @@ public class Enemy : HazardBase
         {
             Debug.LogError("Enemy can'y find Missile prefab");
         }
+
+        missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치
+        // 미사일이 생성된 후 바로 타겟을 바라보기 위함
+        Transform target = GameObject.Find("Player").transform; 
+        Vector2 toTarget = (target.position - missilePos.position);
+        float ang = Vector2.SignedAngle(Vector2.right, toTarget);
+        missileRot = Quaternion.Euler(0, 0, ang);
 
         _rb = GetComponent<Rigidbody2D>();
         RecalcEndpoints();
@@ -52,7 +62,7 @@ public class Enemy : HazardBase
         while (true)
         {
             yield return new WaitForSeconds(shotInterval);
-            Instantiate(prefab, transform.position, transform.rotation); 
+            Instantiate(prefab, missilePos.position, missileRot); 
         }
     }
 
