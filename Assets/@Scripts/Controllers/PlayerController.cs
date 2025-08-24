@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     [Header("[써클 오브젝트]")]
-    public GameObject timeCircleObject; // 플레이어를 따라다니는 '기준 원' 
-    public GameObject aimingCircleObject; // 스페이스바를 누르면 생기는 '조준 원'
+    public GameObject timeCircle; // 플레이어를 따라다니는 '기준 원' 
+    public GameObject aimingCircle; // 스페이스바를 누르면 생기는 '조준 원'
     public float circleShrinkSpeed = 0.7f; // 조준 원이 닫히는 속도
     public float circleGrowSpeed = 1f; // 조준 원이 기준 원의 크기로 복구되는 속도
 
     [Header("[릴리즈 포인트 오브젝트")]
-    public GameObject releasePointObject; // 순간이동 목표 지점을 나타내는 '릴리즈 포인트'
+    public GameObject releasePoint; // 순간이동 목표 지점을 나타내는 '릴리즈 포인트'
     public Sprite invalidReleasePointSprite; // 타일맵에 닿았을 때 표기될 '릴리즈 포인트' 스프라이트
     public LayerMask tilemapLayer; // 충돌을 감지할 레이어(타일맵에 할당된 레이어 값)
     public float releasePointCollisionRadius = 0.1f; // 릴리즈 포인트의 충돌 판정 범위
@@ -56,45 +56,45 @@ public class PlayerController : MonoBehaviour
         originalGravityScale = Rigidbody2D.gravityScale;
 
 
-        if (timeCircleObject != null)
+        if (timeCircle != null)
         {
-            timeCircleRenderer = timeCircleObject.GetComponent<SpriteRenderer>();
+            timeCircleRenderer = timeCircle.GetComponent<SpriteRenderer>();
             // 기준 원의 크기를 (2,2,1)로 고정하여 저장하려는 변수
             originalCircleScale = new Vector3(2f, 2f, 1f);
             // 기준 원의 크기를 originalCircleScale로 저장
-            timeCircleObject.transform.localScale = originalCircleScale;
+            timeCircle.transform.localScale = originalCircleScale;
         }
-        if (aimingCircleObject != null)
+        if (aimingCircle != null)
         {
-            aimingCircleRenderer = aimingCircleObject.GetComponent<SpriteRenderer>();
+            aimingCircleRenderer = aimingCircle.GetComponent<SpriteRenderer>();
         }
 
-        if (releasePointObject != null)
+        if (releasePoint != null)
         {
             // 기존 릴리즈 포인트의 렌더러 컴포넌트 할당
-            releasePointRenderer = releasePointObject.GetComponent<SpriteRenderer>();
+            releasePointRenderer = releasePoint.GetComponent<SpriteRenderer>();
             // 기존 릴리즈 포인트의 스프라이트 저장 (나중에 되돌리기 위해)
             originalReleasePointSprite = releasePointRenderer.sprite;
         }
     }
     void Start()
     {
-        if (timeCircleObject != null)
+        if (timeCircle != null)
         {
             // 기준 원은 항상 보이도록 활성화
-            timeCircleObject.SetActive(true);
+            timeCircle.SetActive(true);
             // 기준 원의 색상과 알파값을 설정
             timeCircleRenderer.color = circleDefaultColor;
         }
-        if (aimingCircleObject != null)
+        if (aimingCircle != null)
         {
             // 조준 원은 게임 시작 시 보이지 않도록
-            aimingCircleObject.SetActive(false);
+            aimingCircle.SetActive(false);
         }
-        if (releasePointObject != null)
+        if (releasePoint != null)
         {
             // 릴리즈 포인트도 게임 시작 시 보이지 않도록
-            releasePointObject.SetActive(false);
+            releasePoint.SetActive(false);
         }
 
     }
@@ -104,10 +104,10 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
         animator.SetBool("isGrounded", isGrounded);
 
-        if (timeCircleObject != null)
+        if (timeCircle != null)
         {
             // 기준 원이 매 프레임 플레이어의 위치를 따라다니록 함
-            timeCircleObject.transform.position = transform.position;
+            timeCircle.transform.position = transform.position;
         }
         // isTimeStopped가 false일 경우에만 플레이어 이동 처리
         if (!isTimeStopped)
@@ -177,17 +177,17 @@ public class PlayerController : MonoBehaviour
                 maxReleaseDistance = teleportRadius; // 릴리즈 포인트의 최대 이동 반경을 설정
 
                 // 릴리즈 포인트와 조준 원 활성화
-                releasePointObject.SetActive(true);
-                releasePointObject.transform.position = transform.position; // 릴리즈 포인트를 플레이어 위치에서 생성
+                releasePoint.SetActive(true);
+                releasePoint.transform.position = transform.position; // 릴리즈 포인트를 플레이어 위치에서 생성
                 // 현재 플레이어의 위치를 마지막 위치로 초기화
                 lastValidReleasePosition = transform.position;
                 // 스프라이트를 원래대로 되돌림
                 releasePointRenderer.sprite = originalReleasePointSprite;
 
-                aimingCircleObject.SetActive(true);
+                aimingCircle.SetActive(true);
                 aimingCircleRenderer.color = circleAimingColor; // 조준 원의 색상 설정
                 // 조준 원의 시작 크기를 현재 기준 원의 90%로 설정
-                aimingCircleObject.transform.localScale = timeCircleObject.transform.localScale * 0.9f;
+                aimingCircle.transform.localScale = timeCircle.transform.localScale * 0.9f;
             }
 
 
@@ -195,15 +195,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 // 조준 원 크기 줄이기 
-                if (aimingCircleObject.transform.localScale.x > 0)
+                if (aimingCircle.transform.localScale.x > 0)
                 {
                     // circleShrinkSpeed에 따라 매 프레임 크기를 조금 씩 줄임
-                    aimingCircleObject.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
+                    aimingCircle.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
                 }
                 else
                 {
                     // 조준원의 크기가 0보다 작아지면 크기를 0으로 고정(음수값 방지)
-                    aimingCircleObject.transform.localScale = Vector3.zero;
+                    aimingCircle.transform.localScale = Vector3.zero;
                 }
 
                 // 릴리즈 포인트 이동 
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 moveInput = new Vector2(horizontalInput, verticalInput).normalized * releasePointMoveSpeed * Time.deltaTime;
 
                 // 다음 릴리즈 포인트의 위치를 저장하는 변수
-                Vector3 nextPos = releasePointObject.transform.position + moveInput;
+                Vector3 nextPos = releasePoint.transform.position + moveInput;
 
                 // 처음 릴리즈 포인트의 중심점에서 다음 릴리즈 포인트까지 거리를 저장하는 변수
                 Vector3 offset = nextPos - timeStopCenterPosition;
@@ -247,8 +247,8 @@ public class PlayerController : MonoBehaviour
                     lastValidReleasePosition = nextPos;
                 }
                 // 최종 위치 오브젝트에 적용
-                releasePointObject.transform.position = nextPos;
-                aimingCircleObject.transform.position = releasePointObject.transform.position;
+                releasePoint.transform.position = nextPos;
+                aimingCircle.transform.position = releasePoint.transform.position;
             }
 
 
@@ -260,19 +260,19 @@ public class PlayerController : MonoBehaviour
                 Rigidbody2D.gravityScale = originalGravityScale;
 
                 // 순간이동 실행(단, 조준 원이 남아 있을 경우만) -> 조준 원의 크기가 0이 되면 플레이어는 순간이동을 할 수 없음
-                if (aimingCircleObject.transform.localScale.x > 0)
+                if (aimingCircle.transform.localScale.x > 0)
                 {
                     // 플레이어의 위치를 릴리즈 포인트의 최종 위치로 변경
                     transform.position = lastValidReleasePosition;
                 }
 
                 // 기준 원의 크기를 마지막 순간의 조준 원의 크기로 변경
-                timeCircleObject.transform.localScale = aimingCircleObject.transform.localScale;
+                timeCircle.transform.localScale = aimingCircle.transform.localScale;
                 // 기준 원의 상태 복구 시작
                 isCircleGrowing = true;
 
-                releasePointObject.SetActive(false);
-                aimingCircleObject.SetActive(false);
+                releasePoint.SetActive(false);
+                aimingCircle.SetActive(false);
             }
         }
 
@@ -282,17 +282,17 @@ public class PlayerController : MonoBehaviour
             if (isCircleGrowing)
             {
                 // 현재 크기와 원래 크기를 비교하여 거의 같아졌다면
-                if (Vector3.Distance(timeCircleObject.transform.localScale, originalCircleScale) < 0.01f)
+                if (Vector3.Distance(timeCircle.transform.localScale, originalCircleScale) < 0.01f)
                 {
-                    timeCircleObject.transform.localScale = originalCircleScale; // 정확한 값으로 맞춰줌
+                    timeCircle.transform.localScale = originalCircleScale; // 정확한 값으로 맞춰줌
                     isCircleGrowing = false; // 원 크기 키우기 종료
                 }
                 // 현재 크기와 원래 크기를 비교하여 현재 크기가 원래 크기보다 작다면
                 else
                 {
                     // Lerp를 사용하여 부드럽게 크기를 키움
-                    timeCircleObject.transform.localScale = Vector3.Lerp(
-                        timeCircleObject.transform.localScale,
+                    timeCircle.transform.localScale = Vector3.Lerp(
+                        timeCircle.transform.localScale,
                         originalCircleScale,
                         circleGrowSpeed * Time.deltaTime
                     );
