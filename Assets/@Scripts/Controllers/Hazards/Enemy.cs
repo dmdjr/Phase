@@ -23,7 +23,7 @@ public class Enemy : HazardBase
     
     void Awake()
     {
-        prefab = Resources.Load<GameObject>("Prefabs/Missile");
+        prefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
 
         if (prefab == null)
         {
