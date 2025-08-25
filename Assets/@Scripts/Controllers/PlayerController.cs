@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool isTimeSkillActive = false; // 스킬 활성화 상태를 알려주는 전역 변수(CircleTimeSlip.cs에 활용됨)
+
     public float moveSpeed = 5f;
     public float jumpPower = 10f;
 
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask tilemapLayer; // 충돌을 감지할 레이어(타일맵에 할당된 레이어 값)
     public float releasePointCollisionRadius = 0.1f; // 릴리즈 포인트의 충돌 판정 범위
     public float releasePointMoveSpeed = 7f; // 릴리즈 포인트의 이동 속도
-    public float teleportRadius = 5f; // 릴리즈 포인트가 움직일 수 있는 최대 반경
+    //public float teleportRadius = 5f; // 릴리즈 포인트가 움직일 수 있는 최대 반경
 
     bool isTimeStopped = false; // 시간이 멈췄는지(스킬을 사용 중인지) 확인하는 상태 변수
     private float originalGravityScale; // 원래의 중력 값을 저장하기 위한 변수
@@ -163,6 +165,9 @@ public class PlayerController : MonoBehaviour
             // 스페이스바를 누르는 순간 (최초 1회 실행)
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // 상태 변경: 스킬 활성화 스위치를 킴
+                isTimeSkillActive = true;
+
                 // 상태 변경: 시간을 멈추고 원이 커지는 것을 중단시킴
                 isTimeStopped = true;
                 isCircleGrowing = false;
@@ -174,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
                 // 릴리즈포인트 이동 범위 설정 
                 timeStopCenterPosition = transform.position; // 현재 플레이어의 위치를 이동 범위의 중심점으로 설정
-                maxReleaseDistance = teleportRadius; // 릴리즈 포인트의 최대 이동 반경을 설정
+                maxReleaseDistance = timeCircle.transform.localScale.x * 3f; // 릴리즈 포인트의 최대 이동 반경을 설정
 
                 // 릴리즈 포인트와 조준 원 활성화
                 releasePoint.SetActive(true);
@@ -255,6 +260,9 @@ public class PlayerController : MonoBehaviour
             // 스페이스바 키를 떼면 (최소 1회 실행)
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                // 상태 변경: 스킬 활성화 스위치를 끔
+                isTimeSkillActive = false;
+
                 // 시간 정지를 풀고, 원래 중력으로 복구
                 isTimeStopped = false;
                 Rigidbody2D.gravityScale = originalGravityScale;

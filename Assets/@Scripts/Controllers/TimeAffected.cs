@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeAffected : MonoBehaviour
 {
     public float currentTimeScale = 1.0f; // 기존의 시간 배율(정속도)
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
     Animator anim;
 
     void Awake()
@@ -18,8 +18,8 @@ public class TimeAffected : MonoBehaviour
     // CircleTimeSlip 스크립트에서 호출할 함수
     public void UpdateTimeScale(float newScale)
     {
-        // newScale은 시간 배율 조정될 매개변수
-        currentTimeScale = newScale; 
+        //newScale은 시간 배율 조정될 매개변수
+        currentTimeScale = newScale;
 
         if (anim != null)
         {
