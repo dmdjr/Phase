@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool isTimeSkillActive = false; // 스킬 활성화 상태를 알려주는 전역 변수(CircleTimeSlip.cs에 활용됨)
+
     public float moveSpeed = 5f;
     public float jumpPower = 10f;
 
@@ -163,6 +165,9 @@ public class PlayerController : MonoBehaviour
             // 스페이스바를 누르는 순간 (최초 1회 실행)
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // 상태 변경: 스킬 활성화 스위치를 킴
+                isTimeSkillActive = true;
+
                 // 상태 변경: 시간을 멈추고 원이 커지는 것을 중단시킴
                 isTimeStopped = true;
                 isCircleGrowing = false;
@@ -255,6 +260,9 @@ public class PlayerController : MonoBehaviour
             // 스페이스바 키를 떼면 (최소 1회 실행)
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                // 상태 변경: 스킬 활성화 스위치를 끔
+                isTimeSkillActive = false;
+
                 // 시간 정지를 풀고, 원래 중력으로 복구
                 isTimeStopped = false;
                 Rigidbody2D.gravityScale = originalGravityScale;

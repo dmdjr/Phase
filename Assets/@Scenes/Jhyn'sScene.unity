@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56824b2dd8ef6c49aef404c6e9a913a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleInCircle: 0.3
+  timeScaleInCircle: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,15 +3685,15 @@ MonoBehaviour:
     m_Bits: 64
   timeCircle: {fileID: 447584266}
   aimingCircle: {fileID: 1054820843}
-  circleShrinkSpeed: 0.2
-  circleGrowSpeed: 1
+  circleShrinkSpeed: 1
+  circleGrowSpeed: 1.5
   releasePoint: {fileID: 2127375325}
   invalidReleasePointSprite: {fileID: 5308431421370826863, guid: 1bed71e211e2f3449b5dcd9173a11450, type: 3}
   tilemapLayer:
     serializedVersion: 2
     m_Bits: 64
   releasePointCollisionRadius: 0.1
-  releasePointMoveSpeed: 5
+  releasePointMoveSpeed: 15
   teleportRadius: 5
 --- !u!61 &827749842
 BoxCollider2D:
