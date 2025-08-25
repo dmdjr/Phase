@@ -19,10 +19,24 @@ public class EscapeTriggerController : MonoBehaviour
     bool CanEnableEscapeTrigger()
     {
         LockObject[] lockObjects = FindObjectsByType<LockObject>(FindObjectsSortMode.None);
+        if (lockObjects.Length == 0)
+        {
+            Debug.Log("Can't fine LockCore");
+        }
         foreach (LockObject lockObject in lockObjects)
         {
             if (lockObject.isBroken == false) return false;
         }
         return true;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerController player = collision.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            GameManager.Instance.IncreaseStage();
+            Debug.Log("currentStage++");
+        }
     }
 }

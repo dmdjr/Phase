@@ -62,7 +62,7 @@ public class Enemy : HazardBase
         while (true)
         {
             yield return new WaitForSeconds(shotInterval);
-            Instantiate(prefab, missilePos.position, missileRot); 
+            Instantiate(prefab, missilePos.position, missileRot, transform); 
         }
     }
 

@@ -30,15 +30,6 @@ public class MisslieHazard : HazardBase
     void OnEnable()
     {
         _timer = 0f;
-        // if (_target != null)
-        // {
-        //     Vector2 toTarget = ((Vector2)_target.position - _rb.position);
-        //     if (toTarget.sqrMagnitude > 1e-6f)
-        //     {
-        //         float ang = Vector2.SignedAngle(Vector2.right, toTarget);
-        //         _rb.SetRotation(ang);  // 초기 방향을 플레이어를 향하도록 설정
-        //     }
-        // }
     }
 
     void FixedUpdate()
