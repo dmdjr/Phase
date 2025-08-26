@@ -7,12 +7,19 @@ public class EscapeTriggerController : MonoBehaviour
 {
     void Update()
     {
+        // if (CanEnableEscapeTrigger())
+        // {
+        //     Collider2D collider2D = GetComponent<Collider2D>();
+        //     if (collider2D != null) collider2D.isTrigger = true;
+        //     TilemapRenderer tilemapRenderer = GetComponent<TilemapRenderer>();
+        //     if (tilemapRenderer != null) tilemapRenderer.enabled = false;
+        // }
         if (CanEnableEscapeTrigger())
         {
             Collider2D collider2D = GetComponent<Collider2D>();
             if (collider2D != null) collider2D.isTrigger = true;
-            TilemapRenderer tilemapRenderer = GetComponent<TilemapRenderer>();
-            if (tilemapRenderer != null) tilemapRenderer.enabled = false;
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
         }
     }
 
