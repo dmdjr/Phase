@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
+
+    public InversionManager inversionManager; // InversionManager를 연결할 변수
     // PlayerController에서 가져온 변수들
     public static bool isTimeSkillActive = false;
 
@@ -49,7 +51,7 @@ public class SkillController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
-            return; // Awake 함수를 즉시 종료하여 추가 오류 방지
+            return; 
         }
         anim = GetComponent<Animator>();
         if (anim == null)
@@ -125,6 +127,11 @@ public class SkillController : MonoBehaviour
             aimingCircle.SetActive(true);
             aimingCircleRenderer.color = circleAimingColor;
             aimingCircle.transform.localScale = timeCircle.transform.localScale * 0.9f;
+
+            if (inversionManager != null)
+            {
+                inversionManager.ToggleInversionState(true);
+            }
         }
         // 스페이스바를 누르고 있는 동안 (매 프레임 실행)
         if (Input.GetKey(KeyCode.Space))
@@ -198,6 +205,11 @@ public class SkillController : MonoBehaviour
             isCircleGrowing = true;
             releasePoint.SetActive(false);
             aimingCircle.SetActive(false);
+
+            if (inversionManager != null)
+            {
+                inversionManager.ToggleInversionState(false);
+            }
         }
     }
     // 기준 원의 상태 복구 함수

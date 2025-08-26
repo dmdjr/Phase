@@ -24,26 +24,17 @@ public class InversionManager : MonoBehaviour
         normalTilemap.SetActive(true);
         invertedTilemap.SetActive(false);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetAllObjectsInverted(true);
-
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            SetAllObjectsInverted(false);
-        }
-    }
-    private void SetAllObjectsInverted(bool isInverted)
+    public void ToggleInversionState(bool isInverted)
     {
 
         normalTilemap.SetActive(!isInverted);
         invertedTilemap.SetActive(isInverted);
         foreach (InvertibleObject obj in allInvertibleObjects)
         {
-            obj.SetInvertedState(isInverted);
+            if (obj != null) 
+            {
+                obj.SetInvertedState(isInverted);
+            }
         }
     }
 }
