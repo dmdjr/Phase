@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingFootholdController : MonoBehaviour
 {
+    // 발판의 움직임 모드 선택(좌우이동, 수직이동)
     public enum MovementType { Horizontal, Vertical }
 
     [Header("발판이 움직일 방향 세팅")]
@@ -14,10 +15,11 @@ public class MovingFootholdController : MonoBehaviour
     [Header("발판의 이동범위")]
     public float distance = 5f;
 
-    private Vector3 startPoint;
-    private Vector3 endPoint;
+    private Vector3 startPoint; // 발판의 시작 지점
+    private Vector3 endPoint; // 발판의 끝 지점
     private void Start()
     {
+        // 시작 지점을 오브젝트의 현재 위치로 세팅
         startPoint = transform.position;
         if (direction == MovementType.Horizontal)
         {
@@ -33,6 +35,8 @@ public class MovingFootholdController : MonoBehaviour
         float t = Mathf.PingPong(Time.time * speed, 1f);
         transform.position = Vector3.Lerp(startPoint, endPoint, t);
     }
+
+    // 아래 두 개의 이벤트 메서드는 플레이어와 발판이 닿으면 하나로 움직이게 하는 기능
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -47,6 +51,8 @@ public class MovingFootholdController : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
+
+    // 씬 뷰에서 발판의 움직임 범위를 시각적으로 표현하기 위함
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green; 
