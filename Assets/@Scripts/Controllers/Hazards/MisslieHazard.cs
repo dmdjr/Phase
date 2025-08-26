@@ -62,7 +62,7 @@ public class MisslieHazard : MonoBehaviour
         if (other.CompareTag("LockCore"))
         {
             Debug.Log("Lock core is broken");
-            LockObject lockObject = other.GetComponent<LockObject>();
+            LockCore lockObject = other.GetComponent<LockCore>();
             lockObject.isBroken = true;
         }
 
