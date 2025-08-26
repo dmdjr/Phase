@@ -7,7 +7,7 @@ public class Key : MonoBehaviour
     [SerializeField]
     public bool isAcquired = false;
 
-    void Onable()
+    void OnEnable()
     {
         isAcquired = false;
     }

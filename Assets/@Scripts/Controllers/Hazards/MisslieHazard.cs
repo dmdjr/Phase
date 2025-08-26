@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MisslieHazard : MonoBehaviour
+public class MissileHazard : MonoBehaviour
 {
     public enum ExplosionMode { Direct, Explosive }
     public ExplosionMode explosionMode = ExplosionMode.Direct;

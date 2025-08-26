@@ -65,8 +65,8 @@ public class Enemy : MonoBehaviour
             missileRot = Quaternion.Euler(0, 0, ang);
             GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
 
-            MisslieHazard mh = missile.GetComponent<MisslieHazard>();
-            mh.explosionMode = MisslieHazard.ExplosionMode.Direct;
+            MissileHazard mh = missile.GetComponent<MissileHazard>();
+            mh.explosionMode = MissileHazard.ExplosionMode.Direct;
         }
     }
 
