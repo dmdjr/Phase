@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingSpikeHazard : MonoBehaviour
+public class MovingHazard : MonoBehaviour
 {
     public enum LoopMode { PingPong, Restart }
 

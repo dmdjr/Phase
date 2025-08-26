@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    GameObject prefab;
     public float speed = 0;
     public float shotInterval = 1.5f;
 
@@ -21,14 +20,15 @@ public class Enemy : MonoBehaviour
 
     Rigidbody2D _rb;
 
+    private GameObject missilePrefab;
     private Transform missilePos;
     Quaternion missileRot;
     
     void Awake()
     {
-        prefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
+        missilePrefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
 
-        if (prefab == null)
+        if (missilePrefab == null)
         {
             Debug.LogError("Enemy can'y find Missile prefab");
         }
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-        if (prefab != null)
+        if (missilePrefab != null)
             loop = StartCoroutine(SpawnLoop());
     }
 
@@ -62,7 +62,9 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(shotInterval);
-            Instantiate(prefab, missilePos.position, missileRot, transform); 
+            GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
+            MisslieHazard mh = missile.GetComponent<MisslieHazard>();
+            mh.explosionMode = MisslieHazard.ExplosionMode.Direct;
         }
     }
 

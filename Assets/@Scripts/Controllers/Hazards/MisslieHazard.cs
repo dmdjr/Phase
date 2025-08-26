@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class MisslieHazard : MonoBehaviour
 {
+    public enum ExplosionMode { Direct, Explosive }
+    public ExplosionMode explosionMode = ExplosionMode.Direct;
     public float speed = 6f;
     public float rotateSpeed = 240f;
     public float lifeTime = 100f;
@@ -54,12 +56,6 @@ public class MisslieHazard : MonoBehaviour
         _rb.angularVelocity = -rotateAmount * currentRotateSpeed;
         _rb.velocity = (Vector2)transform.right * currentSpeed;
     }
-
-    // public override void OnPlayerEnter(PlayerController player)
-    // {
-    //     Debug.Log("Player Die");
-    //     Destroy(gameObject);
-    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
