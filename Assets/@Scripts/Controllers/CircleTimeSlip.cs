@@ -13,7 +13,7 @@ public class CircleTimeSlip : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // PlayerController의 스킬 활성화 스위치가 켜있다면
-        if (PlayerController.isTimeSkillActive)
+        if (SkillController.isTimeSkillActive)
         {
             // 들어온 오브젝트에서 TimeEffected 컴포넌트를 찾음
             TimeAffected affectedObject = collision.GetComponent<TimeAffected>();
@@ -39,7 +39,7 @@ public class CircleTimeSlip : MonoBehaviour
         }
 
         // 스킬 활성화 되어있을 때만 타임슬립
-        if (PlayerController.isTimeSkillActive)
+        if (SkillController.isTimeSkillActive)
         {
             affectedObject.UpdateTimeScale(timeScaleInCircle);
         }
