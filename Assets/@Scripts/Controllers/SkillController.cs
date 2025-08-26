@@ -1,0 +1,226 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SkillController : MonoBehaviour
+{
+    // PlayerController에서 가져온 변수들
+    public static bool isTimeSkillActive = false;
+
+    [Header("[써클 오브젝트]")]
+    public GameObject timeCircle;
+    public GameObject aimingCircle;
+    public float circleShrinkSpeed = 0.7f;
+    public float circleGrowSpeed = 1f;
+
+    [Header("[릴리즈 포인트 오브젝트]")]
+    public GameObject releasePoint;
+    public Sprite invalidReleasePointSprite;
+    public LayerMask tilemapLayer;
+    public float releasePointCollisionRadius = 0.1f;
+    public float releasePointMoveSpeed = 7f;
+
+    // isTimeStopped를 외부에서 읽을 수 있도록 public 프로퍼티로 변경
+    public bool IsSkillActive { get; private set; } = false;
+
+    private float originalGravityScale;
+
+    private SpriteRenderer timeCircleRenderer;
+    private SpriteRenderer aimingCircleRenderer;
+    private Vector3 originalCircleScale;
+    private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
+    private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
+
+    private Vector3 timeStopCenterPosition;
+    private float maxReleaseDistance;
+    private bool isCircleGrowing = false;
+
+    private Sprite originalReleasePointSprite;
+    private SpriteRenderer releasePointRenderer;
+    private Vector3 lastValidReleasePosition;
+
+    // 플레이어의 다른 컴포넌트들을 저장할 변수
+    private Rigidbody2D rb;
+    private Animator anim;
+
+    void Awake()
+    {
+        // 이 스크립트가 붙어있는 게임 오브젝트에서 필요한 컴포넌트들을 찾아옴
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            return; // Awake 함수를 즉시 종료하여 추가 오류 방지
+        }
+        anim = GetComponent<Animator>();
+        if (anim == null)
+        {
+            return;
+        }
+        originalGravityScale = rb.gravityScale;
+
+        // 초기화 로직 (PlayerController의 Awake/Start에서 가져옴)
+        if (timeCircle != null)
+        {
+            timeCircleRenderer = timeCircle.GetComponent<SpriteRenderer>();
+            originalCircleScale = new Vector3(2f, 2f, 1f);
+            timeCircle.transform.localScale = originalCircleScale;
+            timeCircleRenderer.color = circleDefaultColor;
+        }
+        if (aimingCircle != null)
+        {
+            aimingCircleRenderer = aimingCircle.GetComponent<SpriteRenderer>();
+            aimingCircle.SetActive(false);
+        }
+        if (releasePoint != null)
+        {
+            releasePointRenderer = releasePoint.GetComponent<SpriteRenderer>();
+            originalReleasePointSprite = releasePointRenderer.sprite;
+            releasePoint.SetActive(false);
+        }
+    }
+    private void OnEnable()
+    {
+        if (timeCircle != null)
+        {
+            timeCircle.SetActive(true);
+        }
+    }
+    private void OnDisable()
+    {
+        if (timeCircle != null)
+        {
+            timeCircle.SetActive(false);
+        }
+    }
+    void Update()
+    {
+        if (timeCircle != null)
+        {
+            timeCircle.transform.position = transform.position;
+        }
+        MovingStop();
+        CircleGrowth();
+    }
+    void MovingStop()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isTimeSkillActive = true;
+            IsSkillActive = true; // isTimeStopped 대신 사용
+            isCircleGrowing = false;
+            anim.SetBool("isWalking", false);
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            timeStopCenterPosition = transform.position;
+
+            // maxReleaseDistance = timeCircle.transform.localScale.x * 3f; 
+            float baseCircleRadius = originalCircleScale.x * 1.5f; // 필요시 public 변수로 빼서 조절
+            maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
+
+
+            releasePoint.SetActive(true);
+            releasePoint.transform.position = transform.position;
+            lastValidReleasePosition = transform.position;
+            releasePointRenderer.sprite = originalReleasePointSprite;
+            aimingCircle.SetActive(true);
+            aimingCircleRenderer.color = circleAimingColor;
+            aimingCircle.transform.localScale = timeCircle.transform.localScale * 0.9f;
+        }
+        // 스페이스바를 누르고 있는 동안 (매 프레임 실행)
+        if (Input.GetKey(KeyCode.Space))
+        {
+            // 조준 원 크기 줄이기 
+            if (aimingCircle.transform.localScale.x > 0)
+            {
+                // circleShrinkSpeed에 따라 매 프레임 크기를 조금 씩 줄임
+                aimingCircle.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
+            }
+            else
+            {
+                // 조준원의 크기가 0보다 작아지면 크기를 0으로 고정(음수값 방지)
+                aimingCircle.transform.localScale = Vector3.zero;
+            }
+
+            // 릴리즈 포인트 이동 
+            // 이동 방향을 계산할 변수
+            float horizontalInput = 0f;
+            float verticalInput = 0f;
+
+            // 어떤 방향키를 누르고 있는지에 따라 값 저장
+            if (Input.GetKey(KeyCode.LeftArrow)) horizontalInput = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow)) horizontalInput = 1f;
+            if (Input.GetKey(KeyCode.DownArrow)) verticalInput = -1f;
+            else if (Input.GetKey(KeyCode.UpArrow)) verticalInput = 1f;
+
+            // 최종 이동 벡터 계산 
+            Vector3 moveInput = new Vector2(horizontalInput, verticalInput).normalized * releasePointMoveSpeed * Time.deltaTime;
+
+            // 다음 릴리즈 포인트의 위치를 저장하는 변수
+            Vector3 nextPos = releasePoint.transform.position + moveInput;
+
+            // 처음 릴리즈 포인트의 중심점에서 다음 릴리즈 포인트까지 거리를 저장하는 변수
+            Vector3 offset = nextPos - timeStopCenterPosition;
+
+
+            // 만약 offset의 길이가 내가 지정한 최대 거리보다 길다면
+            if (offset.magnitude > maxReleaseDistance)
+            {
+                // 방향은 그대로 두고 offset의 거리를 최대 거리만큼 제한함
+                offset = offset.normalized * maxReleaseDistance;
+                // 다음 릴리즈 포인트의 위치를 처음 릴리즈포인트의 중심점에서 offset만큼 더함
+                nextPos = timeStopCenterPosition + offset;
+            }
+            // 릴리즈 포인트를 움직이기 전에 타일맵인지 확인
+            if (Physics2D.OverlapCircle(nextPos, releasePointCollisionRadius, tilemapLayer))
+            {
+                // 타일맵에 닿았다면 릴리즈 포인트 스프라이트 갈아끼우기
+                releasePointRenderer.sprite = invalidReleasePointSprite;
+            }
+            else
+            {
+                releasePointRenderer.sprite = originalReleasePointSprite;
+                lastValidReleasePosition = nextPos;
+            }
+            // 최종 위치 오브젝트에 적용
+            releasePoint.transform.position = nextPos;
+            aimingCircle.transform.position = releasePoint.transform.position;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isTimeSkillActive = false;
+            IsSkillActive = false; // isTimeStopped 대신 사용
+            rb.gravityScale = originalGravityScale;
+            if (aimingCircle.transform.localScale.x > 0)
+            {
+                transform.position = lastValidReleasePosition;
+            }
+            timeCircle.transform.localScale = aimingCircle.transform.localScale;
+            isCircleGrowing = true;
+            releasePoint.SetActive(false);
+            aimingCircle.SetActive(false);
+        }
+    }
+    // 기준 원의 상태 복구 함수
+    void CircleGrowth()
+    {
+        if (isCircleGrowing)
+        {
+            // 현재 크기와 원래 크기를 비교하여 거의 같아졌다면
+            if (Vector3.Distance(timeCircle.transform.localScale, originalCircleScale) < 0.01f)
+            {
+                timeCircle.transform.localScale = originalCircleScale; // 정확한 값으로 맞춰줌
+                isCircleGrowing = false; // 원 크기 키우기 종료
+            }
+            // 현재 크기와 원래 크기를 비교하여 현재 크기가 원래 크기보다 작다면
+            else
+            {
+                // Lerp를 사용하여 부드럽게 크기를 키움
+                timeCircle.transform.localScale = Vector3.Lerp(
+                    timeCircle.transform.localScale,
+                    originalCircleScale,
+                    circleGrowSpeed * Time.deltaTime
+                );
+            }
+        }
+    }
+}
