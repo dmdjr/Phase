@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,10 +10,13 @@ public class GameManager : MonoBehaviour
     public enum GameState { Ready, Playing, Paused, GameOver, Clear }
     public GameState State { get; private set; }
 
-    private int currentStage = 1;
+    private int currentStageNum = 1;
     private int lastStage = 10;
     private Transform normalWorld;
     private List<GameObject> stages = new List<GameObject>();
+    private GameObject currentStage;
+
+    private Transform respawnPoint;
 
     private void Awake()
     {
@@ -30,11 +34,11 @@ public class GameManager : MonoBehaviour
 
     private void InitStage()
     {
-        // Noemal_World의 Stage# 리스트 저장, 현재 스테이지(Stage1)만 활성화
+        // Noemal_World의 Stage# 리스트 저장, Stage1만 활성화
         normalWorld = GameObject.Find("Normal_World").GetComponent<Transform>();
         if (normalWorld == null)
         {
-            Debug.Log($"Can't find {normalWorld.name}");
+            Debug.Log($"Can't find Normal_World");
         }
         stages.Clear();
         foreach (Transform stage in normalWorld)
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
                 if (stage.name == "Stage1")
                 {
                     stage.gameObject.SetActive(true);
+                    currentStage = stage.gameObject;
                 }
                 else
                 {
@@ -56,16 +61,24 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseStage()
     {
-        if (currentStage != lastStage)
+        if (currentStageNum != lastStage)
         {
-            GameObject prevStageObj = stages[currentStage - 1];
-            currentStage++;
-            GameObject currentStageObj = stages[currentStage - 1];
-            currentStageObj.SetActive(true);
-            prevStageObj.SetActive(false);
+            GameObject prevStage = stages[currentStageNum - 1];
+            currentStageNum++;
+            currentStage = stages[currentStageNum - 1];
+            currentStage.SetActive(true);
+            prevStage.SetActive(false);
         }
     }
 
+    public void PlayerDie(PlayerController player)
+    {
+        // 리스폰 위치 찾기
+        respawnPoint = currentStage.GetComponent<Transform>().Find("RespawnPoint");
+        if (!player || !respawnPoint) return;
+        player.Respawn(respawnPoint);
+        // 맵 상태 초기화
+    }
     // public void ChangeState(GameState newState)
     // {
     //     State = newState;

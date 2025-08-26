@@ -36,7 +36,6 @@ public class EscapeTriggerController : MonoBehaviour
         if (player != null)
         {
             GameManager.Instance.IncreaseStage();
-            Debug.Log("currentStage++");
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7264028108303086242}
   m_Layer: 6
   m_Name: LcokCore
-  m_TagString: LockCore
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

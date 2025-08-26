@@ -308,12 +308,30 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void Respawn(Transform respawnPoint)
+    {
+        // 애니메이션 추가하기 
+        // 대기 시간 가지기
+        if (respawnPoint != null)
+        {
+            transform.position = respawnPoint.position;
+            // 이동 또는 점프 상태 초기화 (안 하면 순간이동 직전의 움직임이 지속됨)
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 부딪힌 오브젝트의 태그가 "Escape"인지 확인
         if (collision.CompareTag("Escape"))
         {
             cameraController.MoveToNextStage();
+        }
+
+        if (collision.CompareTag("Hazard"))
+        {
+            Debug.Log("Player Die");
+            GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
         }
     }
 }

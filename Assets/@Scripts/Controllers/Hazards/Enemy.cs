@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : HazardBase
+public class Enemy : MonoBehaviour
 {
     GameObject prefab;
     public float speed = 0;
@@ -101,11 +101,5 @@ public class Enemy : HazardBase
             // 오브젝트 회전 추가하기   
             if (waitAtNode > 0f) _waitTimer = waitAtNode;
         }
-    }
-    
-    public override void OnPlayerEnter(PlayerController player)
-    {
-        // 사망 처리
-        Debug.Log("Player Die");
     }
 }

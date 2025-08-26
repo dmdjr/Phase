@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingSpikeHazard : HazardBase
+public class MovingSpikeHazard : MonoBehaviour
 {
     public enum LoopMode { PingPong, Restart }
 
@@ -80,11 +80,5 @@ public class MovingSpikeHazard : HazardBase
                 else transform.position = _a;
             }
         }
-    }
-
-    public override void OnPlayerEnter(PlayerController player)
-    {
-        // 사망 처리
-        Debug.Log("Player Die");
     }
 }

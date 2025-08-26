@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MisslieHazard : HazardBase
+public class MisslieHazard : MonoBehaviour
 {
     public float speed = 6f;
     public float rotateSpeed = 240f;
@@ -55,13 +55,13 @@ public class MisslieHazard : HazardBase
         _rb.velocity = (Vector2)transform.right * currentSpeed;
     }
 
-    public override void OnPlayerEnter(PlayerController player)
-    {
-        Debug.Log("Player Die");
-        Destroy(gameObject);
-    }
+    // public override void OnPlayerEnter(PlayerController player)
+    // {
+    //     Debug.Log("Player Die");
+    //     Destroy(gameObject);
+    // }
 
-    private new void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("LockCore"))
         {
@@ -77,8 +77,11 @@ public class MisslieHazard : HazardBase
             return;
         }
 
-        // 플레이어 충돌 처리 (부모 로직 사용)
-        base.OnTriggerEnter2D(other);
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 }
 
