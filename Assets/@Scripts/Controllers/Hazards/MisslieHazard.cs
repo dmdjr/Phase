@@ -11,8 +11,7 @@ public class MisslieHazard : MonoBehaviour
     public float rotateSpeed = 240f;
     public float lifeTime = 100f;
     public LayerMask groundLayer;
-
-    Transform _target;
+    public Transform _target;
     Rigidbody2D _rb;
     float _timer;
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조

@@ -32,14 +32,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Enemy can'y find Missile prefab");
         }
-
-        missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치
-        // 미사일이 생성된 후 바로 타겟을 바라보기 위함
-        Transform target = GameObject.Find("Player").transform; 
-        Vector2 toTarget = (target.position - missilePos.position);
-        float ang = Vector2.SignedAngle(Vector2.right, toTarget);
-        missileRot = Quaternion.Euler(0, 0, ang);
-
+        missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치                                                   
         _rb = GetComponent<Rigidbody2D>();
         RecalcEndpoints();
         _t = 0f;
@@ -48,7 +41,10 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         if (missilePrefab != null)
+        {
             loop = StartCoroutine(SpawnLoop());
+        }
+        
     }
 
     void OnDisable()
@@ -59,10 +55,16 @@ public class Enemy : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
+        // 미사일이 생성된 후 바로 타겟을 바라보기 위함
+        Transform target = GameObject.Find("Player").transform;
         while (true)
         {
             yield return new WaitForSeconds(shotInterval);
+            Vector2 toTarget = target.position - missilePos.position;
+            float ang = Vector2.SignedAngle(Vector2.right, toTarget);
+            missileRot = Quaternion.Euler(0, 0, ang);
             GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
+
             MisslieHazard mh = missile.GetComponent<MisslieHazard>();
             mh.explosionMode = MisslieHazard.ExplosionMode.Direct;
         }
