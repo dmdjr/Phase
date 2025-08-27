@@ -7,6 +7,7 @@ public class MissileHazard : MonoBehaviour
 {
     public enum ExplosionMode { Direct, Explosive }
     public ExplosionMode explosionMode = ExplosionMode.Direct;
+    public float explosionRadius = 10f;
     public float speed = 6f;
     public float rotateSpeed = 240f;
     public float lifeTime = 100f;
@@ -16,6 +17,11 @@ public class MissileHazard : MonoBehaviour
     float _timer;
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
     public Sprite brokenTile;
+
+    public void Initialize(ExplosionMode mode)
+    {
+        explosionMode = mode;
+    }
 
     void Awake()
     {
@@ -58,6 +64,8 @@ public class MissileHazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
+
         if (other.CompareTag("LockCore"))
         {
             Debug.Log("Lock core is broken");
@@ -68,7 +76,19 @@ public class MissileHazard : MonoBehaviour
         // Ground 충돌 처리
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Destroy(gameObject);
+            if (explosionMode == ExplosionMode.Explosive)
+            {
+                Transform explosion = transform.Find("Explosion");
+                if (explosion != null) explosion.gameObject.SetActive(true);
+                _rb.velocity = Vector2.zero;
+                _rb.angularVelocity = 0f;
+                _rb.isKinematic = true;
+                Destroy(gameObject, 0.5f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             return;
         }
 
@@ -79,5 +99,3 @@ public class MissileHazard : MonoBehaviour
         }
     }
 }
-
-

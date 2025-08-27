@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private GameObject currentStage;
 
     private Transform respawnPoint;
+    private float respawnWaitingTime = 3.0f;
 
     private void Awake()
     {

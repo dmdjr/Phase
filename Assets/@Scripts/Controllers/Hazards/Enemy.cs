@@ -6,13 +6,15 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 0;
     public float shotInterval = 1.5f;
-
-    Coroutine loop;
-
+    [Header("missile mode settings")]
+    public MissileHazard.ExplosionMode missileMode
+        = MissileHazard.ExplosionMode.Direct;
     public Transform pointA; // 시작점
     public Transform pointB; // 끝점
     public float waitAtNode = 0f;
 
+    Coroutine loop;
+   
     Vector3 _a, _b;
     float _t;
     int _dir = 1;
@@ -64,9 +66,9 @@ public class Enemy : MonoBehaviour
             float ang = Vector2.SignedAngle(Vector2.right, toTarget);
             missileRot = Quaternion.Euler(0, 0, ang);
             GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
-
+            // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
-            mh.explosionMode = MissileHazard.ExplosionMode.Direct;
+            mh.Initialize(missileMode);
         }
     }
 
