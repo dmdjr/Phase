@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
     private void InitStage()
     {
         // Noemal_World의 Stage# 리스트 저장, Stage1만 활성화
-        normalWorld = GameObject.Find("Normal_World").GetComponent<Transform>();
+        normalWorld = GameObject.Find("Objects").GetComponent<Transform>();
         if (normalWorld == null)
         {
-            Debug.Log($"Can't find Normal_World");
+            Debug.Log($"Can't find Objects");
         }
         stages.Clear();
         foreach (Transform stage in normalWorld)
@@ -78,6 +78,21 @@ public class GameManager : MonoBehaviour
         if (!player || !respawnPoint) return;
         player.Respawn(respawnPoint);
         // 맵 상태 초기화
+        ResetObjects(currentStage.transform);
+    }
+
+    private void ResetObjects(Transform currentStage)
+    {
+        foreach (Transform child in currentStage.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // 이후 다시 활성화
+        foreach (Transform child in currentStage.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
     // public void ChangeState(GameState newState)
     // {

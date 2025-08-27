@@ -5,12 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class MisslieHazard : MonoBehaviour
 {
+    public enum ExplosionMode { Direct, Explosive }
+    public ExplosionMode explosionMode = ExplosionMode.Direct;
     public float speed = 6f;
     public float rotateSpeed = 240f;
     public float lifeTime = 100f;
     public LayerMask groundLayer;
-
-    Transform _target;
+    public Transform _target;
     Rigidbody2D _rb;
     float _timer;
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
@@ -55,18 +56,12 @@ public class MisslieHazard : MonoBehaviour
         _rb.velocity = (Vector2)transform.right * currentSpeed;
     }
 
-    // public override void OnPlayerEnter(PlayerController player)
-    // {
-    //     Debug.Log("Player Die");
-    //     Destroy(gameObject);
-    // }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("LockCore"))
         {
             Debug.Log("Lock core is broken");
-            LockObject lockObject = other.GetComponent<LockObject>();
+            LockCore lockObject = other.GetComponent<LockCore>();
             lockObject.isBroken = true;
         }
 

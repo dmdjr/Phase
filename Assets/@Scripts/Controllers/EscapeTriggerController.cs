@@ -10,23 +10,28 @@ public class EscapeTriggerController : MonoBehaviour
         if (CanEnableEscapeTrigger())
         {
             Collider2D collider2D = GetComponent<Collider2D>();
-            collider2D.isTrigger = true;
+            if (collider2D != null) collider2D.isTrigger = true;
             TilemapRenderer tilemapRenderer = GetComponent<TilemapRenderer>();
-            tilemapRenderer.enabled = false;
+            if (tilemapRenderer != null) tilemapRenderer.enabled = false;
         }
     }
 
     bool CanEnableEscapeTrigger()
     {
-        LockObject[] lockObjects = FindObjectsByType<LockObject>(FindObjectsSortMode.None);
-        if (lockObjects.Length == 0)
-        {
-            Debug.Log("Can't fine LockCore");
-        }
-        foreach (LockObject lockObject in lockObjects)
+        LockCore[] lockCores = FindObjectsByType<LockCore>(FindObjectsSortMode.None);
+        foreach (LockCore lockObject in lockCores)
         {
             if (lockObject.isBroken == false) return false;
         }
+
+        Key[] keys = FindObjectsByType<Key>(FindObjectsSortMode.None);
+        foreach (Key key in keys)
+        {
+            if (key.isAcquired == false) return false;
+        }
+
+        if (lockCores.Length == 0 && keys.Length == 0) return true;
+
         return true;
     }
 
