@@ -6,7 +6,7 @@ public class SkillController : MonoBehaviour
 {
 
     public InversionManager inversionManager; // InversionManager를 연결할 변수
-    // PlayerController에서 가져온 변수들
+
     public static bool isTimeSkillActive = false;
 
     [Header("[써클 오브젝트]")]
@@ -44,6 +44,7 @@ public class SkillController : MonoBehaviour
     // 플레이어의 다른 컴포넌트들을 저장할 변수
     private Rigidbody2D rb;
     private Animator anim;
+    private Camera mainCamera;
 
     void Awake()
     {
@@ -51,10 +52,15 @@ public class SkillController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
-            return; 
+            return;
         }
         anim = GetComponent<Animator>();
         if (anim == null)
+        {
+            return;
+        }
+        mainCamera = Camera.main;
+        if (mainCamera == null)
         {
             return;
         }
@@ -116,7 +122,7 @@ public class SkillController : MonoBehaviour
             timeStopCenterPosition = transform.position;
 
             // maxReleaseDistance = timeCircle.transform.localScale.x * 3f; 
-            float baseCircleRadius = originalCircleScale.x * 1.5f; // 필요시 public 변수로 빼서 조절
+            float baseCircleRadius = originalCircleScale.x * 1.5f;
             maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
 
 
@@ -148,6 +154,16 @@ public class SkillController : MonoBehaviour
                 aimingCircle.transform.localScale = Vector3.zero;
             }
 
+            // 카메라의 시야 경계 계산
+            float cameraHeight = mainCamera.orthographicSize; // 메인 카메라 세로 높이의 절반
+            float cameraWidth = cameraHeight * mainCamera.aspect; // 메인 카메라 가로 높이의 절반
+            Vector3 cameraPosition = Camera.main.transform.position; // 현재 카메라의 위치
+
+            float minX = cameraPosition.x - cameraWidth;
+            float maxX = cameraPosition.x + cameraWidth;
+            float minY = cameraPosition.y - cameraHeight;
+            float maxY = cameraPosition.y + cameraHeight;
+
             // 릴리즈 포인트 이동 
             // 이동 방향을 계산할 변수
             float horizontalInput = 0f;
@@ -177,8 +193,12 @@ public class SkillController : MonoBehaviour
                 // 다음 릴리즈 포인트의 위치를 처음 릴리즈포인트의 중심점에서 offset만큼 더함
                 nextPos = timeStopCenterPosition + offset;
             }
-            // 릴리즈 포인트를 움직이기 전에 타일맵인지 확인
-            if (Physics2D.OverlapCircle(nextPos, releasePointCollisionRadius, tilemapLayer))
+
+            // 릴리즈 포인트가 카메라 시야 내에 있는지 확인하는 상태 변수
+            bool isInsideCameraView = (nextPos.x > minX && nextPos.x < maxX && nextPos.y > minY && nextPos.y < maxY);
+
+            // 릴리즈 포인트를 움직이기 전에 타일맵인지 확인 + 카메라 시야 안에 있는지 
+            if (Physics2D.OverlapCircle(nextPos, releasePointCollisionRadius, tilemapLayer) || !isInsideCameraView)
             {
                 // 타일맵에 닿았다면 릴리즈 포인트 스프라이트 갈아끼우기
                 releasePointRenderer.sprite = invalidReleasePointSprite;
