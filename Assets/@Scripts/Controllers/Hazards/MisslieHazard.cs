@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class MissileHazard : MonoBehaviour
 {
-    public enum ExplosionMode { Direct, Explosive }
-    public ExplosionMode explosionMode = ExplosionMode.Direct;
+    public enum ExplosionMode { None, Explosive }
+    public ExplosionMode explosionMode = ExplosionMode.None;
     public float explosionRadius = 10f;
     public float speed = 6f;
     public float rotateSpeed = 240f;
@@ -83,7 +83,8 @@ public class MissileHazard : MonoBehaviour
                 _rb.velocity = Vector2.zero;
                 _rb.angularVelocity = 0f;
                 _rb.isKinematic = true;
-                Destroy(gameObject, 0.5f);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                Destroy(gameObject, 0.5f); // 애니메이션 추가하면 0.5f 지연 없애기
             }
             else
             {

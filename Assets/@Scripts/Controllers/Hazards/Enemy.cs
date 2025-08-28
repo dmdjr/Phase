@@ -8,11 +8,11 @@ public class Enemy : MonoBehaviour
     public float shotInterval = 1.5f;
     [Header("missile mode settings")]
     public MissileHazard.ExplosionMode missileMode
-        = MissileHazard.ExplosionMode.Direct;
+        = MissileHazard.ExplosionMode.None;
     public Transform pointA; // 시작점
     public Transform pointB; // 끝점
     public float waitAtNode = 0f;
-
+    public CooldownBar cooldownBar;
     Coroutine loop;
    
     Vector3 _a, _b;
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
 
         if (missilePrefab == null)
         {
-            Debug.LogError("Enemy can'y find Missile prefab");
+            Debug.LogError("Enemy can't find Missile prefab");
         }
         missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치                                                   
         _rb = GetComponent<Rigidbody2D>();
@@ -69,6 +69,8 @@ public class Enemy : MonoBehaviour
             // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
             mh.Initialize(missileMode);
+
+            cooldownBar?.ResetTimer();
         }
     }
 
