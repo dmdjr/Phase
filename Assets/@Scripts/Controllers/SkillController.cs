@@ -121,9 +121,10 @@ public class SkillController : MonoBehaviour
             rb.gravityScale = 0f;
             timeStopCenterPosition = transform.position;
 
-            // maxReleaseDistance = timeCircle.transform.localScale.x * 3f; 
-            float baseCircleRadius = originalCircleScale.x * 1.5f;
-            maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
+            maxReleaseDistance = timeCircle.transform.localScale.x * 2f; 
+            //float baseCircleRadius = originalCircleScale.x * 1.5f;
+            //maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
+           // maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
 
 
             releasePoint.SetActive(true);
