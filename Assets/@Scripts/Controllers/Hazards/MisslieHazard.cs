@@ -6,7 +6,9 @@ using UnityEngine.Tilemaps;
 public class MissileHazard : MonoBehaviour
 {
     public enum ExplosionMode { None, Explosive }
+    public enum GuidanceMode { Straight, Guided }
     public ExplosionMode explosionMode = ExplosionMode.None;
+    public GuidanceMode guidanceMode = GuidanceMode.Guided;
     public float explosionRadius = 10f;
     public float speed = 6f;
     public float rotateSpeed = 240f;
@@ -18,9 +20,10 @@ public class MissileHazard : MonoBehaviour
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
     public Sprite brokenTile;
 
-    public void Initialize(ExplosionMode mode)
+    public void Initialize(ExplosionMode mode1, GuidanceMode mode2)
     {
-        explosionMode = mode;
+        explosionMode = mode1;
+        guidanceMode = mode2;
     }
 
     void Awake()
@@ -55,11 +58,20 @@ public class MissileHazard : MonoBehaviour
             return;
         }
 
-        Vector2 toTarget = ((Vector2)_target.position - _rb.position).normalized;
-        float rotateAmount = Vector3.Cross(toTarget, transform.right).z;
 
-        _rb.angularVelocity = -rotateAmount * currentRotateSpeed;
-        _rb.velocity = (Vector2)transform.right * currentSpeed;
+        if (guidanceMode == GuidanceMode.Straight)
+        {
+            _rb.angularVelocity = 0f;
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rb.velocity = (Vector2)transform.right * currentSpeed;
+        }
+        else if (guidanceMode == GuidanceMode.Guided)
+        {
+            Vector2 toTarget = ((Vector2)_target.position - _rb.position).normalized;
+            float rotateAmount = Vector3.Cross(toTarget, transform.right).z;
+            _rb.angularVelocity = -rotateAmount * currentRotateSpeed;
+            _rb.velocity = (Vector2)transform.right * currentSpeed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

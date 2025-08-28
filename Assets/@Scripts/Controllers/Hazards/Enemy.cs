@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour
     public float speed = 0;
     public float shotInterval = 1.5f;
     [Header("missile mode settings")]
-    public MissileHazard.ExplosionMode missileMode
+    public MissileHazard.ExplosionMode explosionMode
         = MissileHazard.ExplosionMode.None;
+    public MissileHazard.GuidanceMode guidanceMode
+        = MissileHazard.GuidanceMode.Guided;
     public Transform pointA; // 시작점
     public Transform pointB; // 끝점
     public float waitAtNode = 0f;
@@ -68,7 +70,7 @@ public class Enemy : MonoBehaviour
             GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
             // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
-            mh.Initialize(missileMode);
+            mh.Initialize(explosionMode, guidanceMode);
 
             cooldownBar?.ResetTimer();
         }
