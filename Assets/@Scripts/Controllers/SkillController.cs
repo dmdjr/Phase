@@ -30,8 +30,8 @@ public class SkillController : MonoBehaviour
     private SpriteRenderer timeCircleRenderer;
     private SpriteRenderer aimingCircleRenderer;
     private Vector3 originalCircleScale;
-    private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
-    private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
+    //private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
+    //private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
 
     private Vector3 timeStopCenterPosition;
     private float maxReleaseDistance;
@@ -72,7 +72,7 @@ public class SkillController : MonoBehaviour
             timeCircleRenderer = timeCircle.GetComponent<SpriteRenderer>();
             originalCircleScale = new Vector3(2f, 2f, 1f);
             timeCircle.transform.localScale = originalCircleScale;
-            timeCircleRenderer.color = circleDefaultColor;
+            //timeCircleRenderer.color = circleDefaultColor;
         }
         if (aimingCircle != null)
         {
@@ -131,7 +131,7 @@ public class SkillController : MonoBehaviour
             lastValidReleasePosition = transform.position;
             releasePointRenderer.sprite = originalReleasePointSprite;
             aimingCircle.SetActive(true);
-            aimingCircleRenderer.color = circleAimingColor;
+            //aimingCircleRenderer.color = circleAimingColor;
             aimingCircle.transform.localScale = timeCircle.transform.localScale * 0.9f;
 
             if (inversionManager != null)
