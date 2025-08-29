@@ -76,8 +76,6 @@ public class MissileHazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-
         if (other.CompareTag("LockCore"))
         {
             Debug.Log("Lock core is broken");

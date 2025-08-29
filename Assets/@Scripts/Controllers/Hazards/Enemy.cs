@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
         {
             loop = StartCoroutine(SpawnLoop());
         }
-        
     }
 
     void OnDisable()
