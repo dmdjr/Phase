@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class EscapeTriggerController : MonoBehaviour
 {
+    public GameObject groundCheckObject; // 해금 시 비활성화 할 오브젝트
     void Update()
     {
         // if (CanEnableEscapeTrigger())
@@ -20,6 +21,12 @@ public class EscapeTriggerController : MonoBehaviour
         {
             if (collider2D != null) collider2D.isTrigger = true;
             if (spriteRenderer != null) spriteRenderer.enabled = false;
+
+            // GroungCheckObject 비활성화
+            if (groundCheckObject != null)
+            {
+                groundCheckObject.SetActive(false);
+            }
         }
         else
         {
