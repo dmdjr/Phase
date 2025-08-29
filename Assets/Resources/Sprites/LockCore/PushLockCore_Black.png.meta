@@ -142,12 +142,12 @@ TextureImporter:
       name: PushLockCore_Black_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 16
         y: 0
-        width: 34
-        height: 39
+        width: 32
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 63e3a6bf8e007834ca5e6a2f0a335041
     internalID: 0
     vertices: []
     indices: 
