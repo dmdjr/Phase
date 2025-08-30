@@ -7,7 +7,7 @@ public class crackedTile : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<MissileHazard>() != null)
+        if (collision.gameObject.GetComponentInParent<MissileHazard>() != null)
         {
             gameObject.SetActive(false);
         }
