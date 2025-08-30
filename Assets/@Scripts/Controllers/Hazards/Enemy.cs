@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     Rigidbody2D _rb;
 
+    public bool isPlayerDetected = false;
+    private bool isShooting = false;
     private GameObject missilePrefab;
     private Transform missilePos;
     Quaternion missileRot;
@@ -50,10 +52,7 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-        if (missilePrefab != null)
-        {
-            loop = StartCoroutine(SpawnLoop());
-        }
+        isPlayerDetected = false;
     }
 
     void OnDisable()
@@ -86,6 +85,20 @@ public class Enemy : MonoBehaviour
         var here = transform.position;
         _a = pointA ? pointA.position : here;
         _b = pointB ? pointB.position : (here + Vector3.right * 3f);
+    }
+
+    void Update()
+    {
+        if (missilePrefab != null && isPlayerDetected && !isShooting)
+        {
+            loop = StartCoroutine(SpawnLoop());
+            isShooting = true;
+        }
+        else if (!isPlayerDetected && isShooting)
+        {
+            StopCoroutine(loop);
+            isShooting = false;
+        }
     }
 
     void FixedUpdate()
