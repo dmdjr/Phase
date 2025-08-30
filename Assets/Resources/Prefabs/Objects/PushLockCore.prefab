@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3694498599177671708}
   - component: {fileID: 8552712096807514167}
   - component: {fileID: 2581958102034282494}
+  - component: {fileID: 2217760122246584852}
   m_Layer: 6
   m_Name: PushLockCore
   m_TagString: PushLockCore
@@ -178,6 +179,28 @@ MonoBehaviour:
   originalTile: {fileID: -8453531863208427933, guid: 734546b3182a32341a2094602d76914c, type: 3}
   pushedTile: {fileID: -3979102083128567671, guid: 88886f399fdb12449912e12c0628bf77, type: 3}
   isPushed: 0
+--- !u!95 &2217760122246584852
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640073919372999757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b32d3c74e109db42b8454cfdca70e18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7986552123464391470
 GameObject:
   m_ObjectHideFlags: 0

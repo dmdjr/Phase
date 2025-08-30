@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3694498599177671708}
   - component: {fileID: 8552712096807514167}
   - component: {fileID: 7264028108303086242}
+  - component: {fileID: -433269317158188652}
   m_Layer: 6
   m_Name: LockCore
   m_TagString: LockCore
@@ -177,3 +178,25 @@ MonoBehaviour:
   originalTile: {fileID: -1034906139, guid: 10abf78be65793c4c86a59ae04b52e6d, type: 3}
   brokenTile: {fileID: -530084946, guid: 10abf78be65793c4c86a59ae04b52e6d, type: 3}
   isBroken: 0
+--- !u!95 &-433269317158188652
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640073919372999757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 806827eb4e3470e4ba7786cbc7ba6b2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

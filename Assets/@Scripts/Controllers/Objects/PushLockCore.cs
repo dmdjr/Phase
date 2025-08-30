@@ -9,24 +9,31 @@ public class PushLockCore : MonoBehaviour
     public Sprite pushedTile;
     [SerializeField]
     public bool isPushed = false;
+    private Animator animator;
 
     private SpriteRenderer spriteRenderer;
 
     void OnEnable()
     {
         isPushed = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
+        Debug.Log("enable");
     }
     
     void Update()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         if (isPushed)
         {
             spriteRenderer.sprite = pushedTile;
+            animator.enabled = true;
+            animator.SetBool("IsPushed", true);
         }
         else
         {
             spriteRenderer.sprite = originalTile;
+            animator.SetBool("IsPushed", false);
         }
     }
 }
