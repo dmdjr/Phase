@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
 
     public enum GameState { Ready, Playing, Paused, GameOver, Clear }
     public GameState State { get; private set; }
-
-    private int currentStageNum = 1;
-    private int lastStage = 10;
+    [SerializeField] private int currentStageNum = 1;
+    [SerializeField] private int lastStage = 10;
     private Transform normalWorld;
     private List<GameObject> stages = new List<GameObject>();
     private GameObject currentStage;
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
             if (stage.name.StartsWith("Stage"))
             {
                 stages.Add(stage.gameObject);
-                if (stage.name == "Stage1")
+                if (stage.name == "Stage" + currentStageNum.ToString())
                 {
                     stage.gameObject.SetActive(true);
                     currentStage = stage.gameObject;

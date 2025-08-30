@@ -175,5 +175,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalTile: {fileID: 5623292429112866883, guid: 10abf78be65793c4c86a59ae04b52e6d, type: 3}
-  brokenTile: {fileID: -7186389393089057343, guid: 7cb5c43a5fa75a14ba849f43854fb7be, type: 3}
+  brokenTile: {fileID: -530084946, guid: 10abf78be65793c4c86a59ae04b52e6d, type: 3}
   isBroken: 0

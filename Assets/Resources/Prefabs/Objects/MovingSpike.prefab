@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1727282970308524779}
   - component: {fileID: 2207999654909691641}
   - component: {fileID: -5744075719156063913}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MovingSpike
   m_TagString: Hazard
   m_Icon: {fileID: 0}

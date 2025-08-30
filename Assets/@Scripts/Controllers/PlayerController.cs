@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Hazard"))
         {
-            Debug.Log("Player Die");
+            Debug.Log($"Player collide with {collision.name}");
             GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
         }
     }

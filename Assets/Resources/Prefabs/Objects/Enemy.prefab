@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2862730035882916218}
   - component: {fileID: -1812733854454309653}
   - component: {fileID: 6620073300235782698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -136,6 +136,7 @@ MonoBehaviour:
   pointB: {fileID: 0}
   waitAtNode: 0
   cooldownBar: {fileID: 2011686365243170883}
+  missileParent: {fileID: 0}
 --- !u!50 &7833126223426769451
 Rigidbody2D:
   serializedVersion: 4

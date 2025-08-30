@@ -27,16 +27,21 @@ public class Enemy : MonoBehaviour
     private GameObject missilePrefab;
     private Transform missilePos;
     Quaternion missileRot;
+    public Transform missileParent;
     
     void Awake()
     {
         missilePrefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
-
         if (missilePrefab == null)
         {
             Debug.LogError("Enemy can't find Missile prefab");
         }
-        missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치                                                   
+        missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치
+        if (missileParent == null)
+        {
+            GameObject mp = new GameObject("Missiles");
+            missileParent = mp.transform;
+        }
         _rb = GetComponent<Rigidbody2D>();
         RecalcEndpoints();
         _t = 0f;
@@ -66,7 +71,7 @@ public class Enemy : MonoBehaviour
             Vector2 toTarget = target.position - missilePos.position;
             float ang = Vector2.SignedAngle(Vector2.right, toTarget);
             missileRot = Quaternion.Euler(0, 0, ang);
-            GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, transform);
+            GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, missileParent);
             // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
             mh.Initialize(explosionMode, guidanceMode);
