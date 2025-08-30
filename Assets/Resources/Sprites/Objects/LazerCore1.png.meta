@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9120afb5793c4a04eae20032bcc402d6
+guid: 7a4eaa092e724d24fae9a3c7cc74349f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4035820745162775809
-    second: LockCoreEmpty_White_0
+      213: 4135905403883827558
+    second: LazerCore_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LockCoreEmpty_White_0
+      name: LazerCore_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 6
+        y: 6
+        width: 20
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10d5494c59d120830800000000000000
-      internalID: 4035820745162775809
+      spriteID: 6613d174d00b56930800000000000000
+      internalID: 4135905403883827558
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LockCoreEmpty_White_0: 4035820745162775809
+      LazerCore_0: 4135905403883827558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

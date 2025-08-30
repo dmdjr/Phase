@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7cb5c43a5fa75a14ba849f43854fb7be
+guid: 7f65558779c7f004c9948b16675feb35
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7186389393089057343
-    second: LockCoreEmpty_Black_0
+      213: -747289513707425146
+    second: LazerCore 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LockCoreEmpty_Black_0
+      name: LazerCore 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 3
+        y: 3
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1cdaa4f0ce0d44c90800000000000000
-      internalID: -7186389393089057343
+      spriteID: 6823817852811a5f0800000000000000
+      internalID: -747289513707425146
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LockCoreEmpty_Black_0: -7186389393089057343
+      LazerCore 1_0: -747289513707425146
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

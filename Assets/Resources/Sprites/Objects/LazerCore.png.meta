@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 734546b3182a32341a2094602d76914c
+guid: e7ae3a5e5cf46ce49a67cd301f997a26
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8453531863208427933
-    second: PushLockCore_Black_0
+      213: 4135905403883827558
+    second: LazerCore_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,22 +139,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PushLockCore_Black_0
+      name: LazerCore_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 32
-        height: 38
+        x: 3
+        y: 3
+        width: 25
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36ef3042f850faa80800000000000000
-      internalID: -8453531863208427933
+      spriteID: 6613d174d00b56930800000000000000
+      internalID: 4135905403883827558
       vertices: []
       indices: 
       edges: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 63e3a6bf8e007834ca5e6a2f0a335041
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PushLockCore_Black_0: -8453531863208427933
+      LazerCore_0: 4135905403883827558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
