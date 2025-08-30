@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class EscapeTriggerController : MonoBehaviour
 {
-    public GameObject groundCheckObject; // ÇØ±Ý ½Ã ºñÈ°¼ºÈ­ ÇÒ ¿ÀºêÁ§Æ®
+    public GameObject groundCheckObject; // ï¿½Ø±ï¿½ ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     void Update()
     {
         // if (CanEnableEscapeTrigger())
@@ -22,7 +22,7 @@ public class EscapeTriggerController : MonoBehaviour
             if (collider2D != null) collider2D.isTrigger = true;
             if (spriteRenderer != null) spriteRenderer.enabled = false;
 
-            // GroungCheckObject ºñÈ°¼ºÈ­¤µ ¤Ä
+            // GroungCheckObject ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½
             if (groundCheckObject != null)
             {
                 groundCheckObject.SetActive(false);
@@ -49,7 +49,13 @@ public class EscapeTriggerController : MonoBehaviour
             if (key.isAcquired == false) return false;
         }
 
-        if (lockCores.Length == 0 && keys.Length == 0) return true;
+        PushLockCore[] pushLockCores = FindObjectsByType<PushLockCore>(FindObjectsSortMode.None);
+        foreach (PushLockCore pushLockCore in pushLockCores)
+        {
+            if (pushLockCore.isPushed == false) return false;
+        }
+
+        if (lockCores.Length == 0 && keys.Length == 0 && pushLockCores.Length == 0) return true;
 
         return true;
     }

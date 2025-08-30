@@ -81,43 +81,47 @@ public class MissileHazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-
         if (other.CompareTag("LockCore"))
         {
             isExploded = true;
-            Debug.Log("Lock core is broken");
+            // Debug.Log("Lock core is broken");
             LockCore lockObject = other.GetComponent<LockCore>();
             lockObject.isBroken = true;
         }
-
-        // Ground 충돌 처리
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        else if (other.CompareTag("PushLockCore"))
         {
             isExploded = true;
-            if (explosionMode == ExplosionMode.Explosive)
-            {
-                animator.SetTrigger("PlayOneShot");
-
-                Transform explosion = transform.Find("Explosion");
-                if (explosion != null)
-                {
-                    explosion.gameObject.SetActive(true);
-                }
-                _rb.velocity = Vector2.zero;
-                _rb.angularVelocity = 0f;
-                _rb.isKinematic = true;
-                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                // gameObject.GetComponent<Collider2D>().enabled = false;
-
-                Destroy(gameObject, explosionDuration);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            return;
+            PushLockCore pushLockCore = other.GetComponent<PushLockCore>();
+            pushLockCore.isPushed = true;
         }
+
+        // Ground 충돌 처리
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                isExploded = true;
+                if (explosionMode == ExplosionMode.Explosive)
+                {
+                    animator.SetTrigger("PlayOneShot");
+
+                    Transform explosion = transform.Find("Explosion");
+                    if (explosion != null)
+                    {
+                        explosion.gameObject.SetActive(true);
+                    }
+                    _rb.velocity = Vector2.zero;
+                    _rb.angularVelocity = 0f;
+                    _rb.isKinematic = true;
+                    _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    // gameObject.GetComponent<Collider2D>().enabled = false;
+
+                    Destroy(gameObject, explosionDuration);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                return;
+            }
 
         if (other.CompareTag("Player"))
         {

@@ -97,10 +97,16 @@ public class PlayerController : MonoBehaviour
             cameraController.MoveToNextStage();
         }
 
-        if (collision.CompareTag("Hazard"))
+        if (collision.CompareTag("PushLockCore"))
         {
-            Debug.Log($"Player collide with {collision.name}");
-            GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
+            PushLockCore pushLockCore = collision.GetComponent<PushLockCore>();
+            pushLockCore.isPushed = true;
         }
+
+        if (collision.CompareTag("Hazard"))
+            {
+                Debug.Log($"Player collide with {collision.name}");
+                GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
+            }
     }
 }
