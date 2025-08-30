@@ -22,7 +22,7 @@ public class EscapeTriggerController : MonoBehaviour
             if (collider2D != null) collider2D.isTrigger = true;
             if (spriteRenderer != null) spriteRenderer.enabled = false;
 
-            // GroungCheckObject 비활성화
+            // GroungCheckObject 비활성화ㅅ ㅔ
             if (groundCheckObject != null)
             {
                 groundCheckObject.SetActive(false);

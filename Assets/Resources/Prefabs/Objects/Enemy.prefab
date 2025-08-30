@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7833126223426769451}
   - component: {fileID: 2862730035882916218}
   - component: {fileID: -1812733854454309653}
+  - component: {fileID: 6620073300235782698}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Hazard
@@ -129,7 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   shotInterval: 1.5
-  missileMode: 0
+  explosionMode: 0
+  guidanceMode: 1
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   waitAtNode: 0
@@ -261,6 +263,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTimeScale: 1
+--- !u!114 &6620073300235782698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257659150768052408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  normalSprite: {fileID: 0}
+  invertedSprite: {fileID: 0}
+  animatorParameterName: isInverted
 --- !u!1 &4877883185660948850
 GameObject:
   m_ObjectHideFlags: 0
