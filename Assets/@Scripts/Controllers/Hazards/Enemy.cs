@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     private GameObject missilePrefab;
     private Transform missilePos;
     Quaternion missileRot;
-    public Transform missileParent;
+    private Transform missileParent;
     
     void Awake()
     {
@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
         missilePos = transform.Find("MissilePos"); // 미사일 나오는 위치
         if (missileParent == null)
         {
-            GameObject mp = new GameObject("Missiles");
+            GameObject mp = new GameObject("MissileContainer");
+            mp.transform.SetParent(transform.parent);
             missileParent = mp.transform;
         }
         _rb = GetComponent<Rigidbody2D>();

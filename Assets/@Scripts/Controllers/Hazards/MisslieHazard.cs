@@ -45,6 +45,11 @@ public class MissileHazard : MonoBehaviour
         _timer = 0f;
     }
 
+    void OnDisable()
+    {
+        Destroy(gameObject);
+    }
+
     void FixedUpdate()
     {
         if (!isExploded)

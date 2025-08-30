@@ -19,7 +19,6 @@ public class PushLockCore : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         animator.enabled = false;
-        Debug.Log("enable");
     }
     
     void Update()
