@@ -112,12 +112,13 @@ public class MissileHazard : MonoBehaviour
                     if (explosion != null)
                     {
                         explosion.gameObject.SetActive(true);
-                    }
+                        Destroy(explosion.gameObject, 0.02f);
+                    }   
                     _rb.velocity = Vector2.zero;
                     _rb.angularVelocity = 0f;
                     _rb.isKinematic = true;
                     _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    // gameObject.GetComponent<Collider2D>().enabled = false;
+                    gameObject.GetComponent<Collider2D>().enabled = false;
 
                     Destroy(gameObject, explosionDuration);
                 }
