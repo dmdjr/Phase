@@ -8,6 +8,7 @@ TagManager:
   - LockCore
   - Hazard
   - PushLockCore
+  - Circle
   layers:
   - Default
   - TransparentFX

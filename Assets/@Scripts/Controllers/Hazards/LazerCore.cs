@@ -67,5 +67,20 @@ public class LazerCore : MonoBehaviour
 
         beam.SetPosition(0, startPoint);
         beam.SetPosition(1, endPoint);
+
+        BoxCollider2D collider = beam.GetComponent<BoxCollider2D>();
+        if (collider == null) return;
+        float beamLength = Vector2.Distance(startPoint, endPoint);
+        float beamWidth = beam.startWidth;
+        if (fireDirection == Vector2.up || fireDirection == Vector2.down)
+        {
+            collider.size = new Vector2(beamWidth, beamLength);
+        }
+        else
+        {
+            collider.size = new Vector2(beamLength, beamWidth);
+        }
+
+        collider.offset = (endPoint - startPoint) / 2f;
     }
 }
