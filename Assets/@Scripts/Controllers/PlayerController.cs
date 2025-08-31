@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 부딪힌 오브젝트의 태그가 "Escape"인지 확인
         if (collision.CompareTag("Escape"))
         {
             cameraController.MoveToNextStage();
@@ -104,9 +103,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.CompareTag("Hazard"))
-            {
-                Debug.Log($"Player collide with {collision.name}");
-                GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
-            }
+        {
+            Debug.Log($"Player collide with {collision.name}");
+            GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
+        }
     }
 }

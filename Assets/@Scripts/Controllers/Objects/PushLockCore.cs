@@ -20,7 +20,7 @@ public class PushLockCore : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.enabled = false;
     }
-    
+
     void Update()
     {
         if (isPushed)
@@ -35,4 +35,12 @@ public class PushLockCore : MonoBehaviour
             animator.SetBool("IsPushed", false);
         }
     }
+
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Player"))
+    //     {
+    //         isPushed = true;
+    //     }
+    // }
 }

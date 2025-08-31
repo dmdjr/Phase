@@ -135,7 +135,7 @@ MonoBehaviour:
   guidanceMode: 1
   explosionRadius: 10
   speed: 10
-  rotateSpeed: 300
+  rotateSpeed: 250
   lifeTime: 100
   groundLayer:
     serializedVersion: 2
