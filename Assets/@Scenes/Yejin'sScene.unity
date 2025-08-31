@@ -43034,6 +43034,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4765424207645142107, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
+      propertyPath: m_TagString
+      value: Circle
+      objectReference: {fileID: 0}
     - target: {fileID: 5223379029489177948, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -43060,7 +43064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809611464655399201, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7809611464655399201, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
       propertyPath: inversionManager
@@ -43073,6 +43077,10 @@ PrefabInstance:
     - target: {fileID: 8003289188789984486, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003289188789984486, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
+      propertyPath: m_TagString
+      value: Circle
       objectReference: {fileID: 0}
     - target: {fileID: 8012513203092290182, guid: cdd49b7174c04db43a552425214d7dc0, type: 3}
       propertyPath: m_Enabled
