@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9289bf32c77cb0b4b8da9b697f8fbde9
+guid: b12cb5149204432478f7a0508370b28b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2011180176535887095
-    second: Player_White1_0
+      213: 1859444336787798171
+    second: Phase_jump_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 21
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_White1_0
+      name: Phase_jump_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 9
-        width: 62
-        height: 62
+        x: 0
+        y: 0
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7fc9ab107b529eb10800000000000000
-      internalID: 2011180176535887095
+      spriteID: b9839d5c5c21ec910800000000000000
+      internalID: 1859444336787798171
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_White1_0: 2011180176535887095
+      Phase_jump_0: 1859444336787798171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

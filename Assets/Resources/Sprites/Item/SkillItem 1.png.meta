@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: d1f1dff6849ee194c9be983bced44e08
+guid: e824671317558fd4a9f1e3b74264927b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7520836577938765224
-    second: Player_White_0
+      213: -4270340913877648135
+    second: SkillItem 1_0
   - first:
-      213: -1675688528791231050
-    second: Player_White_1
+      213: -4759791962777014442
+    second: SkillItem 1_1
+  - first:
+      213: -142747766760564449
+    second: SkillItem 1_2
+  - first:
+      213: -1149543924399506934
+    second: SkillItem 1_3
+  - first:
+      213: -2113599166554613621
+    second: SkillItem 1_4
+  - first:
+      213: 8254963220813294532
+    second: SkillItem 1_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 21
+  spritePixelsToUnits: 36
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,43 +154,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_White_0
+      name: SkillItem 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 14
-        height: 14
+        x: 6
+        y: 5
+        width: 20
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85a023ebafe90a790800000000000000
-      internalID: -7520836577938765224
+      spriteID: 9fc71866093bcb4c0800000000000000
+      internalID: -4270340913877648135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_White_1
+      name: SkillItem 1_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 1
-        width: 14
-        height: 14
+        x: 38
+        y: 5
+        width: 20
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b5a3374922ceb8e0800000000000000
-      internalID: -1675688528791231050
+      spriteID: 65faae5ad62d1fdb0800000000000000
+      internalID: -4759791962777014442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillItem 1_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 4
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1991c599abd40ef0800000000000000
+      internalID: -142747766760564449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillItem 1_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 5
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a757c24effb00f0800000000000000
+      internalID: -1149543924399506934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillItem 1_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 4
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8853ff91ccfaa2e0800000000000000
+      internalID: -2113599166554613621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillItem 1_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 4
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cbad7a00558f8270800000000000000
+      internalID: 8254963220813294532
       vertices: []
       indices: 
       edges: []
@@ -186,7 +282,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4d10d40cc33fbb44ca9e78d620107161
+    spriteID: 6db213272529280498a01e764fe5ef99
     internalID: 0
     vertices: []
     indices: 
@@ -194,8 +290,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_White_0: -7520836577938765224
-      Player_White_1: -1675688528791231050
+      SkillItem 1_0: -4270340913877648135
+      SkillItem 1_1: -4759791962777014442
+      SkillItem 1_2: -142747766760564449
+      SkillItem 1_3: -1149543924399506934
+      SkillItem 1_4: -2113599166554613621
+      SkillItem 1_5: 8254963220813294532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
