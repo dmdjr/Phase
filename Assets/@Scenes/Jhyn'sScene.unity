@@ -52461,7 +52461,7 @@ PrefabInstance:
       objectReference: {fileID: 1424831545}
     - target: {fileID: 5137607715506035076, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5536416596753528308, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalPosition.x

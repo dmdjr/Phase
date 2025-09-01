@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5536416596753528308}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   invalidReleasePointSprite: {fileID: 5308431421370826863, guid: 1bed71e211e2f3449b5dcd9173a11450, type: 3}
   tilemapLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   releasePointCollisionRadius: 0.1
   releasePointMoveSpeed: 7
 --- !u!95 &186704025364883405
