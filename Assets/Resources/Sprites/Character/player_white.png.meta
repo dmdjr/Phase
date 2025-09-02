@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -7520836577938765224
     second: Player_White_0
+  - first:
+      213: -1675688528791231050
+    second: Player_White_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 21
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,10 +145,10 @@ TextureImporter:
       name: Player_White_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 9
-        width: 62
-        height: 62
+        x: 0
+        y: 1
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +162,31 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Player_White_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b5a3374922ceb8e0800000000000000
+      internalID: -1675688528791231050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4d10d40cc33fbb44ca9e78d620107161
     internalID: 0
     vertices: []
     indices: 
@@ -171,6 +195,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Player_White_0: -7520836577938765224
+      Player_White_1: -1675688528791231050
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

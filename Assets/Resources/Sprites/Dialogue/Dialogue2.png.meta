@@ -1,10 +1,52 @@
 fileFormatVersion: 2
-guid: 838d87d8cc93a9b4c9fd388d2fccfe1c
+guid: 4d1cb1547583d3a4c92c34da22f6f47e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -432937738306814794
-    second: SkillItem_0
+      213: 7906053748886617828
+    second: Dialogue2_0
+  - first:
+      213: 8752802765571449787
+    second: Dialogue2_1
+  - first:
+      213: 3845263058744372522
+    second: Dialogue2_2
+  - first:
+      213: 8149879907050488033
+    second: Dialogue2_3
+  - first:
+      213: -1019472739760679473
+    second: Dialogue2_4
+  - first:
+      213: -636692813906184091
+    second: Dialogue2_5
+  - first:
+      213: 3278930730080201432
+    second: Dialogue2_6
+  - first:
+      213: 6390299131097954872
+    second: Dialogue2_7
+  - first:
+      213: -1177422863993767762
+    second: Dialogue2_8
+  - first:
+      213: -3051622527964659503
+    second: Dialogue2_9
+  - first:
+      213: -8166945695002190619
+    second: Dialogue2_10
+  - first:
+      213: 8682362238659861012
+    second: Dialogue2_11
+  - first:
+      213: -6773688456133106694
+    second: Dialogue2_12
+  - first:
+      213: 4320332003903660806
+    second: Dialogue2_13
+  - first:
+      213: -6217586564783881551
+    second: Dialogue2_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,22 +181,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SkillItem_0
+      name: Dialogue2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 10
-        width: 26
-        height: 14
+        x: 11
+        y: 7
+        width: 174
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bc7c5abb65edf9f0800000000000000
-      internalID: -432937738306814794
+      spriteID: 4ee388d1ff1f7bd60800000000000000
+      internalID: 7906053748886617828
       vertices: []
       indices: 
       edges: []
@@ -162,7 +204,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 11ae51e37717d3e4f92eed7d20f89b54
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +212,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SkillItem_0: -432937738306814794
+      Dialogue2_0: 7906053748886617828
+      Dialogue2_1: 8752802765571449787
+      Dialogue2_10: -8166945695002190619
+      Dialogue2_11: 8682362238659861012
+      Dialogue2_12: -6773688456133106694
+      Dialogue2_13: 4320332003903660806
+      Dialogue2_14: -6217586564783881551
+      Dialogue2_2: 3845263058744372522
+      Dialogue2_3: 8149879907050488033
+      Dialogue2_4: -1019472739760679473
+      Dialogue2_5: -636692813906184091
+      Dialogue2_6: 3278930730080201432
+      Dialogue2_7: 6390299131097954872
+      Dialogue2_8: -1177422863993767762
+      Dialogue2_9: -3051622527964659503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

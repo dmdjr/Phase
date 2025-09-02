@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     bool isGrounded; // 바닥 감지 상태 변수
+    public bool isStop = false; // 외부에서 플레이어 상태 제어를 위한 상태 변수
     private CameraController cameraController;
     private SkillController skillController; // SkillController를 제어할 변수
 
@@ -35,8 +36,8 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
         animator.SetBool("isGrounded", isGrounded);
 
-        // 스킬이 사용 중이 아닐 때만 플레이어 이동 처리
-        if (skillController != null && !skillController.IsSkillActive)
+        // 스킬이 사용 중이 아닐 때만 플레이어 이동 처리 + 외부에서 동작 제어를 하지 않는 경우
+        if (skillController != null && !skillController.IsSkillActive && !isStop)
         {
             Movment();
         }
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
             // 이동 또는 점프 상태 초기화 (안 하면 순간이동 직전의 움직임이 지속됨)
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Escape"))

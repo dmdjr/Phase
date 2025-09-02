@@ -20,7 +20,7 @@ public class SkillController : MonoBehaviour
     public Sprite invalidReleasePointSprite;
     public LayerMask tilemapLayer;
     public float releasePointCollisionRadius = 0.1f;
-    public float releasePointMoveSpeed = 7f;
+    public float releasePointMoveSpeed = 10f;
 
     // isTimeStopped를 외부에서 읽을 수 있도록 public 프로퍼티로 변경
     public bool IsSkillActive { get; private set; } = false;
@@ -29,7 +29,7 @@ public class SkillController : MonoBehaviour
 
     private SpriteRenderer timeCircleRenderer;
     private SpriteRenderer aimingCircleRenderer;
-    private Vector3 originalCircleScale;
+    public Vector3 originalCircleScale;
     //private Color circleDefaultColor = new Color(1f, 1f, 1f, 10 / 255f);
     //private Color circleAimingColor = new Color(1f, 1f, 1f, 50 / 255f);
 
@@ -70,7 +70,7 @@ public class SkillController : MonoBehaviour
         if (timeCircle != null)
         {
             timeCircleRenderer = timeCircle.GetComponent<SpriteRenderer>();
-            originalCircleScale = new Vector3(2f, 2f, 1f);
+            originalCircleScale = new Vector3(2.5f, 2.5f, 1f);
             timeCircle.transform.localScale = originalCircleScale;
             //timeCircleRenderer.color = circleDefaultColor;
         }
@@ -121,10 +121,10 @@ public class SkillController : MonoBehaviour
             rb.gravityScale = 0f;
             timeStopCenterPosition = transform.position;
 
-            maxReleaseDistance = timeCircle.transform.localScale.x * 2f; 
+            maxReleaseDistance = timeCircle.transform.localScale.x * 2f;
             //float baseCircleRadius = originalCircleScale.x * 1.5f;
             //maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
-           // maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
+            // maxReleaseDistance = baseCircleRadius * timeCircle.transform.localScale.x;
 
 
             releasePoint.SetActive(true);
