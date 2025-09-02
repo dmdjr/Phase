@@ -138,6 +138,7 @@ MonoBehaviour:
   waitAtNode: 0
   cooldownBar: {fileID: 2011686365243170883}
   isPlayerDetected: 0
+  isShooting: 0
 --- !u!50 &7833126223426769451
 Rigidbody2D:
   serializedVersion: 4
@@ -500,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillBar: {fileID: 5873551365488040161}
+  backgroundImg: {fileID: 9024820754894750001}
   enemy: {fileID: 6891187530044472350}
 --- !u!1 &5894850867652100930
 GameObject:

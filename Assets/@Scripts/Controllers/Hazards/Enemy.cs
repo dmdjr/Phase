@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D _rb;
 
     public bool isPlayerDetected = false;
-    private bool isShooting = false;
+    public bool isShooting = false;
     private GameObject missilePrefab;
     private Transform missilePos;
     Quaternion missileRot;
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         isPlayerDetected = false;
+        isShooting = false;
     }
 
     void OnDisable()
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
     {
         // 미사일이 생성된 후 바로 타겟을 바라보기 위함
         Transform target = GameObject.Find("Player").transform;
+        isShooting = true;
         while (true)
         {
             yield return new WaitForSeconds(shotInterval);
@@ -77,6 +79,12 @@ public class Enemy : MonoBehaviour
             mh.Initialize(explosionMode, guidanceMode);
 
             cooldownBar?.ResetTimer();
+
+            if (!isPlayerDetected)
+            {
+                isShooting = false;
+                yield break;
+            }
         }
     }
 
@@ -92,13 +100,12 @@ public class Enemy : MonoBehaviour
         if (missilePrefab != null && isPlayerDetected && !isShooting)
         {
             loop = StartCoroutine(SpawnLoop());
-            isShooting = true;
         }
-        else if (!isPlayerDetected && isShooting)
-        {
-            StopCoroutine(loop);
-            isShooting = false;
-        }
+        // else if (!isPlayerDetected && isShooting)
+        // {
+        //     StopCoroutine(loop);
+        //     isShooting = false;
+        // }
     }
 
     void FixedUpdate()
