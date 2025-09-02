@@ -41,13 +41,13 @@ public class NPCAction : MonoBehaviour
         anim.SetTrigger("isJumping");
         rb.AddForce(new Vector2(1, 4).normalized * jumpForce, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.7f);
-        gameObject.SetActive(false);
 
         if (director != null)
         {
             director.NpcActionFinished();
         }
+        yield return new WaitForSeconds(0.8f);
+        gameObject.SetActive(false);
 
     }
 }

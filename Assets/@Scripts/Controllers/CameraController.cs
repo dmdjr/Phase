@@ -9,8 +9,6 @@ public class CameraController : MonoBehaviour
     [Header("연출용 오브젝트")]
     public Transform trans_Player;
     public Transform trans_NPC;
-    public Transform trans_Item1;
-    public Transform trans_Item2;
 
 
     public float transitionCooldown = 0.5f; // 대기 시간
@@ -50,7 +48,7 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(nextStage.position.x, nextStage.position.y, transform.position.z);
 
         MoveCameraPosZ();
-        
+
 
         StartCoroutine(TransitionCooldown());
     }
@@ -71,15 +69,39 @@ public class CameraController : MonoBehaviour
                 trans_NPC.position = new Vector3(trans_NPC.position.x, trans_NPC.position.y, 1f);
             }
         }
+
+        // 10번째 스테이지로 이동할 때 연출
+        if (currentStageIndex == 9)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+
+            if (trans_Player != null)
+            {
+                trans_Player.position = new Vector3(trans_Player.position.x, trans_Player.position.y, 1f);
+            }
+
+        }
+
+        // 15번째 스테이지로 이동할 때 연출
+        if (currentStageIndex == 14)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+
+            if (trans_Player != null)
+            {
+                trans_Player.position = new Vector3(trans_Player.position.x, trans_Player.position.y, 1f);
+            }
+        }
+
     }
     public void RestoreCameraPosz()
     {
-        transform.position=new Vector3(transform.position.x,transform.position.y, -1f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
         if (trans_Player != null)
         {
             trans_Player.position = new Vector3(trans_Player.position.x, trans_Player.position.y, 0f);
         }
-        
+
     }
     private IEnumerator TransitionCooldown()
     {
