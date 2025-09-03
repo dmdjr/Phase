@@ -26,9 +26,9 @@ public class NPCAction : MonoBehaviour
 
     IEnumerator ActionCoroutine(CinematicDirector director)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         spriteRenderer.flipX = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         dialogue1.SetActive(true);
         yield return new WaitForSeconds(3f);
         dialogue1.SetActive(false);
