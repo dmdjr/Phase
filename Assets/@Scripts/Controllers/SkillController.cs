@@ -248,7 +248,7 @@ public class SkillController : MonoBehaviour
                 if (isFinalPosInTilemap || !isFinalPosInCamera)
                 {
                     transform.position = lastValidReleasePosition;
-                    rb.velocity = Vector2.zero; 
+                    rb.velocity = Vector2.zero;
                 }
                 else
                 {
@@ -289,6 +289,16 @@ public class SkillController : MonoBehaviour
                     circleGrowSpeed * Time.deltaTime
                 );
             }
+        }
+    }
+
+    // 외부에서 원의 크기를 즉시 변경하게 해주는 함수
+    public void UpdateCircleSize(Vector3 newScale)
+    {
+        originalCircleScale = newScale;
+        if (timeCircle != null)
+        {
+            timeCircle.transform.localScale = originalCircleScale;
         }
     }
 }
