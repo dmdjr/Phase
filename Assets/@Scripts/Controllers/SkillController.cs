@@ -48,7 +48,7 @@ public class SkillController : MonoBehaviour
 
 
     // 스페이스바를 뗐을 때 추가로 나아갈 거리
-    private float dashDistance = 2f;
+    public float finalDashForce = 15f;
     void Awake()
     {
         // 이 스크립트가 붙어있는 게임 오브젝트에서 필요한 컴포넌트들을 찾아옴
@@ -231,31 +231,9 @@ public class SkillController : MonoBehaviour
                 {
                     dashDirection = Vector2.zero;
                 }
-                // 최종 위치를 마지막 유효한 릴리즈 포인트의 위치에 위에서 구한 dashDirection 거리에 추가로 이동할 거리를 더함
-                Vector2 finalPosition = (Vector2)lastValidReleasePosition + (dashDirection * dashDistance);
-
-                //======= 카메라 위치 재계산 (이거 없으면 카메라 밖으로 튕김 현상 발생)========
-                float cameraHeight = mainCamera.orthographicSize;
-                float cameraWidth = cameraHeight * mainCamera.aspect;
-                Vector3 cameraPosition = mainCamera.transform.position;
-                float minX = cameraPosition.x - cameraWidth;
-                float maxX = cameraPosition.x + cameraWidth;
-                float minY = cameraPosition.y - cameraHeight;
-                float maxY = cameraPosition.y + cameraHeight;
-
-                bool isFinalPosInCamera = (finalPosition.x > minX && finalPosition.x < maxX && finalPosition.y > minY && finalPosition.y < maxY);
-                bool isFinalPosInTilemap = Physics2D.OverlapCircle(finalPosition, releasePointCollisionRadius, tilemapLayer);
-                if (isFinalPosInTilemap || !isFinalPosInCamera)
-                {
-                    transform.position = lastValidReleasePosition;
-                    rb.velocity = Vector2.zero;
-                }
-                else
-                {
-                    transform.position = finalPosition;
-                    rb.velocity = Vector2.zero;
-                    rb.AddForce(dashDirection * 200f, ForceMode2D.Force);
-                }
+                transform.position = lastValidReleasePosition;
+                // 해당 방향으로 추가 힘 주기
+                rb.velocity = dashDirection * finalDashForce;
             }
             timeCircle.transform.localScale = aimingCircle.transform.localScale;
             isCircleGrowing = true;
