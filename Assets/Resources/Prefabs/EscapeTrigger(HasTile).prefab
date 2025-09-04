@@ -135,6 +135,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckObject: {fileID: 8615243211176349639}
+  fragmentPrefabs:
+  - {fileID: 1317683908655217077, guid: ff5dabc1f34f8cb46948db61ab5b0743, type: 3}
+  - {fileID: 5826195318764512588, guid: 079a54fa79e656b46a9f93600f8fd5fd, type: 3}
+  - {fileID: 2902764867676798504, guid: 836f7ef1fbb4373429dc41a3e77ba197, type: 3}
+  - {fileID: 3168755496817928705, guid: 279b506bb57f26a4288dbdc9d57f2949, type: 3}
+  - {fileID: 112041436193329233, guid: cce631652bd386b4799813e953a153ad, type: 3}
+  - {fileID: 7680369864777452428, guid: 8afa6dc9d35c21043812a0dc64bb88cc, type: 3}
+  - {fileID: 4758473623740799624, guid: 0331d6a51e554b64aab6f08de763c1ec, type: 3}
+  - {fileID: 6602754124160499084, guid: 5b943a0ec166edc4e9af3de74f8ede35, type: 3}
+  - {fileID: 9055599679986422451, guid: 24bb1d09b3eab744aaf6ab5458ad00a4, type: 3}
+  - {fileID: 8763033105700275125, guid: e803f08d6a7367b478e087d7a998aeb5, type: 3}
+  - {fileID: 8062079818477238703, guid: 60f9d8c6f967d5543b53886e8b5c5990, type: 3}
+  explosionForce: 300
+  torqueAmount: 100
 --- !u!114 &2994562957391064423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckObject: {fileID: 8615243211176349639}
+  fragmentPrefabs:
+  - {fileID: 1317683908655217077, guid: ff5dabc1f34f8cb46948db61ab5b0743, type: 3}
+  - {fileID: 5826195318764512588, guid: 079a54fa79e656b46a9f93600f8fd5fd, type: 3}
+  - {fileID: 2902764867676798504, guid: 836f7ef1fbb4373429dc41a3e77ba197, type: 3}
+  - {fileID: 3168755496817928705, guid: 279b506bb57f26a4288dbdc9d57f2949, type: 3}
+  - {fileID: 112041436193329233, guid: cce631652bd386b4799813e953a153ad, type: 3}
+  - {fileID: 7680369864777452428, guid: 8afa6dc9d35c21043812a0dc64bb88cc, type: 3}
+  - {fileID: 4758473623740799624, guid: 0331d6a51e554b64aab6f08de763c1ec, type: 3}
+  - {fileID: 6602754124160499084, guid: 5b943a0ec166edc4e9af3de74f8ede35, type: 3}
+  - {fileID: 9055599679986422451, guid: 24bb1d09b3eab744aaf6ab5458ad00a4, type: 3}
+  - {fileID: 8763033105700275125, guid: e803f08d6a7367b478e087d7a998aeb5, type: 3}
+  - {fileID: 8062079818477238703, guid: 60f9d8c6f967d5543b53886e8b5c5990, type: 3}
+  explosionForce: 300
+  torqueAmount: 100
 --- !u!114 &6979755211550309449
 MonoBehaviour:
   m_ObjectHideFlags: 0
