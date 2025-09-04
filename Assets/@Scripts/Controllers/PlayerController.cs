@@ -116,6 +116,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"Player collide with {collision.name}");
             animator.SetBool("isDead", true);
             isStop = true;
+            // GameObject effectPrefab = Resources.Load<GameObject>("Prefabs/VFX_Player_Die");
+            // GameObject dieEffect = Instantiate(effectPrefab, transform.position + new Vector3(0f, 5f, 0f), transform.rotation, GetComponent<Transform>());
+            // Destroy(dieEffect, 2f);
         }
     }
 }
