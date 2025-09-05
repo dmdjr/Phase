@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class FragmentLifeCycle : MonoBehaviour
 {
+    public bool useFadeEffect = true;
     public float fadeDuration = 1f;
     private SpriteRenderer spriteRenderer;
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
+        if (useFadeEffect)
         {
-            return;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer == null)
+            {
+                return;
+            }
+        }
+        if (useFadeEffect)
+        {
+            StartCoroutine(FadeOutAndDestroy());
+        }
+        else
+        {
+            StartCoroutine(DestroyAfterTime());
         }
 
-        StartCoroutine(FadeOutAndDestroy());
     }
     private IEnumerator FadeOutAndDestroy()
     {
@@ -27,6 +38,12 @@ public class FragmentLifeCycle : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        Destroy(gameObject);
+    }
+    private IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(fadeDuration);
+
         Destroy(gameObject);
     }
 }
