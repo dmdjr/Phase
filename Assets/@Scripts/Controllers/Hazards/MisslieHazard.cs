@@ -22,10 +22,13 @@ public class MissileHazard : MonoBehaviour
     Animator animator;
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
 
-    public void Initialize(ExplosionMode mode1, GuidanceMode mode2)
+    public void Initialize(ExplosionMode mode1, GuidanceMode mode2, float s, float rs, float lt)
     {
         explosionMode = mode1;
         guidanceMode = mode2;
+        speed = s;
+        rotateSpeed = rs;
+        lifeTime = lt;
     }
 
     void Awake()

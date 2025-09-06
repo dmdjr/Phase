@@ -41765,6 +41765,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6891187530044472350, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
+      propertyPath: missileSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891187530044472350, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
       propertyPath: shotInterval
       value: 1
       objectReference: {fileID: 0}
