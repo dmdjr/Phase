@@ -42261,7 +42261,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStageNum: 11
   lastStage: 20
-  playerDeathFragments: []
+  playerDeathFragments:
+  - {fileID: 3592797789281514850, guid: 456901ce86630b14b8da244364137722, type: 3}
+  - {fileID: 4817755819200424153, guid: 48776cf37c757294ca3c53895c1a3783, type: 3}
+  - {fileID: 3231502457331126517, guid: 5b44ed8c21ef31c41a8531327cf690f1, type: 3}
+  - {fileID: 109697774109928170, guid: 5a0c2a0aa6ffd054a947049c7d51b883, type: 3}
+  - {fileID: 5963706574845859254, guid: be3ce7d89c089eb43a8b002e438b43e9, type: 3}
+  - {fileID: 1819650427937941634, guid: 4c6bd5ca5b34e344aaf0c3add1ca650c, type: 3}
+  - {fileID: 4688919141084943037, guid: 483ab108b1dec0f4c9cd939abb302ffa, type: 3}
   respawnDelay: 2
 --- !u!4 &666737560
 Transform:
@@ -61271,7 +61278,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1189997899236399669, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3936165202736465891, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62781,8 +62788,8 @@ MonoBehaviour:
   trans_Player: {fileID: 0}
   transitionCooldown: 0.5
   cameraStages:
-  - {fileID: 778390726}
-  - {fileID: 820384687}
+  - {fileID: 1240372852}
+  - {fileID: 2036465004}
   - {fileID: 360019655}
   - {fileID: 130967685}
   - {fileID: 363115392}
@@ -62791,6 +62798,9 @@ MonoBehaviour:
   - {fileID: 678904319}
   - {fileID: 133709231}
   - {fileID: 1047439461}
+  - {fileID: 778390726}
+  - {fileID: 820384687}
+  - {fileID: 1757097190}
 --- !u!81 &1891287213
 AudioListener:
   m_ObjectHideFlags: 0
@@ -62859,7 +62869,7 @@ Transform:
   m_GameObject: {fileID: 1891287211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.5, y: -101.5, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -19,6 +19,13 @@ public class CameraController : MonoBehaviour
     // 현재 스테이지가 몇 번째인지 기억하는 변수 (0부터 시작)
     private int currentStageIndex = 0;
 
+    private void Start()
+    {
+        currentStageIndex = GameManager.Instance.currentStageNum - 1;
+        Transform nextStage = cameraStages[currentStageIndex];
+        transform.position = new Vector3(nextStage.position.x, nextStage.position.y, transform.position.z);
+    }
+
     // 다음 스테이지로 카메라를 이동시키는 함수
     public void MoveToNextStage()
     {

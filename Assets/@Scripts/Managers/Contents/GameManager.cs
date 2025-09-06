@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     public enum GameState { Ready, Playing, Paused, GameOver, Clear }
     public GameState State { get; private set; }
-    [SerializeField] private int currentStageNum = 1;
-    [SerializeField] private int lastStage = 10;
+    public int currentStageNum = 1; // Stage# 오브젝트의 이름이 1부터 시작
+    public int lastStage = 10;
     [SerializeField] private GameObject[] playerDeathFragments;
     [SerializeField] private float respawnDelay = 2f;
     private Transform normalWorld;
@@ -32,6 +32,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         InitStage();
+    }
+
+    private void Start()
+    {
+        respawnPoint = currentStage.transform.Find("RespawnPoint");
+        GameObject player = GameObject.Find("Player");
+        if (respawnPoint != null)
+        {
+            player.transform.position = respawnPoint.position;
+        }
     }
 
     private void InitStage()
