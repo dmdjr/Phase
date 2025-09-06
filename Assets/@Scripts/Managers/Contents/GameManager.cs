@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameState State { get; private set; }
     [SerializeField] private int currentStageNum = 1;
     [SerializeField] private int lastStage = 10;
+    [SerializeField] private GameObject[] playerDeathFragments;
+    [SerializeField] private float respawnDelay = 2f;
     private Transform normalWorld;
     private List<GameObject> stages = new List<GameObject>();
     private GameObject currentStage;
@@ -73,12 +75,16 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie(PlayerController player)
     {
-        // 리스폰 위치 찾기
+        if (player.gameObject.activeSelf)
+        {
+            StartCoroutine(PlayerDieCoroutine(player));
+        }
+        /*// 리스폰 위치 찾기
         respawnPoint = currentStage.GetComponent<Transform>().Find("RespawnPoint");
         if (!player || !respawnPoint) return;
         player.Respawn(respawnPoint);
         // 맵 상태 초기화
-        ResetObjects(currentStage.transform);
+        ResetObjects(currentStage.transform);*/
     }
 
     private void ResetObjects(Transform currentStage)
@@ -94,6 +100,44 @@ public class GameManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
+
+    private IEnumerator PlayerDieCoroutine(PlayerController player)
+    {
+        Vector3 deathPosition = player.transform.position;
+
+        player.gameObject.SetActive(false);
+        if (playerDeathFragments.Length > 0)
+        {
+            foreach (GameObject fragmentPrefab in playerDeathFragments)
+            {
+                GameObject fragment = Instantiate(fragmentPrefab, deathPosition, Quaternion.identity);
+                Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+                    rb.AddForce(direction * 200f);
+                    float randomTorque = Random.Range(-30f, 30f);
+                    rb.AddTorque(randomTorque);
+                }
+            }
+        }
+        // 4. 지정된 시간(respawnDelay)만큼 대기
+        yield return new WaitForSeconds(respawnDelay);
+
+        // 5. 맵 상태 초기화
+        ResetObjects(currentStage.transform);
+
+        // 6. 리스폰 위치 찾기 및 플레이어 위치 이동
+        respawnPoint = currentStage.transform.Find("RespawnPoint");
+        if (respawnPoint != null)
+        {
+            player.transform.position = respawnPoint.position;
+        }
+
+        // 7. 플레이어 오브젝트 다시 활성화
+        player.gameObject.SetActive(true);
+    }
+
     // public void ChangeState(GameState newState)
     // {
     //     State = newState;

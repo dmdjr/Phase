@@ -91,12 +91,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // player die animation의 마지막 프레임에 할당된 이벤트로 호출하는 함수
-    public void OnDieAnimationEnd()
+    /*public void OnDieAnimationEnd()
     {
         GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
         isStop = false;
         animator.SetBool("isDead", false);
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -114,11 +114,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Hazard"))
         {
             Debug.Log($"Player collide with {collision.name}");
-            animator.SetBool("isDead", true);
-            isStop = true;
-            // GameObject effectPrefab = Resources.Load<GameObject>("Prefabs/VFX_Player_Die");
-            // GameObject dieEffect = Instantiate(effectPrefab, transform.position + new Vector3(0f, 5f, 0f), transform.rotation, GetComponent<Transform>());
-            // Destroy(dieEffect, 2f);
+            /*animator.SetBool("isDead", true);
+            isStop = true;*/
+            /*gameObject.SetActive(false);
+            GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());*/
+            GameManager.Instance.PlayerDie(this);
         }
     }
 }
