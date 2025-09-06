@@ -19,11 +19,14 @@ public class CooldownBar : MonoBehaviour
     private SpriteRenderer fillSpriteRenderer;
     private SpriteRenderer backgroundSpriteRenderer;
 
+    TimeAffected _timeAffected;
+
     void Awake()
     {
         enemy = gameObject.transform.parent.GetComponent<Enemy>();
         backgroundSpriteRenderer = backgroundImg.GetComponent<SpriteRenderer>();
         fillSpriteRenderer = fillBar.GetComponent<SpriteRenderer>();
+        _timeAffected = GetComponentInParent<TimeAffected>();
     }
     void OnEnable()
     {
@@ -43,7 +46,7 @@ public class CooldownBar : MonoBehaviour
         {
             backgroundSpriteRenderer.enabled = true;
             fillSpriteRenderer.enabled = true;
-            _t += Time.deltaTime;
+            _t += Time.deltaTime * _timeAffected.currentTimeScale;
             progress = Mathf.Clamp01(_t / enemy.shotInterval);
             fillBar.localScale = new Vector3(progress * maxScaleX, originScaleY, 0f);
         }

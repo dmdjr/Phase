@@ -30,7 +30,9 @@ public class Enemy : MonoBehaviour
     private Transform missilePos;
     Quaternion missileRot;
     private Transform missileParent;
-    
+
+    TimeAffected _timeAffected;
+
     void Awake()
     {
         missilePrefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
             missileParent = mp.transform;
         }
         _rb = GetComponent<Rigidbody2D>();
+        _timeAffected = GetComponent<TimeAffected>();
         RecalcEndpoints();
         _t = 0f;
     }
@@ -69,7 +72,7 @@ public class Enemy : MonoBehaviour
         isShooting = true;
         while (true)
         {
-            yield return new WaitForSeconds(shotInterval);
+            yield return new WaitForSeconds(shotInterval * (1/_timeAffected.currentTimeScale));
             Vector2 toTarget = target.position - missilePos.position;
             float ang = Vector2.SignedAngle(Vector2.right, toTarget);
             missileRot = Quaternion.Euler(0, 0, ang);
@@ -110,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        TickMove(Time.fixedDeltaTime);
+        TickMove(Time.fixedDeltaTime * _timeAffected.currentTimeScale);
     }
 
     void TickMove(float dt)
