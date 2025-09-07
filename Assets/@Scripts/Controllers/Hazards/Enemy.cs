@@ -76,7 +76,14 @@ public class Enemy : MonoBehaviour
         isShooting = true;
         while (true)
         {
-            yield return new WaitForSeconds(shotInterval * (1/_timeAffected.currentTimeScale));
+            // yield return new WaitForSeconds(shotInterval * (1/_timeAffected.currentTimeScale));
+            float elapsed = 0f;
+            float waitTime = shotInterval;
+            while (elapsed < waitTime)
+            {
+                elapsed += Time.deltaTime * _timeAffected.currentTimeScale;
+                yield return null;
+            }
             Vector2 toTarget = target.position - missilePos.position;
             float ang = Vector2.SignedAngle(Vector2.right, toTarget);
             missileRot = Quaternion.Euler(0, 0, ang);
