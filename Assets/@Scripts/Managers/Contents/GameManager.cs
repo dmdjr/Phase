@@ -114,8 +114,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator PlayerDieCoroutine(PlayerController player)
     {
         Vector3 deathPosition = player.transform.position;
-
+        Transform circleEffects = player.transform.parent.Find("CircleEffects");
         player.gameObject.SetActive(false);
+        if (circleEffects != null)
+        {
+            circleEffects.gameObject.SetActive(false);
+        }
         if (playerDeathFragments.Length > 0)
         {
             foreach (GameObject fragmentPrefab in playerDeathFragments)
@@ -146,6 +150,15 @@ public class GameManager : MonoBehaviour
 
         // 7. 플레이어 오브젝트 다시 활성화
         player.gameObject.SetActive(true);
+        if (circleEffects != null)
+        {
+            circleEffects.gameObject.SetActive(true);
+        }
+        SkillController skillController = player.GetComponent<SkillController>();
+        if (skillController != null)
+        {
+            skillController.ResetSkillState();
+        }
     }
 
     // public void ChangeState(GameState newState)

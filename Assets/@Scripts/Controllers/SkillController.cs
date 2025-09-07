@@ -279,4 +279,30 @@ public class SkillController : MonoBehaviour
             timeCircle.transform.localScale = originalCircleScale;
         }
     }
+    public void ResetSkillState()
+    {
+        isTimeSkillActive = false;
+        IsSkillActive = false;
+        if (rb != null)
+        {
+            rb.gravityScale = originalGravityScale;
+        }
+        if (aimingCircle != null)
+        {
+            aimingCircle.SetActive(false);
+        }
+        if (releasePoint != null)
+        {
+            releasePoint.SetActive(false);
+        }
+        if (timeCircle != null)
+        {
+            timeCircle.transform.localScale = originalCircleScale;
+        }
+        if (inversionManager != null)
+        {
+            inversionManager.ToggleInversionState(false);
+        }
+
+    }
 }
