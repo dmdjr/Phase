@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6261186944250196848}
   - component: {fileID: 7232977179207701709}
   - component: {fileID: 6638080549063608534}
+  - component: {fileID: 5276567818434741155}
+  - component: {fileID: 6014169895611552343}
   m_Layer: 6
   m_Name: CrackedTile
   m_TagString: Untagged
@@ -158,3 +160,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5276567818434741155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671727434834676693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  normalSprite: {fileID: 442785108475362103, guid: 9ad61408a94b30b42b883cac40b60948, type: 3}
+  invertedSprite: {fileID: 8924952004876769621, guid: 40bf0e74c14084f4d9fc83eb7eeebbf7, type: 3}
+  animatorParameterName: isInverted
+--- !u!114 &6014169895611552343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671727434834676693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1

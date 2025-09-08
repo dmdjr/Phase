@@ -11,6 +11,7 @@ public class SkillController : MonoBehaviour
 
     [Header("[써클 오브젝트]")]
     public GameObject timeCircle;
+    public CircleTimeSlip circleTimeSlip;
     public GameObject aimingCircle;
     public float circleShrinkSpeed = 0.7f;
     public float circleGrowSpeed = 1f;
@@ -142,6 +143,10 @@ public class SkillController : MonoBehaviour
             {
                 inversionManager.ToggleInversionState(true);
             }
+            if (circleTimeSlip != null)
+            {
+                circleTimeSlip.ActivateTimeSlip();
+            }
         }
         // 스페이스바를 누르고 있는 동안 (매 프레임 실행)
         if (Input.GetKey(KeyCode.Space))
@@ -220,6 +225,10 @@ public class SkillController : MonoBehaviour
         {
             isTimeSkillActive = false;
             IsSkillActive = false; // isTimeStopped 대신 사용
+            if (circleTimeSlip != null)
+            {
+                circleTimeSlip.DeactivateTimeSlip();
+            }
             rb.gravityScale = originalGravityScale;
             if (aimingCircle.transform.localScale.x > 0)
             {
@@ -243,6 +252,10 @@ public class SkillController : MonoBehaviour
             if (inversionManager != null)
             {
                 inversionManager.ToggleInversionState(false);
+            }
+            if (circleTimeSlip != null)
+            {
+                circleTimeSlip.DeactivateTimeSlip();
             }
         }
     }
@@ -310,6 +323,10 @@ public class SkillController : MonoBehaviour
         if (inversionManager != null)
         {
             inversionManager.ToggleInversionState(false);
+        }
+        if (circleTimeSlip != null)
+        {
+            circleTimeSlip.DeactivateTimeSlip();
         }
 
     }

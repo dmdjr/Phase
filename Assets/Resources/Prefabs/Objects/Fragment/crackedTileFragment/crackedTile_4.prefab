@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5300988182804126129}
   - component: {fileID: -966097104822452178}
   - component: {fileID: 5120409236082929776}
+  - component: {fileID: 5387967060318933253}
+  - component: {fileID: -8040575138489466831}
   m_Layer: 10
   m_Name: crackedTile_4
   m_TagString: Untagged
@@ -184,3 +186,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFadeEffect: 1
   fadeDuration: 1.5
+--- !u!114 &5387967060318933253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094830783919854560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1
+--- !u!114 &-8040575138489466831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094830783919854560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  normalSprite: {fileID: -5706629342223449310, guid: 38f667447891bb047916aa204aff0623, type: 3}
+  invertedSprite: {fileID: -4539105075875232986, guid: b67fab8be8de5e54486e81331d925d60, type: 3}
+  animatorParameterName: isInverted

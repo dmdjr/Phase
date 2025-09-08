@@ -7,8 +7,37 @@ public class CircleTimeSlip : MonoBehaviour
 
     public float timeScaleInCircle = 0.1f;
     private float normalTimeScale = 1.0f;
+    private Collider2D circleCollider;
+    private void Awake()
+    {
+        circleCollider = GetComponent<Collider2D>();
+    }
+    public void ActivateTimeSlip()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, circleCollider.bounds.extents.x);
 
+        foreach (Collider2D hit in colliders)
+        {
+            TimeAffected affectedObject = hit.GetComponent<TimeAffected>();
+            if (affectedObject != null)
+            {
+                affectedObject.UpdateTimeScale(timeScaleInCircle);
+            }
+        }
+    }
+    public void DeactivateTimeSlip()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, circleCollider.bounds.extents.x);
 
+        foreach (Collider2D hit in colliders)
+        {
+            TimeAffected affectedObject = hit.GetComponent<TimeAffected>();
+            if (affectedObject != null)
+            {
+                affectedObject.UpdateTimeScale(normalTimeScale);
+            }
+        }
+    }
     // 기준 원으로 오브젝트가 들어온 순간 호출 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,26 +57,6 @@ public class CircleTimeSlip : MonoBehaviour
     }
 
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        TimeAffected affectedObject = collision.GetComponent<TimeAffected>();
-
-        // TimeAffected 컴포넌트 없으면 종료
-        if (affectedObject == null)
-        {
-            return; 
-        }
-
-        // 스킬 활성화 되어있을 때만 타임슬립
-        if (SkillController.isTimeSkillActive)
-        {
-            affectedObject.UpdateTimeScale(timeScaleInCircle);
-        }
-        else
-        {
-            affectedObject.UpdateTimeScale(normalTimeScale);
-        }
-    }
 
     // 들어온 오브젝트가 나간 순간 호출
     private void OnTriggerExit2D(Collider2D collision)
