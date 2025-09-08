@@ -20,10 +20,11 @@ public class MovingHazard : MonoBehaviour
     float _waitTimer;
 
     Rigidbody2D _rb;
-
+    TimeAffected _timeAffected;
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _timeAffected = GetComponent<TimeAffected>();
         RecalcEndpoints();
         _t = 0f;
     }
@@ -37,7 +38,8 @@ public class MovingHazard : MonoBehaviour
 
     void FixedUpdate()
     {
-        TickMove(Time.fixedDeltaTime);
+        float scaledDeltaTime = Time.fixedDeltaTime * _timeAffected.currentTimeScale;
+        TickMove(scaledDeltaTime);
     }
 
     void TickMove(float dt)
