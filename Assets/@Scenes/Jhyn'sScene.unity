@@ -1222,6 +1222,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7232977179207701709, guid: fd3a5e7776f044823ae92c4e0aeb57b6, type: 3}
+      propertyPath: fragmentPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232977179207701709, guid: fd3a5e7776f044823ae92c4e0aeb57b6, type: 3}
+      propertyPath: 'fragmentPrefabs.Array.data[8]'
+      value: 
+      objectReference: {fileID: 7971027319051598561, guid: 19dcec6848ffbb54f98572386902605b, type: 3}
     - target: {fileID: 7671727434834676693, guid: fd3a5e7776f044823ae92c4e0aeb57b6, type: 3}
       propertyPath: m_Name
       value: CrackedTile
@@ -52984,7 +52992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2ff1996f7254eb2a8a03376f67912d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStageNum: 3
+  currentStageNum: 4
   lastStage: 30
   playerDeathFragments:
   - {fileID: 2062543732056125737, guid: cf140fdcb70f41446961ff1d5f85618d, type: 3}
