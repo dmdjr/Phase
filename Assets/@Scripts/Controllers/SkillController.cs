@@ -279,6 +279,14 @@ public class SkillController : MonoBehaviour
             timeCircle.transform.localScale = originalCircleScale;
         }
     }
+
+    public void RevertInversion()
+    {
+        if (inversionManager != null)
+        {
+            inversionManager.ToggleInversionState(false);
+        }
+    }
     public void ResetSkillState()
     {
         isTimeSkillActive = false;

@@ -85,6 +85,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie(PlayerController player)
     {
+        SkillController skillController = player.GetComponent<SkillController>();
+        if (skillController != null)
+        {
+            skillController.RevertInversion();
+        }
         if (player.gameObject.activeSelf)
         {
             StartCoroutine(PlayerDieCoroutine(player));
