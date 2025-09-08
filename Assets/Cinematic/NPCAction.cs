@@ -71,20 +71,17 @@ public class NPCAction : MonoBehaviour
         Vector3 startPosition = mainCamera.transform.position;
         float startSize = mainCamera.orthographicSize;
 
-        // z좌표는 카메라의 기본 z좌표(-10)를 유지하도록 설정
         targetPosition.z = startPosition.z;
 
         while (elapsedTime < cameraMoveDuration)
         {
-            // Lerp(선형 보간)를 사용하여 시작값과 목표값 사이를 부드럽게 이동
             mainCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / cameraMoveDuration);
             mainCamera.orthographicSize = Mathf.Lerp(startSize, targetSize, elapsedTime / cameraMoveDuration);
 
             elapsedTime += Time.deltaTime;
-            yield return null; // 다음 프레임까지 대기
+            yield return null; 
         }
 
-        // 정확한 목표 위치와 크기로 맞춰주기
         mainCamera.transform.position = targetPosition;
         mainCamera.orthographicSize = targetSize;
     }
