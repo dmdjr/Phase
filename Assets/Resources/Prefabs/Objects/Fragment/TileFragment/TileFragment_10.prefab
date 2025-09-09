@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7346058417640625993}
   - component: {fileID: 7467840717146964288}
   - component: {fileID: -6671798696659056187}
+  - component: {fileID: -4086757125098304640}
+  - component: {fileID: 3357329486459855068}
   m_Layer: 10
   m_Name: TileFragment_10
   m_TagString: Untagged
@@ -114,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &7467840717146964288
 PolygonCollider2D:
@@ -182,4 +184,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9824d768bd050b4d9ae5c870e904d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useFadeEffect: 1
   fadeDuration: 1.5
+--- !u!114 &-4086757125098304640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062079818477238703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1
+--- !u!114 &3357329486459855068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062079818477238703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  normalSprite: {fileID: 3991422489910857748, guid: 426b2157aece3f2428b9555c2699d87c, type: 3}
+  invertedSprite: {fileID: -5818450599269902156, guid: 01788b98c0a4b474c97afaa2ba76c2f3, type: 3}
+  animatorParameterName: isInverted

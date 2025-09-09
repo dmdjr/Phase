@@ -18,7 +18,23 @@ public class TimeAffected : MonoBehaviour
             originalGravityScale = rb.gravityScale;
         }
     }
+    private void Start()
+    {
+        if (SkillController.isTimeSkillActive)
+        {
+            CircleTimeSlip circle = FindAnyObjectByType<CircleTimeSlip>();
+            if (circle != null)
+            {
+                Collider2D circleCollider = circle.GetComponent<Collider2D>();
+                Collider2D ourCollider = GetComponent<Collider2D>();
 
+                if (circleCollider != null && ourCollider != null && circleCollider.IsTouching(ourCollider))
+                {
+                    UpdateTimeScale(circle.timeScaleInCircle);
+                }
+            }
+        }
+    }
     // CircleTimeSlip 스크립트에서 호출할 함수
     public void UpdateTimeScale(float newScale)
     {

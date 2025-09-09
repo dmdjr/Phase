@@ -30,6 +30,8 @@ public class InvertibleObject : MonoBehaviour
         if (InversionManager.Instance != null)
         {
             InversionManager.Instance.RegisterObject(this);
+            bool currentInversionState = InversionManager.Instance.IsInvertedState;
+            SetInvertedState(currentInversionState);
         }
     }
     private void OnDisable()

@@ -14,6 +14,7 @@ public class CircleTimeSlip : MonoBehaviour
     }
     public void ActivateTimeSlip()
     {
+        // 원의 위치와 크기(반지름)를 기준으로 겹치는 모든 콜라이더를 찾아 배열로 반환합니다.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, circleCollider.bounds.extents.x);
 
         foreach (Collider2D hit in colliders)

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5836860940524388610}
   - component: {fileID: 2938599198758818668}
   - component: {fileID: 2994562957391064423}
+  - component: {fileID: 3392075191165699350}
   m_Layer: 8
   m_Name: Square2
   m_TagString: Escape
@@ -165,6 +166,19 @@ MonoBehaviour:
   normalSprite: {fileID: 8015794055595762396, guid: dcfa54c439c4d1c4aabfdcb97bd0715e, type: 3}
   invertedSprite: {fileID: 6140645945880351696, guid: 868223a380a65d24388211e025fa26cc, type: 3}
   animatorParameterName: isInverted
+--- !u!114 &3392075191165699350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819647078527696063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1
 --- !u!1 &8419789956324417868
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +192,7 @@ GameObject:
   - component: {fileID: 6422220928743040670}
   - component: {fileID: 6600682010434853792}
   - component: {fileID: 6979755211550309449}
+  - component: {fileID: 3758670012144472344}
   m_Layer: 8
   m_Name: Square
   m_TagString: Escape
@@ -343,6 +358,19 @@ MonoBehaviour:
   normalSprite: {fileID: 8015794055595762396, guid: dcfa54c439c4d1c4aabfdcb97bd0715e, type: 3}
   invertedSprite: {fileID: 6140645945880351696, guid: 868223a380a65d24388211e025fa26cc, type: 3}
   animatorParameterName: isInverted
+--- !u!114 &3758670012144472344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419789956324417868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a62722a9edeb2449ddb435c37b1080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeScale: 1
 --- !u!1 &8615243211176349639
 GameObject:
   m_ObjectHideFlags: 0
