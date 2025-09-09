@@ -176,8 +176,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bad0f1cc09084864a315fa8a9b34f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalTile: {fileID: -8453531863208427933, guid: 734546b3182a32341a2094602d76914c, type: 3}
-  pushedTile: {fileID: -3979102083128567671, guid: 88886f399fdb12449912e12c0628bf77, type: 3}
+  type: 1
+  normalSprite: {fileID: 0}
+  invertedSprite: {fileID: 0}
+  animatorParameterName: isInverted
+  unpushedNormalSprite: {fileID: -8453531863208427933, guid: 734546b3182a32341a2094602d76914c, type: 3}
+  unpushedInvertedSprite: {fileID: -1742445415755473894, guid: 3b55d9cc4412ace48a8ec4e0f387e623, type: 3}
+  pushedNormalSprite: {fileID: -3979102083128567671, guid: 88886f399fdb12449912e12c0628bf77, type: 3}
+  pushedInvertedSprite: {fileID: 4196699979053357506, guid: 00bf592aa171653488f314205a223cbf, type: 3}
   isPushed: 0
 --- !u!95 &2217760122246584852
 Animator:

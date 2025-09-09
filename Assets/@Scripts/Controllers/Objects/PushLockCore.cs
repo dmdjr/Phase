@@ -3,44 +3,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PushLockCore : MonoBehaviour
+public class PushLockCore : InvertibleObject
 {
-    public Sprite originalTile; // 플레이어 죽으면 다시 놀려놓기용
-    public Sprite pushedTile;
+    public Sprite unpushedNormalSprite;
+    public Sprite unpushedInvertedSprite;
+    public Sprite pushedNormalSprite;
+    public Sprite pushedInvertedSprite;
+
     [SerializeField]
     public bool isPushed = false;
-    private Animator animator;
 
-    private SpriteRenderer spriteRenderer;
+    private bool previousIsPushedState = false;
 
-    void OnEnable()
+    // LockCore와 동일한 Awake 로직
+    private void Awake()
     {
+        anim = GetComponentInParent<Animator>(); 
+        if (anim != null)
+        {
+            anim.enabled = true;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (InversionManager.Instance != null)
+        {
+            InversionManager.Instance.RegisterObject(this);
+        }
+
         isPushed = false;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        animator.enabled = false;
+        previousIsPushedState = false;
+        UpdateStateVisuals();
+
+        if (InversionManager.Instance != null)
+        {
+            SetInvertedState(InversionManager.Instance.IsInvertedState);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (InversionManager.Instance != null)
+        {
+            InversionManager.Instance.UnregisterObject(this);
+        }
     }
 
     void Update()
     {
-        if (isPushed)
+        if (isPushed != previousIsPushedState)
         {
-            spriteRenderer.sprite = pushedTile;
-            animator.enabled = true;
-            animator.SetBool("IsPushed", true);
-        }
-        else
-        {
-            spriteRenderer.sprite = originalTile;
-            animator.SetBool("IsPushed", false);
+            UpdateStateVisuals();
+            previousIsPushedState = isPushed;
         }
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.CompareTag("Player"))
-    //     {
-    //         isPushed = true;
-    //     }
-    // }
+    private void UpdateStateVisuals()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("IsPushed", isPushed);
+        }
+
+        if (InversionManager.Instance != null)
+        {
+            SetInvertedState(InversionManager.Instance.IsInvertedState);
+        }
+    }
 }
