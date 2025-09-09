@@ -19,7 +19,7 @@ public class InvertibleObject : MonoBehaviour
     public string animatorParameterName = "isInverted";
 
     private SpriteRenderer spriteRenderer;
-    private Animator anim;
+    protected Animator anim;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

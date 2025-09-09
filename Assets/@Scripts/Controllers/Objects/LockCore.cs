@@ -2,37 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static InvertibleObject;
 
-public class LockCore : MonoBehaviour
+public class LockCore : InvertibleObject
 {
-    public Sprite originalTile; // 플레이어 죽으면 다시 놀려놓기용
-    public Sprite brokenTile;
+    public Sprite unbrokenNormalSprite;
+    public Sprite unbrokenInvertedSprite;
+    public Sprite brokenNormalSprite;
+    public Sprite brokenInvertedSprite;
+
+    [Header("상태 변수")]
     [SerializeField]
     public bool isBroken = false;
-    private Animator animator;
 
-    private SpriteRenderer spriteRenderer;
+    private bool previousIsBrokenState = false;
 
-    void OnEnable()
+    private void Awake()
     {
-        isBroken = false;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        animator.enabled = false;
+        anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.enabled = true;
+        }
     }
-    // 타일이 미사일에 의해 파괴된 경우 타일의 이미지를 변경, isBroken 상태 변경
+
+    private void OnEnable()
+    {
+        if (InversionManager.Instance != null)
+        {
+            InversionManager.Instance.RegisterObject(this);
+        }
+
+        // 초기 상태 설정
+        isBroken = false;
+        previousIsBrokenState = false;
+        UpdateStateVisuals();
+
+        if (InversionManager.Instance != null)
+        {
+            SetInvertedState(InversionManager.Instance.IsInvertedState);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (InversionManager.Instance != null)
+        {
+            InversionManager.Instance.UnregisterObject(this);
+        }
+    }
+
     void Update()
     {
-        if (isBroken)
+        if (isBroken != previousIsBrokenState)
         {
-            spriteRenderer.sprite = brokenTile;
-            animator.enabled = true;
-            animator.SetBool("IsBroken", true);
+            UpdateStateVisuals();
+            previousIsBrokenState = isBroken;
         }
-        else
+    }
+
+    private void UpdateStateVisuals()
+    {
+        if (anim != null)
         {
-            spriteRenderer.sprite = originalTile;
-            animator.SetBool("IsBroken", false);
+            anim.SetBool("IsBroken", isBroken);
+        }
+
+
+        if (InversionManager.Instance != null)
+        {
+            SetInvertedState(InversionManager.Instance.IsInvertedState);
         }
     }
 }

@@ -36,6 +36,7 @@ public class InversionManager : MonoBehaviour
             allInvertibleObjects.Add(obj);
         }
     }
+    
     public void UnregisterObject(InvertibleObject obj)
     {
         if (allInvertibleObjects.Contains(obj))
