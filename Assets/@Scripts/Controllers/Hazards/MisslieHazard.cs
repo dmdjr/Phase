@@ -16,6 +16,9 @@ public class MissileHazard : MonoBehaviour
     public LayerMask groundLayer;
     public Transform _target;
     public float explosionDuration = 0.75f;
+
+    public AudioClip sfxClip;
+
     bool isExploded = false;
     Rigidbody2D _rb;
     float _timer;
@@ -107,6 +110,8 @@ public class MissileHazard : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
                 isExploded = true;
+                // SoundManager.Instance.PlaySfx(sfxClip);
+
                 if (explosionMode == ExplosionMode.Explosive)
                 {
                     animator.SetTrigger("PlayOneShot");
@@ -135,6 +140,8 @@ public class MissileHazard : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isExploded = true;
+            // SoundManager.Instance.PlaySfx(sfxClip);
+
             Destroy(gameObject);
             return;
         }

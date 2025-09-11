@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private Transform respawnPoint;
     // private float respawnWaitingTime = 3.0f;
 
+    public AudioClip bgmClip;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // SoundManager.Instance.PlayBgm(bgmClip);
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         GameObject player = GameObject.Find("Player");
         if (respawnPoint != null)
