@@ -1,40 +1,28 @@
 fileFormatVersion: 2
-guid: 00bf592aa171653488f314205a223cbf
+guid: 6701560020a1bfa429639adba7ee5a83
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8781995831661593578
-    second: PushLockCoreEmpty_White_0
+      213: 2058055827356879824
+    second: Player_Frag_0
   - first:
-      213: 5865527163927281786
-    second: PushLockCoreEmpty_White_1
+      213: 7580388679630643382
+    second: Player_Frag_1
   - first:
-      213: -3220861449601583814
-    second: PushLockCoreEmpty_White_2
+      213: -4115373899367471066
+    second: Player_Frag_2
   - first:
-      213: -435620514964368579
-    second: PushLockCoreEmpty_White_3
+      213: 8934724384030602465
+    second: Player_Frag_3
   - first:
-      213: -2758085070860391420
-    second: PushLockCoreEmpty_White_4
+      213: 8418985501503507975
+    second: Player_Frag_4
   - first:
-      213: 2857546721843075466
-    second: PushLockCoreEmpty_White_5
+      213: -4530692679976408531
+    second: Player_Frag_5
   - first:
-      213: 5411186090538161377
-    second: PushLockCoreEmpty_White_6
-  - first:
-      213: -4448037210572724960
-    second: PushLockCoreEmpty_White_7
-  - first:
-      213: -6060640457345116536
-    second: PushLockCoreEmpty_White_8
-  - first:
-      213: -6955355889850226824
-    second: PushLockCoreEmpty_White_9
-  - first:
-      213: 4196699979053357506
-    second: PushLockCoreEmpty_White_10
+      213: -1506913852757651907
+    second: Player_Frag_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -81,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -169,13 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_0
+      name: Player_Frag_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 0
-        width: 34
-        height: 36
+        x: 4
+        y: 4
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae3862d0eaaefd970800000000000000
-      internalID: 8781995831661593578
+      spriteID: 0db8785fedeaf8c10800000000000000
+      internalID: 2058055827356879824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_1
+      name: Player_Frag_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 0
-        width: 34
-        height: 36
+        x: 20
+        y: 3
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a704a42f0e9866150800000000000000
-      internalID: 5865527163927281786
+      spriteID: 6b0e6cc6753f23960800000000000000
+      internalID: 7580388679630643382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_2
+      name: Player_Frag_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 0
-        width: 34
-        height: 36
+        x: 35
+        y: 3
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a357fb193933d43d0800000000000000
-      internalID: -3220861449601583814
+      spriteID: 628a9422e3143e6c0800000000000000
+      internalID: -4115373899367471066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_3
+      name: Player_Frag_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 0
-        width: 34
-        height: 36
+        x: 51
+        y: 4
+        width: 9
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d331dac137d54f9f0800000000000000
-      internalID: -435620514964368579
+      spriteID: 1e43a243d748efb70800000000000000
+      internalID: 8934724384030602465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_4
+      name: Player_Frag_4
       rect:
         serializedVersion: 2
-        x: 271
-        y: 0
-        width: 34
-        height: 36
+        x: 68
+        y: 4
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40cee03bd3059b9d0800000000000000
-      internalID: -2758085070860391420
+      spriteID: 70ec74a35be36d470800000000000000
+      internalID: 8418985501503507975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_5
+      name: Player_Frag_5
       rect:
         serializedVersion: 2
-        x: 335
-        y: 0
-        width: 34
-        height: 36
+        x: 83
+        y: 4
+        width: 10
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a89d9848a9b08a720800000000000000
-      internalID: 2857546721843075466
+      spriteID: d2a2b8f130fbf11c0800000000000000
+      internalID: -4530692679976408531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PushLockCoreEmpty_White_6
+      name: Player_Frag_6
       rect:
         serializedVersion: 2
-        x: 399
-        y: 0
-        width: 34
-        height: 36
+        x: 99
+        y: 4
+        width: 9
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,92 +297,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e4df046415681b40800000000000000
-      internalID: 5411186090538161377
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PushLockCoreEmpty_White_7
-      rect:
-        serializedVersion: 2
-        x: 463
-        y: 0
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 025e71449b56542c0800000000000000
-      internalID: -4448037210572724960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PushLockCoreEmpty_White_8
-      rect:
-        serializedVersion: 2
-        x: 527
-        y: 0
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 886559c5d9744eba0800000000000000
-      internalID: -6060640457345116536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PushLockCoreEmpty_White_9
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 0
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8776e035bac997f90800000000000000
-      internalID: -6955355889850226824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PushLockCoreEmpty_White_10
-      rect:
-        serializedVersion: 2
-        x: 655
-        y: 0
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c95d58556cad3a30800000000000000
-      internalID: 4196699979053357506
+      spriteID: d3ec34bb5dd561be0800000000000000
+      internalID: -1506913852757651907
       vertices: []
       indices: 
       edges: []
@@ -410,17 +314,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PushLockCoreEmpty_White_0: 8781995831661593578
-      PushLockCoreEmpty_White_1: 5865527163927281786
-      PushLockCoreEmpty_White_10: 4196699979053357506
-      PushLockCoreEmpty_White_2: -3220861449601583814
-      PushLockCoreEmpty_White_3: -435620514964368579
-      PushLockCoreEmpty_White_4: -2758085070860391420
-      PushLockCoreEmpty_White_5: 2857546721843075466
-      PushLockCoreEmpty_White_6: 5411186090538161377
-      PushLockCoreEmpty_White_7: -4448037210572724960
-      PushLockCoreEmpty_White_8: -6060640457345116536
-      PushLockCoreEmpty_White_9: -6955355889850226824
+      Player_Frag_0: 2058055827356879824
+      Player_Frag_1: 7580388679630643382
+      Player_Frag_2: -4115373899367471066
+      Player_Frag_3: 8934724384030602465
+      Player_Frag_4: 8418985501503507975
+      Player_Frag_5: -4530692679976408531
+      Player_Frag_6: -1506913852757651907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

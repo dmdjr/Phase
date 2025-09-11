@@ -7,7 +7,7 @@ public class NPCAction : MonoBehaviour
     public GameObject dialogue1; // 첫 번째 대사
     public GameObject dialogue2; // 두 번째 대사
 
-    public float cameraMoveDuration = 1.5f; // 카메라 이동에 걸리는 시간
+    public float cameraMoveDuration = 0.7f; // 카메라 이동에 걸리는 시간
 
     private Vector3 zoomInPosition = new Vector3(55.16f, -84.4f, -1f); // 줌인 목표 위치
     private float zoomInSize = 5f; // 줌인 목표 사이즈
@@ -37,8 +37,8 @@ public class NPCAction : MonoBehaviour
 
     IEnumerator ActionCoroutine(CinematicDirector director)
     {
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(MoveCameraCoroutine(zoomInPosition, zoomInSize));
-
         yield return new WaitForSeconds(1.5f);
         spriteRenderer.flipX = false;
         yield return new WaitForSeconds(1.5f);
@@ -48,12 +48,11 @@ public class NPCAction : MonoBehaviour
         dialogue2.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         dialogue2.SetActive(false);
+        yield return StartCoroutine(MoveCameraCoroutine(originalPosition, originalSize));
         if (director != null)
         {
             director.NpcActionFinished();
         }
-        yield return StartCoroutine(MoveCameraCoroutine(originalPosition, originalSize));
-        yield return new WaitForSeconds(0.5f);
         spriteRenderer.flipX = true;
         yield return new WaitForSeconds(0.3f);
         anim.SetTrigger("isJumping");
@@ -79,7 +78,7 @@ public class NPCAction : MonoBehaviour
             mainCamera.orthographicSize = Mathf.Lerp(startSize, targetSize, elapsedTime / cameraMoveDuration);
 
             elapsedTime += Time.deltaTime;
-            yield return null; 
+            yield return null;
         }
 
         mainCamera.transform.position = targetPosition;
