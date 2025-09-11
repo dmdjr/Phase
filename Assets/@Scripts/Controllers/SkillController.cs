@@ -5,25 +5,25 @@ using UnityEngine;
 public class SkillController : MonoBehaviour
 {
 
-    public InversionManager inversionManager; // InversionManager¸¦ ¿¬°áÇÒ º¯¼ö
+    public InversionManager inversionManager; // InversionManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public static bool isTimeSkillActive = false;
 
-    [Header("[½áÅ¬ ¿ÀºêÁ§Æ®]")]
+    [Header("[ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®]")]
     public GameObject timeCircle;
     public CircleTimeSlip circleTimeSlip;
     public GameObject aimingCircle;
     public float circleShrinkSpeed = 0.7f;
     public float circleGrowSpeed = 1f;
 
-    [Header("[¸±¸®Áî Æ÷ÀÎÆ® ¿ÀºêÁ§Æ®]")]
+    [Header("[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®]")]
     public GameObject releasePoint;
     public Sprite invalidReleasePointSprite;
     public LayerMask tilemapLayer;
     public float releasePointCollisionRadius = 0.1f;
     public float releasePointMoveSpeed = 10f;
 
-    // isTimeStopped¸¦ ¿ÜºÎ¿¡¼­ ÀÐÀ» ¼ö ÀÖµµ·Ï public ÇÁ·ÎÆÛÆ¼·Î º¯°æ
+    // isTimeStoppedï¿½ï¿½ ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool IsSkillActive { get; private set; } = false;
 
     private float originalGravityScale;
@@ -42,17 +42,17 @@ public class SkillController : MonoBehaviour
     private SpriteRenderer releasePointRenderer;
     private Vector3 lastValidReleasePosition;
 
-    // ÇÃ·¹ÀÌ¾îÀÇ ´Ù¸¥ ÄÄÆ÷³ÍÆ®µéÀ» ÀúÀåÇÒ º¯¼ö
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private Rigidbody2D rb;
     private Animator anim;
     private Camera mainCamera;
 
 
-    // ½ºÆäÀÌ½º¹Ù¸¦ ¶ÃÀ» ¶§ Ãß°¡·Î ³ª¾Æ°¥ °Å¸®
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ ï¿½Å¸ï¿½
     public float finalDashForce = 15f;
     void Awake()
     {
-        // ÀÌ ½ºÅ©¸³Æ®°¡ ºÙ¾îÀÖ´Â °ÔÀÓ ¿ÀºêÁ§Æ®¿¡¼­ ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®µéÀ» Ã£¾Æ¿È
+        // ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¿ï¿½
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
@@ -70,7 +70,7 @@ public class SkillController : MonoBehaviour
         }
         originalGravityScale = rb.gravityScale;
 
-        // ÃÊ±âÈ­ ·ÎÁ÷ (PlayerControllerÀÇ Awake/Start¿¡¼­ °¡Á®¿È)
+        // ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½ï¿½ (PlayerControllerï¿½ï¿½ Awake/Startï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         if (timeCircle != null)
         {
             timeCircleRenderer = timeCircle.GetComponent<SpriteRenderer>();
@@ -118,7 +118,7 @@ public class SkillController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isTimeSkillActive = true;
-            IsSkillActive = true; // isTimeStopped ´ë½Å »ç¿ë
+            IsSkillActive = true; // isTimeStopped ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             isCircleGrowing = false;
             anim.SetBool("isWalking", false);
             rb.velocity = Vector2.zero;
@@ -148,68 +148,68 @@ public class SkillController : MonoBehaviour
                 circleTimeSlip.ActivateTimeSlip();
             }
         }
-        // ½ºÆäÀÌ½º¹Ù¸¦ ´©¸£°í ÀÖ´Â µ¿¾È (¸Å ÇÁ·¹ÀÓ ½ÇÇà)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         if (Input.GetKey(KeyCode.Space))
         {
-            // Á¶ÁØ ¿ø Å©±â ÁÙÀÌ±â 
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ 
             if (aimingCircle.transform.localScale.x > 0)
             {
-                // circleShrinkSpeed¿¡ µû¶ó ¸Å ÇÁ·¹ÀÓ Å©±â¸¦ Á¶±Ý ¾¿ ÁÙÀÓ
+                // circleShrinkSpeedï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 aimingCircle.transform.localScale -= Vector3.one * circleShrinkSpeed * Time.deltaTime;
             }
             else
             {
-                // Á¶ÁØ¿øÀÇ Å©±â°¡ 0º¸´Ù ÀÛ¾ÆÁö¸é Å©±â¸¦ 0À¸·Î °íÁ¤(À½¼ö°ª ¹æÁö)
+                // ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½ Å©ï¿½â°¡ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
                 aimingCircle.transform.localScale = Vector3.zero;
             }
 
-            // Ä«¸Þ¶óÀÇ ½Ã¾ß °æ°è °è»ê
-            float cameraHeight = mainCamera.orthographicSize; // ¸ÞÀÎ Ä«¸Þ¶ó ¼¼·Î ³ôÀÌÀÇ Àý¹Ý
-            float cameraWidth = cameraHeight * mainCamera.aspect; // ¸ÞÀÎ Ä«¸Þ¶ó °¡·Î ³ôÀÌÀÇ Àý¹Ý
-            Vector3 cameraPosition = Camera.main.transform.position; // ÇöÀç Ä«¸Þ¶óÀÇ À§Ä¡
+            // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½Ã¾ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            float cameraHeight = mainCamera.orthographicSize; // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            float cameraWidth = cameraHeight * mainCamera.aspect; // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            Vector3 cameraPosition = Camera.main.transform.position; // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
             float minX = cameraPosition.x - cameraWidth;
             float maxX = cameraPosition.x + cameraWidth;
             float minY = cameraPosition.y - cameraHeight;
             float maxY = cameraPosition.y + cameraHeight;
 
-            // ¸±¸®Áî Æ÷ÀÎÆ® ÀÌµ¿ 
-            // ÀÌµ¿ ¹æÇâÀ» °è»êÇÒ º¯¼ö
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ìµï¿½ 
+            // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float horizontalInput = 0f;
             float verticalInput = 0f;
 
-            // ¾î¶² ¹æÇâÅ°¸¦ ´©¸£°í ÀÖ´ÂÁö¿¡ µû¶ó °ª ÀúÀå
+            // ï¿½î¶² ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (Input.GetKey(KeyCode.LeftArrow)) horizontalInput = -1f;
             else if (Input.GetKey(KeyCode.RightArrow)) horizontalInput = 1f;
             if (Input.GetKey(KeyCode.DownArrow)) verticalInput = -1f;
             else if (Input.GetKey(KeyCode.UpArrow)) verticalInput = 1f;
 
-            // ÃÖÁ¾ ÀÌµ¿ º¤ÅÍ °è»ê 
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
             Vector3 moveInput = new Vector2(horizontalInput, verticalInput).normalized * releasePointMoveSpeed * Time.deltaTime;
 
-            // ´ÙÀ½ ¸±¸®Áî Æ÷ÀÎÆ®ÀÇ À§Ä¡¸¦ ÀúÀåÇÏ´Â º¯¼ö
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
             Vector3 nextPos = releasePoint.transform.position + moveInput;
 
-            // Ã³À½ ¸±¸®Áî Æ÷ÀÎÆ®ÀÇ Áß½ÉÁ¡¿¡¼­ ´ÙÀ½ ¸±¸®Áî Æ÷ÀÎÆ®±îÁö °Å¸®¸¦ ÀúÀåÇÏ´Â º¯¼ö
+            // Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
             Vector3 offset = nextPos - timeStopCenterPosition;
 
 
-            // ¸¸¾à offsetÀÇ ±æÀÌ°¡ ³»°¡ ÁöÁ¤ÇÑ ÃÖ´ë °Å¸®º¸´Ù ±æ´Ù¸é
+            // ï¿½ï¿½ï¿½ï¿½ offsetï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½
             if (offset.magnitude > maxReleaseDistance)
             {
-                // ¹æÇâÀº ±×´ë·Î µÎ°í offsetÀÇ °Å¸®¸¦ ÃÖ´ë °Å¸®¸¸Å­ Á¦ÇÑÇÔ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½Î°ï¿½ offsetï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 offset = offset.normalized * maxReleaseDistance;
-                // ´ÙÀ½ ¸±¸®Áî Æ÷ÀÎÆ®ÀÇ À§Ä¡¸¦ Ã³À½ ¸±¸®ÁîÆ÷ÀÎÆ®ÀÇ Áß½ÉÁ¡¿¡¼­ offset¸¸Å­ ´õÇÔ
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ offsetï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½
                 nextPos = timeStopCenterPosition + offset;
             }
 
-            // ¸±¸®Áî Æ÷ÀÎÆ®°¡ Ä«¸Þ¶ó ½Ã¾ß ³»¿¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â »óÅÂ º¯¼ö
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½Ã¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             bool isInsideCameraView = (nextPos.x > minX && nextPos.x < maxX && nextPos.y > minY && nextPos.y < maxY);
 
-            // ¸±¸®Áî Æ÷ÀÎÆ®¸¦ ¿òÁ÷ÀÌ±â Àü¿¡ Å¸ÀÏ¸ÊÀÎÁö È®ÀÎ + Ä«¸Þ¶ó ½Ã¾ß ¾È¿¡ ÀÖ´ÂÁö 
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ + Ä«ï¿½Þ¶ï¿½ ï¿½Ã¾ï¿½ ï¿½È¿ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ 
             if (Physics2D.OverlapCircle(nextPos, releasePointCollisionRadius, tilemapLayer) || !isInsideCameraView)
             {
-                // Å¸ÀÏ¸Ê¿¡ ´ê¾Ò´Ù¸é ¸±¸®Áî Æ÷ÀÎÆ® ½ºÇÁ¶óÀÌÆ® °¥¾Æ³¢¿ì±â
+                // Å¸ï¿½Ï¸Ê¿ï¿½ ï¿½ï¿½Ò´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ï¿½
                 releasePointRenderer.sprite = invalidReleasePointSprite;
             }
             else
@@ -217,14 +217,14 @@ public class SkillController : MonoBehaviour
                 releasePointRenderer.sprite = originalReleasePointSprite;
                 lastValidReleasePosition = nextPos;
             }
-            // ÃÖÁ¾ À§Ä¡ ¿ÀºêÁ§Æ®¿¡ Àû¿ë
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             releasePoint.transform.position = nextPos;
             aimingCircle.transform.position = releasePoint.transform.position;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isTimeSkillActive = false;
-            IsSkillActive = false; // isTimeStopped ´ë½Å »ç¿ë
+            IsSkillActive = false; // isTimeStopped ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             if (circleTimeSlip != null)
             {
                 circleTimeSlip.DeactivateTimeSlip();
@@ -232,16 +232,16 @@ public class SkillController : MonoBehaviour
             rb.gravityScale = originalGravityScale;
             if (aimingCircle.transform.localScale.x > 0)
             {
-                // ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç À§Ä¡¿Í ¸±¸®ÁîÆ÷ÀÎÆ®ÀÇ À¯È¿ÇÑ ¸¶Áö¸· À§Ä¡ »çÀÌÀÇ °Å¸® °è»ê
+                // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
                 Vector2 dashDirection = (lastValidReleasePosition - timeStopCenterPosition).normalized;
-
-                // ¿òÁ÷ÀÌÁö ¾Ê¾Ò´Ù¸é ¹æÇâÀº 0
+                Debug.Log("dashDirection" + dashDirection);
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0
                 if (dashDirection == Vector2.zero)
                 {
                     dashDirection = Vector2.zero;
                 }
                 transform.position = lastValidReleasePosition;
-                // ÇØ´ç ¹æÇâÀ¸·Î Ãß°¡ Èû ÁÖ±â
+                // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
                 rb.velocity = dashDirection * finalDashForce;
             }
             timeCircle.transform.localScale = aimingCircle.transform.localScale;
@@ -259,21 +259,21 @@ public class SkillController : MonoBehaviour
             }
         }
     }
-    // ±âÁØ ¿øÀÇ »óÅÂ º¹±¸ ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     void CircleGrowth()
     {
         if (isCircleGrowing)
         {
-            // ÇöÀç Å©±â¿Í ¿ø·¡ Å©±â¸¦ ºñ±³ÇÏ¿© °ÅÀÇ °°¾ÆÁ³´Ù¸é
+            // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
             if (Vector3.Distance(timeCircle.transform.localScale, originalCircleScale) < 0.01f)
             {
-                timeCircle.transform.localScale = originalCircleScale; // Á¤È®ÇÑ °ªÀ¸·Î ¸ÂÃçÁÜ
-                isCircleGrowing = false; // ¿ø Å©±â Å°¿ì±â Á¾·á
+                timeCircle.transform.localScale = originalCircleScale; // ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                isCircleGrowing = false; // ï¿½ï¿½ Å©ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
-            // ÇöÀç Å©±â¿Í ¿ø·¡ Å©±â¸¦ ºñ±³ÇÏ¿© ÇöÀç Å©±â°¡ ¿ø·¡ Å©±âº¸´Ù ÀÛ´Ù¸é
+            // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½âº¸ï¿½ï¿½ ï¿½Û´Ù¸ï¿½
             else
             {
-                // Lerp¸¦ »ç¿ëÇÏ¿© ºÎµå·´°Ô Å©±â¸¦ Å°¿ò
+                // Lerpï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Îµå·´ï¿½ï¿½ Å©ï¿½â¸¦ Å°ï¿½ï¿½
                 timeCircle.transform.localScale = Vector3.Lerp(
                     timeCircle.transform.localScale,
                     originalCircleScale,
@@ -283,7 +283,7 @@ public class SkillController : MonoBehaviour
         }
     }
 
-    // ¿ÜºÎ¿¡¼­ ¿øÀÇ Å©±â¸¦ Áï½Ã º¯°æÇÏ°Ô ÇØÁÖ´Â ÇÔ¼ö
+    // ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½
     public void UpdateCircleSize(Vector3 newScale)
     {
         originalCircleScale = newScale;

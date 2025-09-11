@@ -12,15 +12,15 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
-    [Header("[¹Ù´Ú Ã¼Å©]")]
+    [Header("[ï¿½Ù´ï¿½ Ã¼Å©]")]
     public Transform groundCheck;
     public float groundRadius = 0.15f;
     public LayerMask groundLayer;
 
-    bool isGrounded; // ¹Ù´Ú °¨Áö »óÅÂ º¯¼ö
-    public bool isStop = false; // ¿ÜºÎ¿¡¼­ ÇÃ·¹ÀÌ¾î »óÅÂ Á¦¾î¸¦ À§ÇÑ »óÅÂ º¯¼ö
+    bool isGrounded; // ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public bool isStop = false; // ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private CameraController cameraController;
-    private SkillController skillController; // SkillController¸¦ Á¦¾îÇÒ º¯¼ö
+    private SkillController skillController; // SkillControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void Awake()
     {
@@ -28,15 +28,18 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
-        skillController = GetComponent<SkillController>(); // SkillController ÄÄÆ÷³ÍÆ®¸¦ Ã£¾Æ¿È
+        skillController = GetComponent<SkillController>(); // SkillController ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½Æ¿ï¿½
     }
-    void Update()
+    void FixedUpdate()
     {
-        // ¹Ù´Ú Ã¼Å©
+        // ï¿½Ù´ï¿½ Ã¼Å©
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
         animator.SetBool("isGrounded", isGrounded);
-
-        // ½ºÅ³ÀÌ »ç¿ë ÁßÀÌ ¾Æ´Ò ¶§¸¸ ÇÃ·¹ÀÌ¾î ÀÌµ¿ Ã³¸® + ¿ÜºÎ¿¡¼­ µ¿ÀÛ Á¦¾î¸¦ ÇÏÁö ¾Ê´Â °æ¿ì
+        if (isGrounded) // Groundì™€ì˜ ë§ˆì°°ë ¥ í‘œí˜„
+        {
+            Rigidbody2D.velocity = Vector2.zero;
+        }
+        // ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ Ã³ï¿½ï¿½ + ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½
         if (skillController != null && !skillController.IsSkillActive && !isStop)
         {
             Movment();
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Movment()
     {
-        // ¼öÆò ÀÌµ¿ Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ Ã³ï¿½ï¿½
         float horizontalInput = 0;
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -58,9 +61,23 @@ public class PlayerController : MonoBehaviour
         }
 
         float currentYVelocity = Rigidbody2D.velocity.y;
-        Rigidbody2D.velocity = new Vector2(horizontalInput * moveSpeed, currentYVelocity);
 
-        // ÁÂ¿ì ¹ÝÀü ¹× Move ¾Ö´Ï¸ÞÀÌ¼Ç
+        // new code ---
+        Vector2 v = Rigidbody2D.velocity;
+        if (Mathf.Abs(v.x) > Mathf.Abs(moveSpeed))
+        {
+            v.x = Mathf.MoveTowards(v.x, 0f, 20f * Time.fixedDeltaTime);
+        }
+        else
+        {
+            v.x = horizontalInput * moveSpeed;
+        }
+        Rigidbody2D.velocity = v;
+
+        // origin ---
+        // Rigidbody2D.velocity = new Vector2(horizontalInput * moveSpeed, currentYVelocity);
+
+        // ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Move ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         if (horizontalInput == -1)
         {
             spriteRenderer.flipX = false;
@@ -71,7 +88,7 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetBool("isWalking", horizontalInput != 0 && isGrounded);
 
-        // Á¡ÇÁ Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
         {
             Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
@@ -81,16 +98,16 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn(Transform respawnPoint)
     {
-        // ¾Ö´Ï¸ÞÀÌ¼Ç Ãß°¡ÇÏ±â 
-        // ´ë±â ½Ã°£ °¡Áö±â
+        // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½ 
+        // ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (respawnPoint != null)
         {
             transform.position = respawnPoint.position;
-            // ÀÌµ¿ ¶Ç´Â Á¡ÇÁ »óÅÂ ÃÊ±âÈ­ (¾È ÇÏ¸é ¼ø°£ÀÌµ¿ Á÷ÀüÀÇ ¿òÁ÷ÀÓÀÌ Áö¼ÓµÊ)
+            // ï¿½Ìµï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ (ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½)
         }
     }
 
-    // player die animationÀÇ ¸¶Áö¸· ÇÁ·¹ÀÓ¿¡ ÇÒ´çµÈ ÀÌº¥Æ®·Î È£ÃâÇÏ´Â ÇÔ¼ö
+    // player die animationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½Ò´ï¿½ï¿½ ï¿½Ìºï¿½Æ®ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     /*public void OnDieAnimationEnd()
     {
         GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());
