@@ -75455,6 +75455,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_Size.x
+      value: 10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_Size.y
+      value: 10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6231044458718751821, guid: 37235ff4fd6b74f1da7ee219b5d9822c, type: 3}
@@ -81870,14 +81878,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08003d1438a45494291bbdf388129729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalTilemapRenderer: {fileID: 399557863}
-  normalHazardTileRenderer: {fileID: 2005750562}
+  normalTilemap: {fileID: 399557863}
+  normalHazardTile_isTrigger: {fileID: 2005750562}
+  normalHazardTile_notTrigger: {fileID: 1672884768}
   normalTilemapCollider: {fileID: 399557862}
-  normalHazardTileCollider: {fileID: 2005750561}
-  invertedTilemapRenderer: {fileID: 2061350146}
-  invertedHazardTileRenderer: {fileID: 736959562}
+  normalHazardTileCollider_isTrigger: {fileID: 2005750561}
+  normalHazardTileCollider_notTrigger: {fileID: 1672884767}
+  invertedTilemap: {fileID: 2061350146}
+  invertedHazardTile__isTrigger: {fileID: 736959562}
+  invertedHazardTile_notTrigger: {fileID: 490301495}
   invertedTilemapCollider: {fileID: 2061350148}
-  invertedHazardTileCollider: {fileID: 736959561}
+  invertedHazardTileCollider_isTrigger: {fileID: 736959561}
+  invertedHazardTileCollider_notRigger: {fileID: 490301494}
 --- !u!1 &1429279790
 GameObject:
   m_ObjectHideFlags: 0
