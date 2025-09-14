@@ -107,7 +107,7 @@ public class MissileHazard : MonoBehaviour
         }
 
         // Ground 충돌 처리
-            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground")|| other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 isExploded = true;
                 // SoundManager.Instance.PlaySfx(sfxClip);

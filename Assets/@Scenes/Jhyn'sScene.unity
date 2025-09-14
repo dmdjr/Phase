@@ -75412,7 +75412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189997899236399669, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1189997899236399669, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: circleTimeSlip
@@ -75563,6 +75563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 352fe4b6e3b9ed64fb8d74abb922849f, type: 3}
     - target: {fileID: 7305637132949659769, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305637132949659769, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -75629,6 +75633,10 @@ PrefabInstance:
     - target: {fileID: 7558494224768134187, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767256067689978499, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7906609708848827048, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_GravityScale
