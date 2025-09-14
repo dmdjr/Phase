@@ -75412,7 +75412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189997899236399669, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1189997899236399669, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: circleTimeSlip
@@ -75456,16 +75456,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Size.x
-      value: 10.24
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Size.y
-      value: 10.24
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6231044458718751821, guid: 37235ff4fd6b74f1da7ee219b5d9822c, type: 3}
+      objectReference: {fileID: -2413806693520163455, guid: 9aba595510db6d14b9a7adcb77a929ce, type: 3}
+    - target: {fileID: 4070075023160141569, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5048673771490657474, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -75504,11 +75508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536416596753528308, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -105.3
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5536416596753528308, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -97.47
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5536416596753528308, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75554,6 +75558,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7088830065239246180, guid: 479103f68a3609645b842656d5564b63, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 352fe4b6e3b9ed64fb8d74abb922849f, type: 3}
     - target: {fileID: 7305637132949659769, guid: 479103f68a3609645b842656d5564b63, type: 3}
       propertyPath: m_IsActive
       value: 1

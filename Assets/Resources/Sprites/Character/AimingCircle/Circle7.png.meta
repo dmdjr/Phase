@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: 8a6c3106e293d6143b9ad3b78ffae94c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7616628436895462382
+    second: Circle7_0
+  - first:
+      213: 122032938413716481
+    second: Circle7_1
+  - first:
+      213: -4941629272693159319
+    second: Circle7_2
+  - first:
+      213: 8842377182050086137
+    second: Circle7_3
+  - first:
+      213: -6159339032371555231
+    second: Circle7_4
+  - first:
+      213: -6164438659313878182
+    second: Circle7_5
+  - first:
+      213: 7990130861851105321
+    second: Circle7_6
+  - first:
+      213: -2059349473279597578
+    second: Circle7_7
+  - first:
+      213: -3831237496063063611
+    second: Circle7_8
+  - first:
+      213: 696117320030869035
+    second: Circle7_9
+  - first:
+      213: 2271907963795708604
+    second: Circle7_10
+  - first:
+      213: 1304363745197658911
+    second: Circle7_11
+  - first:
+      213: 9184262789370950467
+    second: Circle7_12
+  - first:
+      213: 575713752550173014
+    second: Circle7_13
+  - first:
+      213: -2927397054922929099
+    second: Circle7_14
+  - first:
+      213: -6770276511418038283
+    second: Circle7_15
+  - first:
+      213: 5927984147439386868
+    second: Circle7_16
+  - first:
+      213: 397439040873946485
+    second: Circle7_17
+  - first:
+      213: -1772789267335205562
+    second: Circle7_18
+  - first:
+      213: 5167162271542946547
+    second: Circle7_19
+  - first:
+      213: -219541258628304715
+    second: Circle7_20
+  - first:
+      213: -7113630588610067886
+    second: Circle7_21
+  - first:
+      213: -8438784527914419380
+    second: Circle7_22
+  - first:
+      213: 7336360245173128090
+    second: Circle7_23
+  - first:
+      213: -7793975382612379152
+    second: Circle7_24
+  - first:
+      213: 1069349717517625602
+    second: Circle7_25
+  - first:
+      213: 2322655875540148356
+    second: Circle7_26
+  - first:
+      213: 5720497375581275077
+    second: Circle7_27
+  - first:
+      213: -2188505415945972553
+    second: Circle7_28
+  - first:
+      213: 1264677520694550495
+    second: Circle7_29
+  - first:
+      213: 2756945018010460743
+    second: Circle7_30
+  - first:
+      213: -8260838546079535111
+    second: Circle7_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Circle7_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c05b09acc4c4690800000000000000
+      internalID: -7616628436895462382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b5e3f89429d3474409d2d206b94b4b80
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Circle7_0: -7616628436895462382
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

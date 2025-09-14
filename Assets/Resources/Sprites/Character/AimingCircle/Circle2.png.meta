@@ -1,10 +1,103 @@
 fileFormatVersion: 2
-guid: 37235ff4fd6b74f1da7ee219b5d9822c
+guid: c13cbe3744716b94c92a40ed5666f436
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6231044458718751821
-    second: circle_0
+      213: -1589914923298429795
+    second: Circle2_0
+  - first:
+      213: -6530524589038430650
+    second: Circle2_1
+  - first:
+      213: -8526568330918905291
+    second: Circle2_2
+  - first:
+      213: -8107209045552725879
+    second: Circle2_3
+  - first:
+      213: -6290954782846498689
+    second: Circle2_4
+  - first:
+      213: 22267991513325832
+    second: Circle2_5
+  - first:
+      213: 220540485588631651
+    second: Circle2_6
+  - first:
+      213: -3027437498614775076
+    second: Circle2_7
+  - first:
+      213: -6158159488869430576
+    second: Circle2_8
+  - first:
+      213: -520372892288079436
+    second: Circle2_9
+  - first:
+      213: -7437028042720791825
+    second: Circle2_10
+  - first:
+      213: 7496208814489193441
+    second: Circle2_11
+  - first:
+      213: 7537630086402064422
+    second: Circle2_12
+  - first:
+      213: -5798929895790940066
+    second: Circle2_13
+  - first:
+      213: -5931783126382687463
+    second: Circle2_14
+  - first:
+      213: -1042037962709988662
+    second: Circle2_15
+  - first:
+      213: 1818502571018976609
+    second: Circle2_16
+  - first:
+      213: 6286774466790667948
+    second: Circle2_17
+  - first:
+      213: 5481580336553645421
+    second: Circle2_18
+  - first:
+      213: 508133505178222481
+    second: Circle2_19
+  - first:
+      213: -3734631852236041976
+    second: Circle2_20
+  - first:
+      213: -8663235125921391096
+    second: Circle2_21
+  - first:
+      213: 6978393673737272552
+    second: Circle2_22
+  - first:
+      213: 8525769291630217646
+    second: Circle2_23
+  - first:
+      213: -2202042880415954299
+    second: Circle2_24
+  - first:
+      213: -3414962925304449167
+    second: Circle2_25
+  - first:
+      213: -5617812912412103075
+    second: Circle2_26
+  - first:
+      213: -3338601454647097373
+    second: Circle2_27
+  - first:
+      213: 2668279786103432071
+    second: Circle2_28
+  - first:
+      213: -8775430542314967382
+    second: Circle2_29
+  - first:
+      213: 5854079437187068676
+    second: Circle2_30
+  - first:
+      213: -8765195662846767260
+    second: Circle2_31
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +144,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +232,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: circle_0
+      name: Circle2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +246,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3176a0412e689a0800000000000000
-      internalID: -6231044458718751821
+      spriteID: d9464bd0dcc7fe9e0800000000000000
+      internalID: -1589914923298429795
       vertices: []
       indices: 
       edges: []
@@ -162,7 +255,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 22b85c4c8ce3c4f4cb16952d69340b17
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +263,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      circle_0: -6231044458718751821
+      Circle2_0: -1589914923298429795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
