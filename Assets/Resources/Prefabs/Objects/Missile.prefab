@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3539275840608929391}
   - component: {fileID: 5669417107117407049}
   - component: {fileID: -6459938472599029548}
+  - component: {fileID: 8559250044665886130}
   m_Layer: 9
   m_Name: Missile
   m_TagString: Hazard
@@ -243,6 +244,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8559250044665886130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311638249727198445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  normalSprite: {fileID: 0}
+  invertedSprite: {fileID: 0}
+  animatorParameterName: isInverted
 --- !u!1 &5466122778600582715
 GameObject:
   m_ObjectHideFlags: 0

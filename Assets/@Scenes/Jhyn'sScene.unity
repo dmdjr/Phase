@@ -82917,7 +82917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6891187530044472350, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
       propertyPath: guidanceMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6891187530044472350, guid: 685faff9fcaf044ac88776a13c3fbdfb, type: 3}
       propertyPath: missileSpeed
