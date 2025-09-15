@@ -41,7 +41,7 @@ public class InvertibleObject : MonoBehaviour
             InversionManager.Instance.UnregisterObject(this);
         }
     }
-    public void SetInvertedState(bool isInverted)
+    public virtual void SetInvertedState(bool isInverted)
     {
         switch (type)
         {
