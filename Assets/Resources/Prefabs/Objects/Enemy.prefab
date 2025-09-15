@@ -131,8 +131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   shotInterval: 1.5
-  explosionMode: 0
+  explosionMode: 1
   guidanceMode: 1
+  missileSpeed: 6
+  missileRotateSpeed: 240
+  missileLifeTime: 100
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   waitAtNode: 0
