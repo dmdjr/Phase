@@ -17,7 +17,7 @@ public class MissileHazard : MonoBehaviour
     public Transform _target;
     public float explosionDuration = 0.75f;
 
-    public AudioClip sfxClip;
+    public AudioClip explosionClip;
 
     bool isExploded = false;
     Rigidbody2D _rb;
@@ -107,40 +107,40 @@ public class MissileHazard : MonoBehaviour
         }
 
         // Ground 충돌 처리
-            if (other.gameObject.layer == LayerMask.NameToLayer("Ground")|| other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")|| other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            isExploded = true;
+            SoundManager.Instance.PlaySfx(explosionClip);
+
+            if (explosionMode == ExplosionMode.Explosive)
             {
-                isExploded = true;
-                // SoundManager.Instance.PlaySfx(sfxClip);
+                animator.SetTrigger("PlayOneShot");
 
-                if (explosionMode == ExplosionMode.Explosive)
+                Transform explosion = transform.Find("Explosion");
+                if (explosion != null)
                 {
-                    animator.SetTrigger("PlayOneShot");
+                    explosion.gameObject.SetActive(true);
+                    Destroy(explosion.gameObject, 0.02f);
+                }   
+                _rb.velocity = Vector2.zero;
+                _rb.angularVelocity = 0f;
+                _rb.isKinematic = true;
+                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                gameObject.GetComponent<Collider2D>().enabled = false;
 
-                    Transform explosion = transform.Find("Explosion");
-                    if (explosion != null)
-                    {
-                        explosion.gameObject.SetActive(true);
-                        Destroy(explosion.gameObject, 0.02f);
-                    }   
-                    _rb.velocity = Vector2.zero;
-                    _rb.angularVelocity = 0f;
-                    _rb.isKinematic = true;
-                    _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    gameObject.GetComponent<Collider2D>().enabled = false;
-
-                    Destroy(gameObject, explosionDuration);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                return;
+                Destroy(gameObject, explosionDuration);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+            return;
+        }
 
         if (other.CompareTag("Player"))
         {
             isExploded = true;
-            // SoundManager.Instance.PlaySfx(sfxClip);
+            SoundManager.Instance.PlaySfx(explosionClip);
 
             Destroy(gameObject);
             return;

@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     TimeAffected _timeAffected;
 
+    public AudioClip launchClip;
+
     void Awake()
     {
         missilePrefab = Resources.Load<GameObject>("Prefabs/Objects/Missile");
@@ -88,6 +90,7 @@ public class Enemy : MonoBehaviour
             float ang = Vector2.SignedAngle(Vector2.right, toTarget);
             missileRot = Quaternion.Euler(0, 0, ang);
             GameObject missile = Instantiate(missilePrefab, missilePos.position, missileRot, missileParent);
+            SoundManager.Instance.PlaySfx(launchClip);
             // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
             mh.Initialize(explosionMode, guidanceMode, missileSpeed, missileRotateSpeed, missileLifeTime);

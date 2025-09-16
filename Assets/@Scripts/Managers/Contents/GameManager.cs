@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     // private float respawnWaitingTime = 3.0f;
 
     public AudioClip bgmClip;
+    public AudioClip dieClip;
 
     private void Awake()
     {
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie(PlayerController player)
     {
+        SoundManager.Instance.PlaySfx(dieClip);
         SkillController skillController = player.GetComponent<SkillController>();
         if (skillController != null)
         {

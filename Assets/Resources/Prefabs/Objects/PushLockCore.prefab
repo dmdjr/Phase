@@ -128,7 +128,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.5934079}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.42105263}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.1875}
     newSize: {x: 3.52, y: 0.32}
     adaptiveTilingThreshold: 0.5
@@ -185,6 +185,7 @@ MonoBehaviour:
   pushedNormalSprite: {fileID: -3979102083128567671, guid: 88886f399fdb12449912e12c0628bf77, type: 3}
   pushedInvertedSprite: {fileID: 8294904846467903180, guid: 0295add8c306a3b40931ab1ac2d3bcea, type: 3}
   isPushed: 0
+  pushClip: {fileID: 8300000, guid: 1798a26d1ce6fed4faeace6836372ace, type: 3}
 --- !u!95 &2217760122246584852
 Animator:
   serializedVersion: 7

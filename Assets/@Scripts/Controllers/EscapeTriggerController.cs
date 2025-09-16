@@ -10,6 +10,8 @@ public class EscapeTriggerController : MonoBehaviour
     public float explosionForce = 300f; // 폭발 힘
     public float torqueAmount = 100f; // 회전 힘
     private bool hasShattered = false; // 한 번만 실행되도록 하는 상태 변수
+    public AudioClip escapeClip;
+
     void Update()
     {
         // if (CanEnableEscapeTrigger())
@@ -23,6 +25,7 @@ public class EscapeTriggerController : MonoBehaviour
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (CanEnableEscapeTrigger())
         {
+            SoundManager.Instance.PlaySfx(escapeClip);
             // 해금 조건을 만족했고, 아직 파편 효과가 실행되지 않았다면
             if (!hasShattered)
             {

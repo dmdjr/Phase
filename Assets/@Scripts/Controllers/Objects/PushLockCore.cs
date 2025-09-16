@@ -10,8 +10,9 @@ public class PushLockCore : InvertibleObject
     public Sprite pushedNormalSprite;
     public Sprite pushedInvertedSprite;
 
-    [SerializeField]
     public bool isPushed = false;
+
+    public AudioClip pushClip;
 
     private bool previousIsPushedState = false;
 
@@ -54,6 +55,7 @@ public class PushLockCore : InvertibleObject
     {
         if (isPushed != previousIsPushedState)
         {
+            SoundManager.Instance.PlaySfx(pushClip);
             UpdateStateVisuals();
             previousIsPushedState = isPushed;
         }
