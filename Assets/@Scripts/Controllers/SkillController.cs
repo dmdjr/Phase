@@ -234,7 +234,7 @@ public class SkillController : MonoBehaviour
             {
                 // �÷��̾��� ���� ��ġ�� ����������Ʈ�� ��ȿ�� ������ ��ġ ������ �Ÿ� ���
                 Vector2 dashDirection = (lastValidReleasePosition - timeStopCenterPosition).normalized;
-                Debug.Log("dashDirection" + dashDirection);
+                // Debug.Log("dashDirection" + dashDirection);
                 // �������� �ʾҴٸ� ������ 0
                 if (dashDirection == Vector2.zero)
                 {

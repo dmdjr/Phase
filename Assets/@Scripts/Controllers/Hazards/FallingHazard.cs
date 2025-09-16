@@ -42,7 +42,7 @@ public class FallingHazard : MonoBehaviour
         isFalling = false;
     }
 
-    public void OnPlayerDetected() // 플레이어가 감지되면 추락, respawnTime 이후 제자리
+    public void OnPlayerDetected() // detect -> fall, loop afeter loopTime
     {
         _rb.gravityScale = gravityScale;
         isFalling = true;
