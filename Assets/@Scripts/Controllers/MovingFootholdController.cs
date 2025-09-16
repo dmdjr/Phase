@@ -17,6 +17,8 @@ public class MovingFootholdController : MonoBehaviour
 
     private Vector3 startPoint; // 발판의 시작 지점
     private Vector3 endPoint; // 발판의 끝 지점
+
+    private Transform originalParent;
     private void Start()
     {
         // 시작 지점을 오브젝트의 현재 위치로 세팅
@@ -41,6 +43,7 @@ public class MovingFootholdController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            originalParent = collision.transform.parent;
             collision.transform.SetParent(this.transform);
         }
     }
@@ -48,7 +51,7 @@ public class MovingFootholdController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            collision.transform.SetParent(originalParent);
         }
     }
 
