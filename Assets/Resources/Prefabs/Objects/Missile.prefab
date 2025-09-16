@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionMode: 1
   guidanceMode: 1
-  explosionRadius: 10
+  explosionRadius: 30
   speed: 10
   rotateSpeed: 250
   lifeTime: 100
