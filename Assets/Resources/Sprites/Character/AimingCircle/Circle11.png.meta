@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: e9a3d8bea494e884ab8be5bc3d86abeb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2784553907003348341
+    second: Circle11_0
+  - first:
+      213: 4317024194549801236
+    second: Circle11_1
+  - first:
+      213: -5007736846579063483
+    second: Circle11_2
+  - first:
+      213: 4206897622724188926
+    second: Circle11_3
+  - first:
+      213: 8447119139135674592
+    second: Circle11_4
+  - first:
+      213: 1319832771924138152
+    second: Circle11_5
+  - first:
+      213: 3092656437241223834
+    second: Circle11_6
+  - first:
+      213: -7892806526131797222
+    second: Circle11_7
+  - first:
+      213: -5565933894295774874
+    second: Circle11_8
+  - first:
+      213: -4073618110330538872
+    second: Circle11_9
+  - first:
+      213: 981307472508531571
+    second: Circle11_10
+  - first:
+      213: -7263282268706797848
+    second: Circle11_11
+  - first:
+      213: 6878137700056353583
+    second: Circle11_12
+  - first:
+      213: 7674016345935760662
+    second: Circle11_13
+  - first:
+      213: 2215125622343738801
+    second: Circle11_14
+  - first:
+      213: 6094537312315186798
+    second: Circle11_15
+  - first:
+      213: -6105249524121949285
+    second: Circle11_16
+  - first:
+      213: 5915514883577986180
+    second: Circle11_17
+  - first:
+      213: 8155787578091219431
+    second: Circle11_18
+  - first:
+      213: -4307215166838219062
+    second: Circle11_19
+  - first:
+      213: -3838565755715937393
+    second: Circle11_20
+  - first:
+      213: -6805951730462194597
+    second: Circle11_21
+  - first:
+      213: 6149194146216039391
+    second: Circle11_22
+  - first:
+      213: -5364303841938213095
+    second: Circle11_23
+  - first:
+      213: -4789112931179611306
+    second: Circle11_24
+  - first:
+      213: 4433912806712270725
+    second: Circle11_25
+  - first:
+      213: 3168763658039271902
+    second: Circle11_26
+  - first:
+      213: -1746674421457595822
+    second: Circle11_27
+  - first:
+      213: 3918898392816395826
+    second: Circle11_28
+  - first:
+      213: 2158280172668507363
+    second: Circle11_29
+  - first:
+      213: 8280962059704294847
+    second: Circle11_30
+  - first:
+      213: 16037172609378140
+    second: Circle11_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Circle11_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8aa32b89f64b59d0800000000000000
+      internalID: -2784553907003348341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7e35e9059e3327d49ac471a4790c0b50
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Circle11_0: -2784553907003348341
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = respawnPoint.position;
         }
+
     }
 
     private void InitStage()
@@ -83,9 +84,10 @@ public class GameManager : MonoBehaviour
             currentStage = stages[currentStageNum - 1];
             currentStage.SetActive(true);
             prevStage.SetActive(false);
+
         }
     }
-
+   
     public void PlayerDie(PlayerController player)
     {
         SkillController skillController = player.GetComponent<SkillController>();

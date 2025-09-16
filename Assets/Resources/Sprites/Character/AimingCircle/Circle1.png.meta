@@ -1,0 +1,259 @@
+fileFormatVersion: 2
+guid: e362799c5378e9144a11207e97d81a92
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2226403573211185605
+    second: Circle1_0
+  - first:
+      213: -6891765564009108615
+    second: Circle1_1
+  - first:
+      213: 5803537549858804515
+    second: Circle1_2
+  - first:
+      213: 3849217058684751488
+    second: Circle1_3
+  - first:
+      213: 8439407512574614679
+    second: Circle1_4
+  - first:
+      213: 1688218855441962266
+    second: Circle1_5
+  - first:
+      213: 3799283215043248414
+    second: Circle1_6
+  - first:
+      213: -6417897953677450583
+    second: Circle1_7
+  - first:
+      213: -725350967705465513
+    second: Circle1_8
+  - first:
+      213: -7295349819275902327
+    second: Circle1_9
+  - first:
+      213: 4173544678069840417
+    second: Circle1_10
+  - first:
+      213: -4338976058431087907
+    second: Circle1_11
+  - first:
+      213: 4148505145294538645
+    second: Circle1_12
+  - first:
+      213: -7492368876775250505
+    second: Circle1_13
+  - first:
+      213: -3340772843503127726
+    second: Circle1_14
+  - first:
+      213: -7005241163830762550
+    second: Circle1_15
+  - first:
+      213: -2353828807342127268
+    second: Circle1_16
+  - first:
+      213: 2907940880656811657
+    second: Circle1_17
+  - first:
+      213: 5043712771971780461
+    second: Circle1_18
+  - first:
+      213: -5719121644549051129
+    second: Circle1_19
+  - first:
+      213: 8415377146463562417
+    second: Circle1_20
+  - first:
+      213: 3696823199504828933
+    second: Circle1_21
+  - first:
+      213: -4356625151221297576
+    second: Circle1_22
+  - first:
+      213: 6723523899084104471
+    second: Circle1_23
+  - first:
+      213: 3940917999560016764
+    second: Circle1_24
+  - first:
+      213: 5626995234974696031
+    second: Circle1_25
+  - first:
+      213: 917668977986359977
+    second: Circle1_26
+  - first:
+      213: 967441366986349631
+    second: Circle1_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Circle1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e36140fb93a11e0800000000000000
+      internalID: -2226403573211185605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 9f3ef70591739de41854a1cc7f26f249
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Circle1_0: -2226403573211185605
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

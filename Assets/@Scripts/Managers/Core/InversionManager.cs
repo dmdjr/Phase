@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 
 public class InversionManager : MonoBehaviour
 {
     public static InversionManager Instance { get; private set; }
     public bool IsInvertedState { get; private set; }
-    [Header("타일맵 오브젝트 설정")]
-    public GameObject normalTilemap;
-    public GameObject invertedTilemap;
+
 
     [Header("일반 오브젝트 설정")]
     private List<InvertibleObject> allInvertibleObjects = new List<InvertibleObject>();
@@ -22,12 +21,6 @@ public class InversionManager : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-    private void Start()
-    {
-
-        normalTilemap.SetActive(true);
-        invertedTilemap.SetActive(false);
     }
     public void RegisterObject(InvertibleObject obj)
     {
@@ -47,8 +40,7 @@ public class InversionManager : MonoBehaviour
     public void ToggleInversionState(bool isInverted)
     {
         IsInvertedState = isInverted;
-        normalTilemap.SetActive(!isInverted);
-        invertedTilemap.SetActive(isInverted);
+       
         foreach (InvertibleObject obj in allInvertibleObjects)
         {
             if (obj != null)
@@ -57,4 +49,6 @@ public class InversionManager : MonoBehaviour
             }
         }
     }
+   
+    
 }
