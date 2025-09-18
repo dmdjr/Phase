@@ -143,7 +143,7 @@ MonoBehaviour:
     m_Bits: 64
   _target: {fileID: 0}
   explosionDuration: 0.75
-  sfxClip: {fileID: 8300000, guid: 8c2eddb8f7945417e9ec2bcdb4116415, type: 3}
+  explosionClip: {fileID: 0}
 --- !u!60 &-3539275840608929391
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -382,4 +382,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.45
+  m_Radius: 0.41

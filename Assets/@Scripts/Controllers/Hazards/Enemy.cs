@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float missileSpeed = 6f;
     public float missileRotateSpeed = 240f;
     public float missileLifeTime = 100f;
+    public float explosionRadius = 1.5f;
     [Header("< Enemy Move Settings >")]
     public Transform pointA; // 시작점
     public Transform pointB; // 끝점
@@ -93,7 +94,7 @@ public class Enemy : MonoBehaviour
             SoundManager.Instance.PlaySfx(launchClip);
             // Missile Mode Setting
             MissileHazard mh = missile.GetComponent<MissileHazard>();
-            mh.Initialize(explosionMode, guidanceMode, missileSpeed, missileRotateSpeed, missileLifeTime);
+            mh.Initialize(explosionMode, guidanceMode, missileSpeed, missileRotateSpeed, missileLifeTime, explosionRadius);
 
             cooldownBar?.ResetTimer();
 

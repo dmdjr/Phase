@@ -9,7 +9,7 @@ public class MissileHazard : MonoBehaviour
     public enum GuidanceMode { Straight, Guided }
     public ExplosionMode explosionMode = ExplosionMode.None;
     public GuidanceMode guidanceMode = GuidanceMode.Guided;
-    public float explosionRadius = 10f;
+    public float explosionRadius = 1.5f;
     public float speed = 6f;
     public float rotateSpeed = 240f;
     public float lifeTime = 100f;
@@ -25,13 +25,14 @@ public class MissileHazard : MonoBehaviour
     Animator animator;
     TimeAffected _timeAffected; // TimeAffected 컴포넌트 참조
 
-    public void Initialize(ExplosionMode mode1, GuidanceMode mode2, float s, float rs, float lt)
+    public void Initialize(ExplosionMode mode1, GuidanceMode mode2, float s, float rs, float lt, float er)
     {
         explosionMode = mode1;
         guidanceMode = mode2;
         speed = s;
         rotateSpeed = rs;
         lifeTime = lt;
+        explosionRadius = er;
     }
 
     void Awake()
@@ -119,6 +120,8 @@ public class MissileHazard : MonoBehaviour
                 Transform explosion = transform.Find("Explosion");
                 if (explosion != null)
                 {
+                    // explosion.GetComponent<CircleCollider2D>().radius = explosionRadius;
+                    gameObject.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1f);
                     explosion.gameObject.SetActive(true);
                     Destroy(explosion.gameObject, 0.02f);
                 }   
@@ -137,13 +140,13 @@ public class MissileHazard : MonoBehaviour
             return;
         }
 
-        if (other.CompareTag("Player"))
-        {
-            isExploded = true;
-            SoundManager.Instance.PlaySfx(explosionClip);
+        // if (other.CompareTag("Player"))
+        // {
+        //     isExploded = true;
+        //     SoundManager.Instance.PlaySfx(explosionClip);
 
-            Destroy(gameObject);
-            return;
-        }
+        //     Destroy(gameObject);
+        //     return;
+        // }
     }
 }

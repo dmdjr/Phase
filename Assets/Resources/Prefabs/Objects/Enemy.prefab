@@ -136,6 +136,7 @@ MonoBehaviour:
   missileSpeed: 6
   missileRotateSpeed: 240
   missileLifeTime: 100
+  explosionRadius: 1
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   waitAtNode: 0
