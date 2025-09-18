@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2207999654909691641}
   - component: {fileID: -5744075719156063913}
   - component: {fileID: 4321193185159199272}
+  - component: {fileID: 4070945708701089507}
   m_Layer: 9
   m_Name: MovingSpike
   m_TagString: Hazard
@@ -204,3 +205,19 @@ PolygonCollider2D:
       - {x: 1.0082446, y: 0.10394576}
       - {x: 0.53089774, y: 1.0022383}
   m_UseDelaunayMesh: 0
+--- !u!114 &4070945708701089507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362074859203726782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce38dd8f02b0524da10c787b6c00007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  normalSprite: {fileID: -6987802073181166426, guid: 0bb36a3cf95c341d798b59b58fc6531a, type: 3}
+  invertedSprite: {fileID: -6503015506893800302, guid: 98828eab7bb97411080c2d2ac1a0462f, type: 3}
+  animatorParameterName: isInverted

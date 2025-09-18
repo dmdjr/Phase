@@ -71,4 +71,10 @@ public class CircleTimeSlip : MonoBehaviour
             affectedObject.UpdateTimeScale(normalTimeScale);
         }
     }
+    private void OnDisable()
+    {
+        // 비활성화되는 순간에도, 혹시라도 내부에 타임슬립이 적용된
+        // 오브젝트가 남아있을 수 있으므로 모두 원래 속도로 되돌립니다.
+        DeactivateTimeSlip();
+    }
 }

@@ -18,7 +18,7 @@ public class TimeAffected : MonoBehaviour
             originalGravityScale = rb.gravityScale;
         }
     }
-    private void Start()
+    /*private void Start()
     {
         if (SkillController.isTimeSkillActive)
         {
@@ -34,7 +34,7 @@ public class TimeAffected : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
     // CircleTimeSlip 스크립트에서 호출할 함수
     public void UpdateTimeScale(float newScale)
     {
