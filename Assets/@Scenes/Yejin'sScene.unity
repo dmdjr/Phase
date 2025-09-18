@@ -58391,6 +58391,7 @@ MonoBehaviour:
   - {fileID: 7593159532103094748, guid: cffa10b934647144d9289b3340fc44ea, type: 3}
   respawnDelay: 2
   bgmClip: {fileID: 8300000, guid: 62a507f55978e49b7ad00ecfd5cfad08, type: 3}
+  dieClip: {fileID: 0}
 --- !u!4 &666737560
 Transform:
   m_ObjectHideFlags: 0
@@ -87974,6 +87975,7 @@ MonoBehaviour:
   fragmentPrefabs: []
   explosionForce: 300
   torqueAmount: 100
+  escapeClip: {fileID: 0}
 --- !u!4 &1887514710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 77723955260627718, guid: fd3a5e7776f044823ae92c4e0aeb57b6, type: 3}
@@ -89146,6 +89148,7 @@ MonoBehaviour:
   fragmentPrefabs: []
   explosionForce: 300
   torqueAmount: 100
+  escapeClip: {fileID: 0}
 --- !u!61 &1984101249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90558,6 +90561,7 @@ MonoBehaviour:
   - {fileID: 8062079818477238703, guid: 60f9d8c6f967d5543b53886e8b5c5990, type: 3}
   explosionForce: 300
   torqueAmount: 100
+  escapeClip: {fileID: 0}
 --- !u!212 &2097889214
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90935,6 +90939,7 @@ MonoBehaviour:
   fragmentPrefabs: []
   explosionForce: 300
   torqueAmount: 100
+  escapeClip: {fileID: 0}
 --- !u!61 &2136091655
 BoxCollider2D:
   m_ObjectHideFlags: 0

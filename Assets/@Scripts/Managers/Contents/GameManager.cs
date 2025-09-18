@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ChangeState(GameState.Playing);
         // SoundManager.Instance.PlayBgm(bgmClip);
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         GameObject player = GameObject.Find("Player");
@@ -123,6 +124,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDieCoroutine(PlayerController player)
     {
+
+        ChangeState(GameState.GameOver);
+
         Vector3 deathPosition = player.transform.position;
         Transform circleEffects = player.transform.parent.Find("CircleEffects");
         player.gameObject.SetActive(false);
@@ -169,28 +173,30 @@ public class GameManager : MonoBehaviour
         {
             skillController.ResetSkillState();
         }
+
+        ChangeState(GameState.Playing);
     }
 
-    // public void ChangeState(GameState newState)
-    // {
-    //     State = newState;
-    //     switch (State)
-    //     {
-    //         case GameState.Ready:
-    //             // 초기화
-    //             break;
-    //         case GameState.Playing:
-    //             Time.timeScale = 1f;
-    //             break;
-    //         case GameState.Paused:
-    //             Time.timeScale = 0f;
-    //             break;
-    //         case GameState.GameOver:
-    //             // UIManager.ShowGameOver();
-    //             break;
-    //         case GameState.Clear:
-    //             // UIManager.ShowClear();
-    //             break;
-    //     }
-    // }
+    public void ChangeState(GameState newState)
+    {
+        State = newState;
+        switch (State)
+        {
+            case GameState.Ready:
+                // 초기화
+                break;
+            case GameState.Playing:
+                Time.timeScale = 1f;
+                break;
+            case GameState.Paused:
+                Time.timeScale = 0f;
+                break;
+            case GameState.GameOver:
+                // UIManager.ShowGameOver();
+                break;
+            case GameState.Clear:
+                // UIManager.ShowClear();
+                break;
+        }
+    }
 }

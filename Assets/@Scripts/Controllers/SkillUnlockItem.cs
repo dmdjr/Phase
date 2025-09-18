@@ -41,12 +41,14 @@ public class SkillUnlockItem : MonoBehaviour
                     skill.releasePointMoveSpeed = 15f;
                     skill.circleShrinkSpeed = 1f;
                     skill.circleGrowSpeed = 0.7f;
+                    skill.finalDashForce = 20f;
                     skill.UpdateCircleSize(new Vector3(5f, 5f, 1f));
                     break;
                 case UpgradeType.Upgrade_2:
-                    skill.releasePointMoveSpeed = 20f;
-                    skill.circleShrinkSpeed = 1.3f;
+                    skill.releasePointMoveSpeed = 30f;
+                    skill.circleShrinkSpeed = 2f;
                     skill.circleGrowSpeed = 0.5f;
+                    skill.finalDashForce = 30f;
                     skill.UpdateCircleSize(new Vector3(7f, 7f, 1f));
                     break;
             }

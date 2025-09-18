@@ -110,7 +110,10 @@ public class SkillController : MonoBehaviour
         {
             timeCircle.transform.position = transform.position;
         }
-        MovingStop();
+        if (GameManager.Instance != null && GameManager.Instance.State == GameManager.GameState.Playing)
+        {
+            MovingStop();
+        }
         CircleGrowth();
     }
     void MovingStop()
@@ -149,7 +152,7 @@ public class SkillController : MonoBehaviour
             }
         }
         // �����̽��ٸ� ������ �ִ� ���� (�� ������ ����)
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && IsSkillActive)
         {
             // ���� �� ũ�� ���̱� 
             if (aimingCircle.transform.localScale.x > 0)
@@ -163,6 +166,29 @@ public class SkillController : MonoBehaviour
                 aimingCircle.transform.localScale = Vector3.zero;
             }
 
+            if (aimingCircle.transform.localScale.x <= 0)
+            {
+                isTimeSkillActive = false;
+                IsSkillActive = false;
+                if (circleTimeSlip != null)
+                {
+                    circleTimeSlip.DeactivateTimeSlip();
+                }
+                rb.gravityScale = originalGravityScale;
+
+
+                timeCircle.transform.localScale = Vector3.zero;
+                isCircleGrowing = true;
+                releasePoint.SetActive(false);
+                aimingCircle.SetActive(false);
+
+                if (inversionManager != null)
+                {
+                    inversionManager.ToggleInversionState(false);
+                }
+
+                return;
+            }
             // ī�޶��� �þ� ��� ���
             float cameraHeight = mainCamera.orthographicSize; // ���� ī�޶� ���� ������ ����
             float cameraWidth = cameraHeight * mainCamera.aspect; // ���� ī�޶� ���� ������ ����
@@ -223,6 +249,7 @@ public class SkillController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            if (!IsSkillActive) return;
             isTimeSkillActive = false;
             IsSkillActive = false; // isTimeStopped ��� ���
             if (circleTimeSlip != null)
