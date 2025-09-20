@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        SaveData loaded = SaveManager.Instance.Load();
+        if (loaded != null)
+        {
+            currentStageNum = loaded.currentStage;
+        }
+
         InitStage();
     }
 
@@ -103,6 +109,10 @@ public class GameManager : MonoBehaviour
             currentStage = stages[currentStageNum - 1];
             currentStage.SetActive(true);
             prevStage.SetActive(false);
+            // auto save
+            // SaveData save = new SaveData();
+            // save.currentStage = currentStageNum;
+            // SaveManager.Instance.Save(save);
         }
     }
 
