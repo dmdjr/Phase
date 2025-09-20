@@ -9,8 +9,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
     private AudioSource _bgmSource;
     private AudioSource _sfxSource;
-
-    public bool isMuted = false;
+    public float bgmVolume = 1f;
+    public float sfxVolume = 1f;
 
     private void Awake()
     {
@@ -58,5 +58,37 @@ public class SoundManager : MonoBehaviour
     {
         _sfxSource.Stop();
         _sfxSource.clip = null;
+    }
+
+    public void OnBgm()
+    {
+        _bgmSource.mute = false;
+    }
+
+    public void OnSfx()
+    {
+        _sfxSource.mute = false;
+    }
+
+    public void OffBgm()
+    {
+        _bgmSource.mute = true;
+    }
+
+    public void OffSfx()
+    {
+        _sfxSource.mute = true;
+    }
+
+    public void SetBgmVolume(float volume)
+    {
+        bgmVolume = volume;
+        _bgmSource.volume = bgmVolume;
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+        _sfxSource.volume = sfxVolume;
     }
 }
