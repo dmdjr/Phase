@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public enum GameState { Ready, Playing, Paused, GameOver, Clear }
+    private bool isPaused = false;
     public GameState State { get; private set; }
     public int currentStageNum = 1; // Stage# 오브젝트의 이름이 1부터 시작
     public int lastStage = 10;
@@ -46,6 +47,23 @@ public class GameManager : MonoBehaviour
         if (respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPaused)
+            {
+                ChangeState(GameState.Paused);
+                isPaused = true;
+            }
+            else
+            {
+                ChangeState(GameState.Playing);
+                isPaused = false;
+            }
         }
     }
 
@@ -187,9 +205,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Playing:
                 Time.timeScale = 1f;
+                UIManager.Instance.HidePausePopup();
                 break;
             case GameState.Paused:
                 Time.timeScale = 0f;
+                UIManager.Instance.ShowPausePopup();
                 break;
             case GameState.GameOver:
                 // UIManager.ShowGameOver();
