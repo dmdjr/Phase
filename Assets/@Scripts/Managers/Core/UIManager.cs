@@ -38,11 +38,7 @@ public class UIManager : MonoBehaviour
     public void OnClickNewGame()
     {
         MainMenu.SetActive(false);
-        SaveData loaded = SaveManager.Instance.New();
-        if (loaded != null)
-        {
-            GameManager.Instance.currentStageNum = loaded.currentStage;
-        }
+        GameManager.Instance.currentStageNum = 1;
 
         GameManager.Instance.Init();
         Camera.main.GetComponent<CameraController>().Init();

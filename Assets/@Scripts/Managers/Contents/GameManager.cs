@@ -198,7 +198,8 @@ public class GameManager : MonoBehaviour
             circleEffects.gameObject.SetActive(true);
         }
         SkillController skillController = player.GetComponent<SkillController>();
-        if (skillController != null)
+
+        if (skillController != null && skillController.isActiveAndEnabled)
         {
             skillController.ResetSkillState();
         }

@@ -47,11 +47,4 @@ public class SaveManager : MonoBehaviour
             return data;
         }
     }
-    
-    public SaveData New()
-    {
-        SaveData data = new SaveData { currentStage = 1 };
-        Save(data);
-        return data;
-    }
 }
