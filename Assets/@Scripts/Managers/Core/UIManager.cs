@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject MainMenu;
     public GameObject PausePopup;
     public static UIManager Instance { get; private set; }
 
@@ -19,6 +20,11 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        MainMenu.SetActive(true);
+    }
+
     public void ShowPausePopup()
     {
         PausePopup.SetActive(true);
@@ -27,6 +33,32 @@ public class UIManager : MonoBehaviour
     public void HidePausePopup()
     {
         PausePopup.SetActive(false);
+    }
+
+    public void OnClickNewGame()
+    {
+        MainMenu.SetActive(false);
+        SaveData loaded = SaveManager.Instance.New();
+        if (loaded != null)
+        {
+            GameManager.Instance.currentStageNum = loaded.currentStage;
+        }
+
+        GameManager.Instance.Init();
+        Camera.main.GetComponent<CameraController>().Init();
+    }
+
+    public void OnClickLoadGame()
+    {
+        MainMenu.SetActive(false);
+        SaveData loaded = SaveManager.Instance.Load();
+        if (loaded != null)
+        {
+            GameManager.Instance.currentStageNum = loaded.currentStage;
+        }
+
+        GameManager.Instance.Init();
+        Camera.main.GetComponent<CameraController>().Init();
     }
 
     public void OnClickSave()

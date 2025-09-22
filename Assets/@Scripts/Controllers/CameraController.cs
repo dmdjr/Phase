@@ -5,28 +5,31 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //=================ÀÌ ºÎºĞÀº Stage5, 10, 15¿¡¼­ ½ºÅ³ ¾ÆÀÌÅÛ ½Àµæ ¿¬ÃâÀ» À§ÇÑ º¯¼ö=========================
-    [Header("¿¬Ãâ¿ë ¿ÀºêÁ§Æ®")]
+    //================= ? Stage5, 10, 15 ?     =========================
+    [Header(" ?")]
     public Transform trans_Player;
 
 
-    public float transitionCooldown = 0.5f; // ´ë±â ½Ã°£
-    private bool isTransitioning = false; // ÇöÀç ÀüÈ¯ ÁßÀÎÁö È®ÀÎÇÏ´Â »óÅÂ º¯¼ö(Àá±İ ÀåÄ¡)
+    public float transitionCooldown = 0.5f; //  ğ
+    private bool isTransitioning = false; //  ?  ??  ( ?)
 
-    // Ä«¸Ş¶ó°¡ ÀÌµ¿ÇÒ ¸ğµç ½ºÅ×ÀÌÁö¸¦ ¼ø¼­´ë·Î ´ã¾ÆµÑ ¸®½ºÆ®
+    // ?? ?    ? ?
     public List<Transform> cameraStages;
 
-    // ÇöÀç ½ºÅ×ÀÌÁö°¡ ¸î ¹øÂ°ÀÎÁö ±â¾ïÇÏ´Â º¯¼ö (0ºÎÅÍ ½ÃÀÛ)
+    //    ° ?  (0 )
     private int currentStageIndex = 0;
 
-    private void Start()
+    public void Init()
     {
-        currentStageIndex = GameManager.Instance.currentStageNum - 1;
-        Transform nextStage = cameraStages[currentStageIndex];
-        transform.position = new Vector3(nextStage.position.x, nextStage.position.y, transform.position.z);
+        // currentStageIndex = GameManager.Instance.currentStageNum - 1;
+        // Transform nextStage = cameraStages[currentStageIndex];
+        // transform.position = new Vector3(nextStage.position.x, nextStage.position.y, transform.position.z);
+        currentStageIndex = GameManager.Instance.currentStageNum - 2;
+        MoveToNextStage();
+        Debug.Log("camera: " + currentStageIndex);
     }
 
-    // ´ÙÀ½ ½ºÅ×ÀÌÁö·Î Ä«¸Ş¶ó¸¦ ÀÌµ¿½ÃÅ°´Â ÇÔ¼ö
+    //   ?? ?? ?
     public void MoveToNextStage()
     {
         if (isTransitioning)
@@ -36,21 +39,21 @@ public class CameraController : MonoBehaviour
         isTransitioning = true;
         currentStageIndex++;
 
-        // ¸¸¾à ¸¶Áö¸· ½ºÅ×ÀÌÁö¸¦ ³Ñ¾î¼­·Á°í ÇÏ¸é, ¿À·ù ¹æÁö¸¦ À§ÇØ ´õ ÀÌ»ó ÁøÇà X
+        //    ?? ?,     ?  X
         if (currentStageIndex >= cameraStages.Count)
         {
-            Debug.Log("¸¶Áö¸· ½ºÅ×ÀÌÁöÀÓ");
-            // ÀÎµ¦½º°¡ ¸®½ºÆ® ¹üÀ§¸¦ ¹ş¾î³ªÁö ¾Êµµ·Ï ¸¶Áö¸· ÀÎµ¦½º·Î °íÁ¤
+            Debug.Log(" ");
+            // ? ?  ? ?  ? 
             currentStageIndex = cameraStages.Count - 1;
             StartCoroutine(TransitionCooldown());
             return;
         }
 
-        // ¸®½ºÆ®¿¡¼­ ´ÙÀ½ ½ºÅ×ÀÌÁöÀÇ À§Ä¡(Transform)¸¦ °¡Á®¿È
+        // ?   ?(Transform) 
         Transform nextStage = cameraStages[currentStageIndex];
 
-        // ÇØ´ç À§Ä¡·Î Ä«¸Ş¶ó¸¦ ÀÌµ¿
-        // Ä«¸Ş¶óÀÇ zÃà À§Ä¡´Â -1 °íÁ¤ÀÌ´Ï±î x, y À§Ä¡¸¸ ¹Ù²ãÁÜ
+        // ? ? ?? ?
+        // ?? z ? -1 ?? x, y ? ?
         transform.position = new Vector3(nextStage.position.x, nextStage.position.y, transform.position.z);
 
         MoveCameraPosZ();
@@ -61,21 +64,21 @@ public class CameraController : MonoBehaviour
 
     void MoveCameraPosZ()
     {
-        // 5¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÒ ¶§ ¿¬ÃâÀ» À§ÇÑ ÄÚµå
+        // 5°  ?    ?
         if (currentStageIndex == 4)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
             trans_Player.position = new Vector3(trans_Player.position.x, trans_Player.position.y, 1f);
         }
 
-        // 10¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÒ ¶§ ¿¬Ãâ
+        // 10°  ?  
         if (currentStageIndex == 9)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
             trans_Player.position = new Vector3(trans_Player.position.x, trans_Player.position.y, 1f);
         }
 
-        // 15¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÒ ¶§ ¿¬Ãâ
+        // 15°  ?  
         if (currentStageIndex == 14)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -92,10 +95,10 @@ public class CameraController : MonoBehaviour
     }
     private IEnumerator TransitionCooldown()
     {
-        // transitionCooldown¿¡ ¼³Á¤µÈ ½Ã°£¸¸Å­ ±â´Ù¸²
+        // transitionCooldown  ğ? ?
         yield return new WaitForSeconds(transitionCooldown);
 
-        // ±â´Ù¸° ÈÄ¿¡ Àá±İÀ» ÇØÁ¦ÇÏ¿© ´ÙÀ½ ÀÌµ¿ÀÌ °¡´ÉÇÏ°Ô ÇÔ
+        // ? ?  ?  ? ? 
         isTransitioning = false;
     }
 }

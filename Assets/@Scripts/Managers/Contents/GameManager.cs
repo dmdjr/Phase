@@ -35,17 +35,18 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SaveData loaded = SaveManager.Instance.Load();
-        if (loaded != null)
-        {
-            currentStageNum = loaded.currentStage;
-        }
+        // SaveData loaded = SaveManager.Instance.Load();
+        // if (loaded != null)
+        // {
+        //     currentStageNum = loaded.currentStage;
+        // }
 
-        InitStage();
+        // InitStage();
     }
 
-    private void Start()
+    public void Init()
     {
+        InitStage();
         ChangeState(GameState.Playing);
         // SoundManager.Instance.PlayBgm(bgmClip);
         respawnPoint = currentStage.transform.Find("RespawnPoint");
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         if (respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
-        }
+        }  
     }
 
     private void Update()
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void InitStage()
     {
-        // Noemal_World의 Stage# 리스트 저장, Stage1만 활성화
+        // Save the Stage# lists of Objects(GameObject), and activate current stage 
         normalWorld = GameObject.Find("Objects").GetComponent<Transform>();
         if (normalWorld == null)
         {

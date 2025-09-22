@@ -12,7 +12,7 @@ public class SaveManager : MonoBehaviour
         // savePath = Application.persistentDataPath + "/save.json";
         // 디버그용
         savePath = "Assets/Resources/save.json";
-        
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -42,9 +42,16 @@ public class SaveManager : MonoBehaviour
         else
         {
             Debug.Log("저장 파일 없음 → 새로 생성");
-            SaveData data = new SaveData { currentStage = 1  };
+            SaveData data = new SaveData { currentStage = 1 };
             Save(data);
             return data;
         }
+    }
+    
+    public SaveData New()
+    {
+        SaveData data = new SaveData { currentStage = 1 };
+        Save(data);
+        return data;
     }
 }
