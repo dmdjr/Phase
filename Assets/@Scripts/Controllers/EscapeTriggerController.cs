@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +14,14 @@ public class EscapeTriggerController : MonoBehaviour
     public float torqueAmount = 100f; // 회전 힘
     private bool hasShattered = false; // 한 번만 실행되도록 하는 상태 변수
     public AudioClip escapeClip;
+
+    void Awake()
+    {
+        if (escapeClip == null)
+        {
+            escapeClip = Resources.Load<AudioClip>("Sounds/Escape");
+        }
+    }
 
     void Update()
     {
@@ -29,10 +38,10 @@ public class EscapeTriggerController : MonoBehaviour
         {
             if (!isSfxPlaying)
             {
-                SoundManager.Instance.PlaySfx(escapeClip);
-                isSfxPlaying = !isSfxPlaying;
+                SoundManager.Instance.PlaySfx(escapeClip, 0.3f);
+                isSfxPlaying = true;
             }
-            
+
             // 해금 조건을 만족했고, 아직 파편 효과가 실행되지 않았다면
             if (!hasShattered)
             {
@@ -57,6 +66,7 @@ public class EscapeTriggerController : MonoBehaviour
                 groundCheckObject.SetActive(true);
             }
             hasShattered = false;
+            isSfxPlaying = false;
         }
     }
     void Shatter()
