@@ -6,6 +6,9 @@ public class UIManager : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject PausePopup;
+
+    public GameObject skillGuideSprite; // Skill UnLock시 뜨는 문구
+    private bool isSkillUnlocked = false; 
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -23,8 +26,32 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         MainMenu.SetActive(true);
-    }
 
+        if (skillGuideSprite != null)
+        {
+            skillGuideSprite.SetActive(false);
+        }
+    }
+    private void Update()
+    {
+        if (!isSkillUnlocked || GameManager.Instance == null)
+        {
+            return;
+        }
+
+        if (GameManager.Instance.currentStageNum == 5)
+        {
+            skillGuideSprite.SetActive(true);
+        }
+        else
+        {
+            skillGuideSprite.SetActive(false);
+        }
+    }
+    public void UnlockSkill()
+    {
+        isSkillUnlocked = true;
+    }
     public void ShowPausePopup()
     {
         PausePopup.SetActive(true);

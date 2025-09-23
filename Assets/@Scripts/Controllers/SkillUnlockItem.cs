@@ -36,6 +36,7 @@ public class SkillUnlockItem : MonoBehaviour
             {
                 case UpgradeType.UnLock:
                     skill.enabled = true;
+                    UIManager.Instance.UnlockSkill();
                     break;
                 case UpgradeType.Upgrade_1:
                     skill.releasePointMoveSpeed = 15f;

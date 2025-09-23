@@ -1,0 +1,262 @@
+fileFormatVersion: 2
+guid: d2bf798e0ddbc504396331b033ab9fa9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5603547058741940128
+    second: SkillToolTip_0
+  - first:
+      213: 1552451490534672559
+    second: SkillToolTip_1
+  - first:
+      213: 459578205493636266
+    second: SkillToolTip_2
+  - first:
+      213: -6423037877658568757
+    second: SkillToolTip_3
+  - first:
+      213: -2308881350111394769
+    second: SkillToolTip_4
+  - first:
+      213: 731761089552416301
+    second: SkillToolTip_5
+  - first:
+      213: -4912354740011600260
+    second: SkillToolTip_6
+  - first:
+      213: 7363383815866017683
+    second: SkillToolTip_7
+  - first:
+      213: 389226827404134288
+    second: SkillToolTip_8
+  - first:
+      213: 7047201354435099613
+    second: SkillToolTip_9
+  - first:
+      213: -3180691127857447014
+    second: SkillToolTip_10
+  - first:
+      213: -6449405118262326870
+    second: SkillToolTip_11
+  - first:
+      213: 7125118170143362084
+    second: SkillToolTip_12
+  - first:
+      213: -9082847634122219724
+    second: SkillToolTip_13
+  - first:
+      213: -644288847553537342
+    second: SkillToolTip_14
+  - first:
+      213: -1923792936927009479
+    second: SkillToolTip_15
+  - first:
+      213: -8809813114734916344
+    second: SkillToolTip_16
+  - first:
+      213: -1612152113225146119
+    second: SkillToolTip_17
+  - first:
+      213: 6425173528359913926
+    second: SkillToolTip_18
+  - first:
+      213: -5485277130121132021
+    second: SkillToolTip_19
+  - first:
+      213: -5388065891974076722
+    second: SkillToolTip_20
+  - first:
+      213: 3537582674240630799
+    second: SkillToolTip_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SkillToolTip_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 120
+        width: 237
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af8f7e6c5cc3cd40800000000000000
+      internalID: 5603547058741940128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f576328ba4f978e41aa04672c92750df
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SkillToolTip_0: 5603547058741940128
+      SkillToolTip_1: 1552451490534672559
+      SkillToolTip_10: -3180691127857447014
+      SkillToolTip_11: -6449405118262326870
+      SkillToolTip_12: 7125118170143362084
+      SkillToolTip_13: -9082847634122219724
+      SkillToolTip_14: -644288847553537342
+      SkillToolTip_15: -1923792936927009479
+      SkillToolTip_16: -8809813114734916344
+      SkillToolTip_17: -1612152113225146119
+      SkillToolTip_18: 6425173528359913926
+      SkillToolTip_19: -5485277130121132021
+      SkillToolTip_2: 459578205493636266
+      SkillToolTip_20: -5388065891974076722
+      SkillToolTip_21: 3537582674240630799
+      SkillToolTip_3: -6423037877658568757
+      SkillToolTip_4: -2308881350111394769
+      SkillToolTip_5: 731761089552416301
+      SkillToolTip_6: -4912354740011600260
+      SkillToolTip_7: 7363383815866017683
+      SkillToolTip_8: 389226827404134288
+      SkillToolTip_9: 7047201354435099613
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
