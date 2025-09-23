@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         // }
 
         // InitStage();
+        State = GameState.Ready;
     }
 
     public void Init()
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (State != GameState.Ready && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {
@@ -213,7 +214,7 @@ public class GameManager : MonoBehaviour
         switch (State)
         {
             case GameState.Ready:
-                // 초기화
+                // main menu
                 break;
             case GameState.Playing:
                 Time.timeScale = 1f;
