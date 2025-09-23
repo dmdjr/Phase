@@ -6,27 +6,26 @@ public class SkillUnlockItem : MonoBehaviour
 {
     public enum UpgradeType
     {
-        UnLock, // 최초 스킬 해금
-        Upgrade_1, // 첫 번째 업그레이드
-        Upgrade_2 // 두 번째 업그레이드
+        UnLock, // ???? ??? ???
+        Upgrade_1, // ? ??° ????????
+        Upgrade_2 // ?? ??° ????????
     }
 
-    [Tooltip("해당 아이템이 어떤 역할을 하는지 선택")]
+    [Tooltip("??? ???????? ?? ?????? ????? ????")]
     public UpgradeType itemType = UpgradeType.UnLock;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Player와 충돌하면
+        // Player?? ?浹???
         if (collision.CompareTag("Player"))
         {
-            // 메인 카메라에서 CameraController 컴포넌트를 찾음
+            // ???? ????? CameraController ????????? ???
             CameraController cameraController = Camera.main.GetComponent<CameraController>();
             if (cameraController != null)
             {
                 cameraController.RestoreCameraPosz();
             }
 
-
-            // 플레이어의 SkillController 컴포넌트를 찾아서 활성화(enable)시킴
+            // ?÷?????? SkillController ????????? ???? ????(enable)???
             SkillController skill = collision.GetComponent<SkillController>();
             if (skill == null)
             {
@@ -36,9 +35,11 @@ public class SkillUnlockItem : MonoBehaviour
             {
                 case UpgradeType.UnLock:
                     skill.enabled = true;
+                    GameManager.Instance.skillGrade = 1;
                     UIManager.Instance.UnlockSkill();
                     break;
                 case UpgradeType.Upgrade_1:
+                    GameManager.Instance.skillGrade = 2;
                     skill.releasePointMoveSpeed = 10f;
                     skill.circleShrinkSpeed = 1f;   
                     skill.circleGrowSpeed = 0.7f;
@@ -46,6 +47,7 @@ public class SkillUnlockItem : MonoBehaviour
                     skill.UpdateCircleSize(new Vector3(3f, 3f, 2f));
                     break;
                 case UpgradeType.Upgrade_2:
+                    GameManager.Instance.skillGrade = 3;
                     skill.releasePointMoveSpeed = 15f;
                     skill.circleShrinkSpeed = 2f;
                     skill.circleGrowSpeed = 0.5f;
@@ -54,7 +56,7 @@ public class SkillUnlockItem : MonoBehaviour
                     break;
             }
 
-            // 아이템은 사라짐
+            // ???????? ?????
             Destroy(gameObject);
         }
     }

@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
     {
         MainMenu.SetActive(false);
         GameManager.Instance.currentStageNum = 1;
+        GameManager.Instance.skillGrade = 0;
 
         GameManager.Instance.Init();
         Camera.main.GetComponent<CameraController>().Init();
@@ -78,6 +79,7 @@ public class UIManager : MonoBehaviour
         if (loaded != null)
         {
             GameManager.Instance.currentStageNum = loaded.currentStage;
+            GameManager.Instance.skillGrade = loaded.skillGrade;
         }
 
         GameManager.Instance.Init();
@@ -88,6 +90,7 @@ public class UIManager : MonoBehaviour
     {
         SaveData save = new SaveData();
         save.currentStage = GameManager.Instance.currentStageNum;
+        save.skillGrade = GameManager.Instance.skillGrade;
         SaveManager.Instance.Save(save);
     }
 

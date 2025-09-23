@@ -6,5 +6,5 @@ using UnityEngine;
 public class SaveData
 {
     public int currentStage;
-    // public int skillNum;
+    public int skillGrade;
 }

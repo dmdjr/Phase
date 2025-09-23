@@ -8,9 +8,9 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // 빌드용
+        // build ver
         // savePath = Application.persistentDataPath + "/save.json";
-        // 디버그용
+        // debug ver
         savePath = "Assets/Resources/save.json";
 
         if (Instance != null && Instance != this)
@@ -42,7 +42,7 @@ public class SaveManager : MonoBehaviour
         else
         {
             Debug.Log("저장 파일 없음 → 새로 생성");
-            SaveData data = new SaveData { currentStage = 1 };
+            SaveData data = new SaveData { currentStage = 1, skillGrade = 0 };
             Save(data);
             return data;
         }

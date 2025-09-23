@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public GameState State { get; private set; }
     public int currentStageNum = 1; // Stage# 오브젝트의 이름이 1부터 시작
+    public int skillGrade = 0;
 
     private SkillController skillController;
 
@@ -60,11 +61,39 @@ public class GameManager : MonoBehaviour
         {
             skillController = player.GetComponent<SkillController>();
         }
+        if (skillController != null)
+        {
+            if (currentStageNum == 5) skillGrade = 0;
+            else if (currentStageNum == 10) skillGrade = 1;
+            else if (currentStageNum == 15) skillGrade = 2;
+
+            switch (skillGrade)
+            {
+                case 1:
+                    skillController.enabled = true;
+                    UIManager.Instance.UnlockSkill();
+                    break;
+                case 2:
+                    skillController.releasePointMoveSpeed = 10f;
+                    skillController.circleShrinkSpeed = 1f;
+                    skillController.circleGrowSpeed = 0.7f;
+                    skillController.finalDashForce = 15f;
+                    skillController.UpdateCircleSize(new Vector3(3f, 3f, 2f));
+                    break;
+                case 3:
+                    skillController.releasePointMoveSpeed = 15f;
+                    skillController.circleShrinkSpeed = 2f;
+                    skillController.circleGrowSpeed = 0.5f;
+                    skillController.finalDashForce = 20f;
+                    skillController.UpdateCircleSize(new Vector3(5f, 5f, 2f));
+                    break;
+            }
+        }
 
         if (respawnPoint != null)
-        {
-            player.transform.position = respawnPoint.position;
-        }
+            {
+                player.transform.position = respawnPoint.position;
+            }
 
     }
 
