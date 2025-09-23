@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class EscapeTriggerController : MonoBehaviour
 {
+    static bool isSfxPlaying = false;
+
     public GameObject groundCheckObject; // �ر� �� ��Ȱ��ȭ �� ������Ʈ
     public GameObject[] fragmentPrefabs; // 파편 프리팹
     public float explosionForce = 300f; // 폭발 힘
@@ -25,7 +27,12 @@ public class EscapeTriggerController : MonoBehaviour
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (CanEnableEscapeTrigger())
         {
-            SoundManager.Instance.PlaySfx(escapeClip);
+            if (!isSfxPlaying)
+            {
+                SoundManager.Instance.PlaySfx(escapeClip);
+                isSfxPlaying = !isSfxPlaying;
+            }
+            
             // 해금 조건을 만족했고, 아직 파편 효과가 실행되지 않았다면
             if (!hasShattered)
             {
