@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public GameState State { get; private set; }
     public int currentStageNum = 1; // Stage# 오브젝트의 이름이 1부터 시작
+
+    private SkillController skillController;
+
     public int lastStage = 10;
     [SerializeField] private GameObject[] playerDeathFragments;
     [SerializeField] private float respawnDelay = 2f;
@@ -52,10 +55,17 @@ public class GameManager : MonoBehaviour
         // SoundManager.Instance.PlayBgm(bgmClip);
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         GameObject player = GameObject.Find("Player");
+
+        if (player != null)
+        {
+            skillController = player.GetComponent<SkillController>();
+        }
+
         if (respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
-        }  
+        }
+
     }
 
     private void Update()
@@ -111,6 +121,9 @@ public class GameManager : MonoBehaviour
             currentStage = stages[currentStageNum - 1];
             currentStage.SetActive(true);
             prevStage.SetActive(false);
+
+            CheckForSkillDegradation(currentStageNum);
+
             // auto save
             // SaveData save = new SaveData();
             // save.currentStage = currentStageNum;
@@ -229,6 +242,40 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Clear:
                 // UIManager.ShowClear();
+                break;
+        }
+    }
+    private void CheckForSkillDegradation(int newStage)
+    {
+        if (skillController == null || !skillController.isActiveAndEnabled)
+        {
+            return;
+        }
+
+        switch (newStage)
+        {
+            case 35:
+                skillController.circleShrinkSpeed = 0.7f;
+                skillController.circleGrowSpeed = 0.3f;
+                skillController.releasePointMoveSpeed = 5f;
+                skillController.finalDashForce = 10f;
+                skillController.UpdateCircleSize(new Vector3(2f, 2f, 1f)); 
+                break;
+
+            case 36:
+                skillController.UpdateCircleSize(new Vector3(1.5f, 1.5f, 1f));
+                break;
+
+            case 37:
+                skillController.UpdateCircleSize(new Vector3(1.3f, 1.3f, 1f));
+                break;
+
+            case 38:
+                skillController.UpdateCircleSize(new Vector3(1.2f, 1.2f, 1f));
+                break;
+
+            case 39:
+                skillController.enabled = false; 
                 break;
         }
     }

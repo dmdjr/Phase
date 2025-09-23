@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725092693480810610}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.004766, y: 18.671045, z: 0.07327831}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7221729301801529377}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -9121748831706697728, guid: 654ad37ddb7109e4cb9b5a3192f7ec44, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 352fe4b6e3b9ed64fb8d74abb922849f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,8 +204,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5337687372538993469}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.004766, y: 18.671045, z: 0.07327831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 6386423900115656837}
   - component: {fileID: 1189997899236399669}
   - component: {fileID: 186704025364883405}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ Transform:
   m_GameObject: {fileID: 7305637132949659769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.004766, y: 18.671045, z: 0.07327826}
+  m_LocalPosition: {x: 1, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -348,7 +348,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: 637673446431378737, guid: 742916544682b3f44b43386d193ef695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.2916666, y: 1.2916666}
@@ -372,7 +372,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  jumpPower: 15
+  jumpPower: 25
   groundCheck: {fileID: 1366196295785289174}
   groundRadius: 0.15
   groundLayer:
@@ -464,18 +464,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inversionManager: {fileID: 0}
   timeCircle: {fileID: 7380692541303983795}
+  circleTimeSlip: {fileID: 1778659846776615887}
   aimingCircle: {fileID: 725092693480810610}
   circleShrinkSpeed: 0.7
-  circleGrowSpeed: 1
+  circleGrowSpeed: 0.3
   releasePoint: {fileID: 5337687372538993469}
   invalidReleasePointSprite: {fileID: 5308431421370826863, guid: 1bed71e211e2f3449b5dcd9173a11450, type: 3}
   tilemapLayer:
     serializedVersion: 2
     m_Bits: 576
   releasePointCollisionRadius: 0.1
-  releasePointMoveSpeed: 7
-  originalCircleScale: {x: 0, y: 0, z: 0}
-  finalDashForce: 15
+  releasePointMoveSpeed: 5
+  originalCircleScale: {x: 2, y: 2, z: 2}
+  finalDashForce: 20
 --- !u!95 &186704025364883405
 Animator:
   serializedVersion: 7
@@ -525,9 +526,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7380692541303983795}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.004766, y: 18.671045, z: 0.07327831}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7221729301801529377}
@@ -575,12 +576,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 6285043346320889641, guid: 50bce4a6f5eef1040a0594e61ffacbb7, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 9aba595510db6d14b9a7adcb77a929ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -644,7 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1366196295785289174}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

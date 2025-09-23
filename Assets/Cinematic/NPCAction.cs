@@ -48,12 +48,14 @@ public class NPCAction : MonoBehaviour
         dialogue2.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         dialogue2.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(MoveCameraCoroutine(originalPosition, originalSize));
+        yield return new WaitForSeconds(0.8f);
+        spriteRenderer.flipX = true;
         if (director != null)
         {
             director.NpcActionFinished();
         }
-        spriteRenderer.flipX = true;
         yield return new WaitForSeconds(0.3f);
         anim.SetTrigger("isJumping");
         rb.AddForce(new Vector2(1, 4).normalized * jumpForce, ForceMode2D.Impulse);

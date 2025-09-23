@@ -36,20 +36,21 @@ public class SkillUnlockItem : MonoBehaviour
             {
                 case UpgradeType.UnLock:
                     skill.enabled = true;
+                    UIManager.Instance.UnlockSkill();
                     break;
                 case UpgradeType.Upgrade_1:
-                    skill.releasePointMoveSpeed = 15f;
-                    skill.circleShrinkSpeed = 1f;
+                    skill.releasePointMoveSpeed = 10f;
+                    skill.circleShrinkSpeed = 1f;   
                     skill.circleGrowSpeed = 0.7f;
-                    skill.finalDashForce = 20f;
-                    skill.UpdateCircleSize(new Vector3(5f, 5f, 1f));
+                    skill.finalDashForce = 15f;
+                    skill.UpdateCircleSize(new Vector3(3f, 3f, 2f));
                     break;
                 case UpgradeType.Upgrade_2:
-                    skill.releasePointMoveSpeed = 30f;
+                    skill.releasePointMoveSpeed = 15f;
                     skill.circleShrinkSpeed = 2f;
                     skill.circleGrowSpeed = 0.5f;
-                    skill.finalDashForce = 30f;
-                    skill.UpdateCircleSize(new Vector3(7f, 7f, 1f));
+                    skill.finalDashForce = 20f;
+                    skill.UpdateCircleSize(new Vector3(5f, 5f, 2f));
                     break;
             }
 
