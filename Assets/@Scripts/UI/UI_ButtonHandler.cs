@@ -2,25 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UI_Button : MonoBehaviour, IPointerEnterHandler
+public class UI_ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerUpHandler
 {
     private RectTransform arrow;
-    private TMP_Text buttonText;
-    public TMP_Text onButtonText;
-    public TMP_Text offButtonText;
+    public Image onButtonTextImg;
+    public Image offButtonTextImg;
     public Vector3 offset = new Vector3(-30f, 0f, 0f);
 
     void Awake()
     {
         arrow = GameObject.Find("Arrow").GetComponent<RectTransform>();
-        if (buttonText == null)
-        {
-            buttonText = GetComponentInChildren<TMP_Text>();
-        }
-        if (onButtonText != null || offButtonText != null)
+    
+        if (onButtonTextImg != null || offButtonTextImg != null)
         {
             OnClickOn();
         }
@@ -38,15 +36,20 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler
         arrow.position = buttonRect.position + offset;
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        arrow.gameObject.SetActive(false);
+    }
+
     public void OnClickOn()
     {
-        onButtonText.color = Color.white;
-        offButtonText.color = Color.gray;
+        onButtonTextImg.color = Color.white;
+        offButtonTextImg.color = Color.gray;
     }
 
     public void OnClickOff()
     {
-        onButtonText.color = Color.gray;
-        offButtonText.color = Color.white;
+        onButtonTextImg.color = Color.gray;
+        offButtonTextImg.color = Color.white;
     }
 }

@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         MainMenu.SetActive(true);
+        PausePopup.SetActive(false);
 
         if (skillGuideSprite != null)
         {
