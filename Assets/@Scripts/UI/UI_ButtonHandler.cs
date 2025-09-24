@@ -29,11 +29,21 @@ public class UI_ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerUpH
         arrow.gameObject.SetActive(false);
     }
 
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     arrow.gameObject.SetActive(true);
+    //     RectTransform buttonRect = eventData.pointerEnter.GetComponent<RectTransform>();
+    //     arrow.position = buttonRect.position + offset;
+    // }
     public void OnPointerEnter(PointerEventData eventData)
     {
         arrow.gameObject.SetActive(true);
+
         RectTransform buttonRect = eventData.pointerEnter.GetComponent<RectTransform>();
-        arrow.position = buttonRect.position + offset;
+
+        // 월드 좌표 → 로컬 좌표 변환
+        arrow.SetParent(buttonRect);
+        arrow.anchoredPosition = offset;
     }
 
     public void OnPointerUp(PointerEventData eventData)
