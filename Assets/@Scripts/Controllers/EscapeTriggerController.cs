@@ -15,14 +15,6 @@ public class EscapeTriggerController : MonoBehaviour
     private bool hasShattered = false; // 한 번만 실행되도록 하는 상태 변수
     public AudioClip escapeClip;
 
-    void Awake()
-    {
-        if (escapeClip == null)
-        {
-            escapeClip = Resources.Load<AudioClip>("Sounds/Escape");
-        }
-    }
-
     void Update()
     {
         // if (CanEnableEscapeTrigger())

@@ -150,7 +150,7 @@ MonoBehaviour:
   - {fileID: 8062079818477238703, guid: 60f9d8c6f967d5543b53886e8b5c5990, type: 3}
   explosionForce: 300
   torqueAmount: 100
-  escapeClip: {fileID: 0}
+  escapeClip: {fileID: 8300000, guid: d00a224971a3a71469396d109c26739e, type: 3}
 --- !u!114 &2994562957391064423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   - {fileID: 8062079818477238703, guid: 60f9d8c6f967d5543b53886e8b5c5990, type: 3}
   explosionForce: 300
   torqueAmount: 100
-  escapeClip: {fileID: 0}
+  escapeClip: {fileID: 8300000, guid: d00a224971a3a71469396d109c26739e, type: 3}
 --- !u!114 &6979755211550309449
 MonoBehaviour:
   m_ObjectHideFlags: 0
