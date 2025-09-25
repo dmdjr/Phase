@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private SkillController skillController;
 
-    public int lastStage = 10;
+    public int lastStage = 40;
     [SerializeField] private GameObject[] playerDeathFragments;
     [SerializeField] private float respawnDelay = 2f;
     private Transform normalWorld;
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
         if (normalWorld == null)
         {
             Debug.Log($"Can't find Objects");
+            return;
         }
         stages.Clear();
         foreach (Transform stage in normalWorld)
@@ -128,6 +130,11 @@ public class GameManager : MonoBehaviour
             if (stage.name.StartsWith("Stage"))
             {
                 stages.Add(stage.gameObject);
+                Tilemap stageTilemap = stage.GetComponentInChildren<Tilemap>();
+                if (stageTilemap != null)
+                {
+                    stageTilemap.color = Color.white; 
+                }
                 if (stage.name == "Stage" + currentStageNum.ToString())
                 {
                     stage.gameObject.SetActive(true);
@@ -143,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseStage()
     {
-        if (currentStageNum != lastStage)
+        if (currentStageNum < lastStage)
         {
             GameObject prevStage = stages[currentStageNum - 1];
             currentStageNum++;
@@ -153,6 +160,12 @@ public class GameManager : MonoBehaviour
 
             CheckForSkillDegradation(currentStageNum);
 
+            /*if (currentStageNum >= lastStage)
+            {
+                ChangeState(GameState.Clear);
+                UIManager.Instance.StartEnding();
+                return; // 더 이상 스테이지를 증가시키지 않고 종료함
+            }*/
             // auto save
             // SaveData save = new SaveData();
             // save.currentStage = currentStageNum;
@@ -307,5 +320,18 @@ public class GameManager : MonoBehaviour
                 skillController.enabled = false; 
                 break;
         }
+    }
+    public void RestartGame()
+    {
+        Debug.Log("게임 재시작");
+
+        currentStageNum = 1;
+        skillGrade = 0;
+
+        Init();
+
+        Camera.main.GetComponent<CameraController>().Init();
+
+        UIManager.Instance.ShowMainMenu();
     }
 }

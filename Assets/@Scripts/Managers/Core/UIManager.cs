@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject PausePopup;
+    public GameObject EndingLogo;
 
     public GameObject skillGuideSprite; // Skill UnLock시 뜨는 문구
-    private bool isSkillUnlocked = false; 
+    private bool isSkillUnlocked = false;
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -31,6 +33,10 @@ public class UIManager : MonoBehaviour
         if (skillGuideSprite != null)
         {
             skillGuideSprite.SetActive(false);
+        }
+        if (EndingLogo != null)
+        {
+            EndingLogo.SetActive(false);
         }
     }
     private void Update()
@@ -103,5 +109,32 @@ public class UIManager : MonoBehaviour
     public void OnClickClose()
     {
         GameManager.Instance.ChangeState(GameManager.GameState.Playing);
+    }
+    public void StartEnding(Tilemap tilemapToPass)
+    {
+        if (EndingLogo != null)
+        {
+            EndingLogo.SetActive(true);
+
+            Ending endStart = EndingLogo.GetComponent<Ending>();
+            if (endStart != null)
+            {
+                endStart.StartAnimation(tilemapToPass);
+            }
+        }
+    }
+    public void ShowMainMenu()
+    {
+        if (EndingLogo != null)
+        {
+            EndingLogo.SetActive(false);
+        }
+
+        PausePopup.SetActive(false);
+        skillGuideSprite.SetActive(false);
+
+        MainMenu.SetActive(true);
+
+        GameManager.Instance.ChangeState(GameManager.GameState.Ready);
     }
 }
