@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     private Transform respawnPoint;
     // private float respawnWaitingTime = 3.0f;
 
-    public AudioClip bgmClip;
+    public AudioClip bgmClip1; // 스테이지 1~15, 35~40용
+    public AudioClip bgmClip2; // 스테이지 16~34용
     public AudioClip dieClip;
 
     private void Awake()
@@ -54,7 +55,9 @@ public class GameManager : MonoBehaviour
     {
         InitStage();
         ChangeState(GameState.Playing);
-        // SoundManager.Instance.PlayBgm(bgmClip);
+
+        UpdateBgmForStage(currentStageNum);
+
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         GameObject player = GameObject.Find("Player");
 
@@ -159,7 +162,7 @@ public class GameManager : MonoBehaviour
             prevStage.SetActive(false);
 
             CheckForSkillDegradation(currentStageNum);
-
+            UpdateBgmForStage(currentStageNum);
             /*if (currentStageNum >= lastStage)
             {
                 ChangeState(GameState.Clear);
@@ -172,7 +175,7 @@ public class GameManager : MonoBehaviour
             // SaveManager.Instance.Save(save);
         }
     }
-
+    
     public void PlayerDie(PlayerController player)
     {
         SoundManager.Instance.PlaySfx(dieClip);
@@ -192,7 +195,27 @@ public class GameManager : MonoBehaviour
         // 맵 상태 초기화
         ResetObjects(currentStage.transform);*/
     }
+    private void UpdateBgmForStage(int stageNum)
+    {
+        AudioClip targetBgm;
 
+        if (stageNum >= 16 && stageNum <= 34)
+        {
+            // 16~34 스테이지는 BGM 2
+            targetBgm = bgmClip2;
+        }
+        else
+        {
+            // 그 외 모든 스테이지 (1~15, 35~40)는 BGM 1
+            targetBgm = bgmClip1;
+        }
+
+        // SoundManager에 BGM 재생/교체를 요청
+        if (targetBgm != null)
+        {
+            SoundManager.Instance.PlayBgm(targetBgm);
+        }
+    }
     private void ResetObjects(Transform currentStage)
     {
         foreach (Transform child in currentStage.transform)
