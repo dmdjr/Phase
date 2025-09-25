@@ -47,7 +47,8 @@ public class SkillController : MonoBehaviour
     private Animator anim;
     private Camera mainCamera;
 
-
+    public AudioClip skillActivateClip; 
+    public AudioClip dashClip;
     // �����̽��ٸ� ���� �� �߰��� ���ư� �Ÿ�
     public float finalDashForce = 15f;
     void Awake()
@@ -150,6 +151,7 @@ public class SkillController : MonoBehaviour
             {
                 circleTimeSlip.ActivateTimeSlip();
             }
+            SoundManager.Instance.PlaySfx(skillActivateClip);
         }
         // �����̽��ٸ� ������ �ִ� ���� (�� ������ ����)
         if (Input.GetKey(KeyCode.Space) && IsSkillActive)
@@ -267,6 +269,7 @@ public class SkillController : MonoBehaviour
                 {
                     dashDirection = Vector2.zero;
                 }
+                SoundManager.Instance.PlaySfx(dashClip);
                 transform.position = lastValidReleasePosition;
                 // �ش� �������� �߰� �� �ֱ�
                 rb.velocity = dashDirection * finalDashForce;
@@ -284,6 +287,7 @@ public class SkillController : MonoBehaviour
             {
                 circleTimeSlip.DeactivateTimeSlip();
             }
+
         }
     }
     // ���� ���� ���� ���� �Լ�

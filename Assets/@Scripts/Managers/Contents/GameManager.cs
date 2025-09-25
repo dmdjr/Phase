@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private SkillController skillController;
 
-    public int lastStage = 10;
+    public int lastStage = 40;
     [SerializeField] private GameObject[] playerDeathFragments;
     [SerializeField] private float respawnDelay = 2f;
     private Transform normalWorld;
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
     private Transform respawnPoint;
     // private float respawnWaitingTime = 3.0f;
 
-    public AudioClip bgmClip;
+    public AudioClip bgmClip1; // 스테이지 1~15, 35~40용
+    public AudioClip bgmClip2; // 스테이지 16~34용
     public AudioClip dieClip;
 
     private void Awake()
@@ -53,7 +55,9 @@ public class GameManager : MonoBehaviour
     {
         InitStage();
         ChangeState(GameState.Playing);
-        // SoundManager.Instance.PlayBgm(bgmClip);
+
+        UpdateBgmForStage(currentStageNum);
+
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         GameObject player = GameObject.Find("Player");
 
@@ -121,6 +125,7 @@ public class GameManager : MonoBehaviour
         if (normalWorld == null)
         {
             Debug.Log($"Can't find Objects");
+            return;
         }
         stages.Clear();
         foreach (Transform stage in normalWorld)
@@ -128,6 +133,11 @@ public class GameManager : MonoBehaviour
             if (stage.name.StartsWith("Stage"))
             {
                 stages.Add(stage.gameObject);
+                Tilemap stageTilemap = stage.GetComponentInChildren<Tilemap>();
+                if (stageTilemap != null)
+                {
+                    stageTilemap.color = Color.white; 
+                }
                 if (stage.name == "Stage" + currentStageNum.ToString())
                 {
                     stage.gameObject.SetActive(true);
@@ -143,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseStage()
     {
-        if (currentStageNum != lastStage)
+        if (currentStageNum < lastStage)
         {
             GameObject prevStage = stages[currentStageNum - 1];
             currentStageNum++;
@@ -152,14 +162,20 @@ public class GameManager : MonoBehaviour
             prevStage.SetActive(false);
 
             CheckForSkillDegradation(currentStageNum);
-
+            UpdateBgmForStage(currentStageNum);
+            /*if (currentStageNum >= lastStage)
+            {
+                ChangeState(GameState.Clear);
+                UIManager.Instance.StartEnding();
+                return; // 더 이상 스테이지를 증가시키지 않고 종료함
+            }*/
             // auto save
             // SaveData save = new SaveData();
             // save.currentStage = currentStageNum;
             // SaveManager.Instance.Save(save);
         }
     }
-
+    
     public void PlayerDie(PlayerController player)
     {
         SoundManager.Instance.PlaySfx(dieClip);
@@ -179,7 +195,27 @@ public class GameManager : MonoBehaviour
         // 맵 상태 초기화
         ResetObjects(currentStage.transform);*/
     }
+    private void UpdateBgmForStage(int stageNum)
+    {
+        AudioClip targetBgm;
 
+        if (stageNum >= 16 && stageNum <= 34)
+        {
+            // 16~34 스테이지는 BGM 2
+            targetBgm = bgmClip2;
+        }
+        else
+        {
+            // 그 외 모든 스테이지 (1~15, 35~40)는 BGM 1
+            targetBgm = bgmClip1;
+        }
+
+        // SoundManager에 BGM 재생/교체를 요청
+        if (targetBgm != null)
+        {
+            SoundManager.Instance.PlayBgm(targetBgm);
+        }
+    }
     private void ResetObjects(Transform currentStage)
     {
         foreach (Transform child in currentStage.transform)
@@ -307,5 +343,18 @@ public class GameManager : MonoBehaviour
                 skillController.enabled = false; 
                 break;
         }
+    }
+    public void RestartGame()
+    {
+        Debug.Log("게임 재시작");
+
+        currentStageNum = 1;
+        skillGrade = 0;
+
+        Init();
+
+        Camera.main.GetComponent<CameraController>().Init();
+
+        UIManager.Instance.ShowMainMenu();
     }
 }

@@ -41,7 +41,6 @@ public class EscapeTriggerController : MonoBehaviour
                 SoundManager.Instance.PlaySfx(escapeClip, 0.3f);
                 isSfxPlaying = true;
             }
-
             // 해금 조건을 만족했고, 아직 파편 효과가 실행되지 않았다면
             if (!hasShattered)
             {

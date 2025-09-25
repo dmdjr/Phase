@@ -476,6 +476,8 @@ MonoBehaviour:
   releasePointCollisionRadius: 0.1
   releasePointMoveSpeed: 5
   originalCircleScale: {x: 2, y: 2, z: 2}
+  skillActivateClip: {fileID: 8300000, guid: 5a9f8f61c32dbe445bb45a32c204cd55, type: 3}
+  dashClip: {fileID: 8300000, guid: b8602b9710485654dab8000935c59cf9, type: 3}
   finalDashForce: 20
 --- !u!95 &186704025364883405
 Animator:

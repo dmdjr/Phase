@@ -6,7 +6,7 @@ public class Key : MonoBehaviour
 {
     [SerializeField]
     public bool isAcquired = false;
-
+    public AudioClip launchClip;
     void OnEnable()
     {
         isAcquired = false;
@@ -16,6 +16,10 @@ public class Key : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (launchClip != null)
+            {
+                SoundManager.Instance.PlaySfx(launchClip);
+            }
             isAcquired = true;
             gameObject.SetActive(false);
             return;
