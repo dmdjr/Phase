@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject MainMenu;
+    public GameObject LoadButton;
     public GameObject PausePopup;
     public GameObject EndingLogo;
 
@@ -28,6 +30,18 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         MainMenu.SetActive(true);
+        SaveData loaded = SaveManager.Instance.Load();
+        if (loaded == null)
+        {
+            LoadButton.GetComponent<Button>().enabled = false;
+            LoadButton.GetComponentsInChildren<Image>()[1].color = Color.gray;
+        }
+        else
+        {
+            LoadButton.GetComponent<Button>().enabled = true;
+            LoadButton.GetComponentsInChildren<Image>()[1].color = Color.white;
+        }
+
         PausePopup.SetActive(false);
 
         if (skillGuideSprite != null)

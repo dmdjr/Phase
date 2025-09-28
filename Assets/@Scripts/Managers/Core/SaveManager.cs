@@ -41,10 +41,8 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("저장 파일 없음 → 새로 생성");
-            SaveData data = new SaveData { currentStage = 1, skillGrade = 0 };
-            Save(data);
-            return data;
+            Debug.Log("저장 파일 없음");
+            return null;
         }
     }
 }
