@@ -101,6 +101,10 @@ public class GameManager : MonoBehaviour
             player.transform.position = respawnPoint.position;
         }
 
+        if (currentStageNum == 1)
+        {
+            player.transform.position = new Vector3(-17f, 37f, 0);
+        }
     }
 
     private void Update()

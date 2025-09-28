@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         }
         
         ClearImage.enabled = false;
-        if (GameManager.Instance.clearCnt > 0)
+        if (loaded.clearCnt > 0)
         {
             ClearImage.enabled = true;
         }
