@@ -46,16 +46,10 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void DeleteSave()
+    public void ResetSave()
     {
-        if (File.Exists(savePath))
-        {
-            File.Delete(savePath);
-            Debug.Log("세이브 파일 삭제 완료: " + savePath);
-        }
-        else
-        {
-            Debug.Log("삭제할 세이브 파일이 없음");
-        }
+        SaveData data = new SaveData { currentStage = 1, skillGrade = 0, clearCnt = GameManager.Instance.clearCnt };
+        Save(data);
+        return;
     }
 }

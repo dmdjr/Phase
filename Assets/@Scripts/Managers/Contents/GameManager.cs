@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameState State { get; private set; }
     public int currentStageNum = 1; // Stage# 오브젝트의 이름이 1부터 시작
     public int skillGrade = 0;
+    public int clearCnt = 0;
 
     private SkillController skillController;
 
@@ -95,9 +97,9 @@ public class GameManager : MonoBehaviour
         }
 
         if (respawnPoint != null)
-            {
-                player.transform.position = respawnPoint.position;
-            }
+        {
+            player.transform.position = respawnPoint.position;
+        }
 
     }
 
@@ -306,7 +308,8 @@ public class GameManager : MonoBehaviour
                 // UIManager.ShowGameOver();
                 break;
             case GameState.Clear:
-                SaveManager.Instance.DeleteSave();
+                clearCnt++;
+                SaveManager.Instance.ResetSave();
                 UIManager.Instance.Init();
                 break;
         }

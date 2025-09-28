@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject MainMenu;
+    public Image ClearImage;
     public GameObject LoadButton;
     public GameObject PausePopup;
     public GameObject EndingLogo;
@@ -45,6 +46,12 @@ public class UIManager : MonoBehaviour
         {
             LoadButton.GetComponent<Button>().enabled = true;
             LoadButton.GetComponentsInChildren<Image>()[1].color = Color.white;
+        }
+        
+        ClearImage.enabled = false;
+        if (GameManager.Instance.clearCnt > 0)
+        {
+            ClearImage.enabled = true;
         }
 
         PausePopup.SetActive(false);
@@ -94,6 +101,15 @@ public class UIManager : MonoBehaviour
         MainMenu.SetActive(false);
         GameManager.Instance.currentStageNum = 1;
         GameManager.Instance.skillGrade = 0;
+        SaveData loaded = SaveManager.Instance.Load();
+        if (loaded != null)
+        {
+            GameManager.Instance.clearCnt = loaded.clearCnt;
+        }
+        else
+        {
+            GameManager.Instance.clearCnt = 0;
+        }
 
         GameManager.Instance.Init();
         Camera.main.GetComponent<CameraController>().Init();
@@ -107,6 +123,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.currentStageNum = loaded.currentStage;
             GameManager.Instance.skillGrade = loaded.skillGrade;
+            GameManager.Instance.clearCnt = loaded.clearCnt;
         }
 
         GameManager.Instance.Init();
@@ -118,6 +135,7 @@ public class UIManager : MonoBehaviour
         SaveData save = new SaveData();
         save.currentStage = GameManager.Instance.currentStageNum;
         save.skillGrade = GameManager.Instance.skillGrade;
+        save.clearCnt = GameManager.Instance.clearCnt;
         SaveManager.Instance.Save(save);
     }
 

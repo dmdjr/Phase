@@ -7,4 +7,5 @@ public class SaveData
 {
     public int currentStage;
     public int skillGrade;
+    public int clearCnt;
 }
