@@ -69,13 +69,13 @@ public class SoundManager : MonoBehaviour
         if (clip == null) return;
 
         _sfxSource.pitch = pitch;
-        _sfxSource.PlayOneShot(clip);
+        _sfxSource.PlayOneShot(clip, sfxVolume);
     }
 
     public void StopBgm()
     {
         _bgmSource.Stop();
-        _bgmSource.clip = null;
+        // _bgmSource.clip = null;
     }
     public void FadeBgm(float targetVolume, float duration)
     {
@@ -98,7 +98,7 @@ public class SoundManager : MonoBehaviour
     public void StopSfx() // 모든 SFX 중지
     {
         _sfxSource.Stop();
-        _sfxSource.clip = null;
+        // _sfxSource.clip = null;
     }
 
     public void OnBgm()
