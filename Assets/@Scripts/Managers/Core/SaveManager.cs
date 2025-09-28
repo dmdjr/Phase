@@ -45,4 +45,17 @@ public class SaveManager : MonoBehaviour
             return null;
         }
     }
+
+    public void DeleteSave()
+    {
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log("세이브 파일 삭제 완료: " + savePath);
+        }
+        else
+        {
+            Debug.Log("삭제할 세이브 파일이 없음");
+        }
+    }
 }

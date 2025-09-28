@@ -306,7 +306,8 @@ public class GameManager : MonoBehaviour
                 // UIManager.ShowGameOver();
                 break;
             case GameState.Clear:
-                // UIManager.ShowClear();
+                SaveManager.Instance.DeleteSave();
+                UIManager.Instance.Init();
                 break;
         }
     }

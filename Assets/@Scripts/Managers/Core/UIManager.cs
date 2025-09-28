@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         MainMenu.SetActive(true);
+        Init();
+    }
+
+    public void Init()
+    {
         SaveData loaded = SaveManager.Instance.Load();
         if (loaded == null)
         {
@@ -53,6 +58,7 @@ public class UIManager : MonoBehaviour
             EndingLogo.SetActive(false);
         }
     }
+
     private void Update()
     {
         if (!isSkillUnlocked || GameManager.Instance == null)
