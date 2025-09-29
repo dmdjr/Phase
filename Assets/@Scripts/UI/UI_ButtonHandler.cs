@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class UI_ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerUpHandler, IPointerDownHandler, IPointerExitHandler
 {
-    private RectTransform arrow;
+    public RectTransform arrow;
     public Image onButtonTextImg;
     public Image offButtonTextImg;
     public Vector3 offset = new Vector3(-30f, 0f, 0f);
@@ -20,7 +20,7 @@ public class UI_ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerUpH
 
     void Awake()
     {
-        arrow = GameObject.Find("Arrow").GetComponent<RectTransform>();
+     //   arrow = GameObject.Find("Arrow").GetComponent<RectTransform>();
         buttonHoverClip = Resources.Load<AudioClip>("Sounds/buttonHover");
         buttonClickClip = Resources.Load<AudioClip>("Sounds/buttonClick");
 
