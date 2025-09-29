@@ -14,11 +14,11 @@ public class MovingFootholdController : MonoBehaviour
     public float speed = 2f;
     [Header("발판의 이동범위")]
     public float distance = 5f;
-
     private Vector3 startPoint; // 발판의 시작 지점
     private Vector3 endPoint; // 발판의 끝 지점
 
     private Transform originalParent;
+    
     private void Start()
     {
         // 시작 지점을 오브젝트의 현재 위치로 세팅
@@ -32,9 +32,10 @@ public class MovingFootholdController : MonoBehaviour
             endPoint = startPoint + Vector3.up * distance;
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         float t = Mathf.PingPong(Time.time * speed, 1f);
+        //rb.MovePosition(Vector3.Lerp(startPoint, endPoint, t));
         transform.position = Vector3.Lerp(startPoint, endPoint, t);
     }
 
