@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         if (isGrounded) // Ground와의 마찰력 표현
         {
-            Rigidbody2D.velocity = Vector2.zero;
+            // Rigidbody2D.velocity = Vector2.zero;
+            Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
         }
         // ��ų�� ��� ���� �ƴ� ���� �÷��̾� �̵� ó�� + �ܺο��� ���� ��� ���� �ʴ� ���
         if (skillController != null && !skillController.IsSkillActive && !isStop)

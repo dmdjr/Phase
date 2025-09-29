@@ -9,9 +9,9 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         // build ver
-        // savePath = Application.persistentDataPath + "/save.json";
+        savePath = Application.persistentDataPath + "/save.json";
         // debug ver
-        savePath = "Assets/Resources/save.json";
+        //savePath = "Assets/Resources/save.json";
 
         if (Instance != null && Instance != this)
         {
