@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
                     UIManager.Instance.UnlockSkill();
                     break;
                 case 2:
+                    skillController.enabled = true;
                     skillController.releasePointMoveSpeed = 10f;
                     skillController.circleShrinkSpeed = 1f;
                     skillController.circleGrowSpeed = 0.7f;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
                     skillController.UpdateCircleSize(new Vector3(3f, 3f, 2f));
                     break;
                 case 3:
+                    skillController.enabled = true;
                     skillController.releasePointMoveSpeed = 15f;
                     skillController.circleShrinkSpeed = 2f;
                     skillController.circleGrowSpeed = 0.5f;

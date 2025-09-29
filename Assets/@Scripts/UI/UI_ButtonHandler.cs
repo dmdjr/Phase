@@ -47,7 +47,6 @@ public class UI_ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerUpH
         arrow.gameObject.SetActive(true);
         RectTransform buttonRect = eventData.pointerEnter.GetComponent<RectTransform>();
 
-        // 월드 좌표 → 로컬 좌표 변환
         arrow.SetParent(buttonRect);
         arrow.anchoredPosition = offset;
 

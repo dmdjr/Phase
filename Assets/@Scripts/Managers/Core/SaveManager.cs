@@ -8,10 +8,11 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // build ver
+#if UNITY_EDITOR
+        savePath = "Assets/Resources/save.json";
+#else
         savePath = Application.persistentDataPath + "/save.json";
-        // debug ver
-        //savePath = "Assets/Resources/save.json";
+#endif
 
         if (Instance != null && Instance != this)
         {
