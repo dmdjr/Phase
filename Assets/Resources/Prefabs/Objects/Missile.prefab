@@ -143,7 +143,7 @@ MonoBehaviour:
     m_Bits: 64
   _target: {fileID: 0}
   explosionDuration: 0.75
-  explosionClip: {fileID: 0}
+  explosionClip: {fileID: 8300000, guid: 52f0eb934ff654344b305c7243d9d085, type: 3}
 --- !u!60 &-3539275840608929391
 PolygonCollider2D:
   m_ObjectHideFlags: 0

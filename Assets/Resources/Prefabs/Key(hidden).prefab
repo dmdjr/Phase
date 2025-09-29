@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAcquired: 0
-  acquireSfx: {fileID: 8300000, guid: 261e28d823d1d674e81262e7c12caf57, type: 3}
+  launchClip: {fileID: 8300000, guid: 261e28d823d1d674e81262e7c12caf57, type: 3}
 --- !u!70 &8892862160833830953
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

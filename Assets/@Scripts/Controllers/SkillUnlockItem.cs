@@ -6,26 +6,37 @@ public class SkillUnlockItem : MonoBehaviour
 {
     public enum UpgradeType
     {
-        UnLock, // ???? ??? ???
-        Upgrade_1, // ? ??¡Æ ????????
-        Upgrade_2 // ?? ??¡Æ ????????
+        UnLock, 
+        Upgrade_1, 
+        Upgrade_2 
+    }
+    public UpgradeType itemType = UpgradeType.UnLock;
+    private AudioSource audioSource;
+    public AudioClip launchClip;
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    void OnEnable()
+    {
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+    void OnDisable()
+    {
+        audioSource.Stop();
     }
 
-    [Tooltip("??? ???????? ?? ?????? ????? ????")]
-    public UpgradeType itemType = UpgradeType.UnLock;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Player?? ?úô???
         if (collision.CompareTag("Player"))
         {
-            // ???? ????? CameraController ????????? ???
             CameraController cameraController = Camera.main.GetComponent<CameraController>();
             if (cameraController != null)
             {
                 cameraController.RestoreCameraPosz();
             }
 
-            // ?¡À?????? SkillController ????????? ???? ????(enable)???
             SkillController skill = collision.GetComponent<SkillController>();
             if (skill == null)
             {
@@ -55,8 +66,7 @@ public class SkillUnlockItem : MonoBehaviour
                     skill.UpdateCircleSize(new Vector3(5f, 5f, 2f));
                     break;
             }
-
-            // ???????? ?????
+            SoundManager.Instance.PlaySfx(launchClip);
             Destroy(gameObject);
         }
     }

@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     TimeAffected _timeAffected;
 
+    public AudioClip lockOnClip; // 쿨다운 바 나타날 때 효과음
     public AudioClip launchClip;
 
     void Awake()
@@ -79,6 +80,8 @@ public class Enemy : MonoBehaviour
         isShooting = true;
         while (true)
         {
+            SoundManager.Instance.PlaySfx(lockOnClip);
+            cooldownBar?.ResetTimer();
             // yield return new WaitForSeconds(shotInterval * (1/_timeAffected.currentTimeScale));
             float elapsed = 0f;
             float waitTime = shotInterval;
@@ -96,7 +99,6 @@ public class Enemy : MonoBehaviour
             MissileHazard mh = missile.GetComponent<MissileHazard>();
             mh.Initialize(explosionMode, guidanceMode, missileSpeed, missileRotateSpeed, missileLifeTime, explosionRadius);
 
-            cooldownBar?.ResetTimer();
 
             if (!isPlayerDetected)
             {

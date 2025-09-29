@@ -12,7 +12,9 @@ public class SoundManager : MonoBehaviour
     private AudioSource _sfxSource;
     private Coroutine _bgmFadeCoroutine;
     public float bgmVolume = 1f;
+    public float globalMaxBgmVolume = 0.3f; 
     public float sfxVolume = 1f;
+
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class SoundManager : MonoBehaviour
         _sfxSource.volume = sfxVolume;
     }
 
-    public void PlayBgm(AudioClip clip, float fadeDuration = 50.0f)
+    public void PlayBgm(AudioClip clip, float fadeDuration = 1.0f)
     {
 
         if (_bgmSource.clip == clip && _bgmSource.isPlaying)
@@ -45,24 +47,24 @@ public class SoundManager : MonoBehaviour
         {
             StopCoroutine(_bgmFadeCoroutine);
         }
-
         _bgmSource.clip = clip;
         _bgmSource.Play();
-        _bgmFadeCoroutine = StartCoroutine(FadeBgmIn(bgmVolume, fadeDuration));
+        _bgmFadeCoroutine = StartCoroutine(FadeBgmIn(fadeDuration));
     }
-    private IEnumerator FadeBgmIn(float targetVolume, float duration)
+    private IEnumerator FadeBgmIn(float duration)
     {
-        _bgmSource.volume = 0; // 항상 0에서 시작
+        _bgmSource.volume = 0;
         float time = 0;
+        float finalTargetVolume = bgmVolume * globalMaxBgmVolume;
 
         while (time < duration)
         {
             time += Time.deltaTime;
-            _bgmSource.volume = Mathf.Lerp(0, targetVolume, time / duration);
+            _bgmSource.volume = Mathf.Lerp(0, finalTargetVolume, time / duration);
             yield return null;
         }
+        _bgmSource.volume = finalTargetVolume;
 
-        _bgmSource.volume = targetVolume;
     }
     public void PlaySfx(AudioClip clip, float pitch = 1f)
     {
@@ -126,11 +128,10 @@ public class SoundManager : MonoBehaviour
         if (_bgmFadeCoroutine != null)
         {
             StopCoroutine(_bgmFadeCoroutine);
-            _bgmFadeCoroutine = null; 
+            _bgmFadeCoroutine = null;
         }
-
-        bgmVolume = volume;
-        _bgmSource.volume = bgmVolume;
+        bgmVolume = volume; 
+        _bgmSource.volume = bgmVolume * globalMaxBgmVolume;
     }
 
     public void SetSfxVolume(float volume)

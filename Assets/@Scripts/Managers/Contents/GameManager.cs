@@ -208,7 +208,6 @@ public class GameManager : MonoBehaviour
 
         if (stageNum >= 16 && stageNum <= 34)
         {
-            // 16~34 스테이지는 BGM 2
             targetBgm = bgmClip2;
             fadeDuration = 50.0f;
         }
@@ -219,10 +218,10 @@ public class GameManager : MonoBehaviour
             fadeDuration = 1.5f;
         }
 
-        // SoundManager에 BGM 재생/교체를 요청
         if (targetBgm != null)
         {
             SoundManager.Instance.PlayBgm(targetBgm, fadeDuration);
+
         }
     }
     private void ResetObjects(Transform currentStage)

@@ -143,6 +143,7 @@ MonoBehaviour:
   cooldownBar: {fileID: 2011686365243170883}
   isPlayerDetected: 0
   isShooting: 0
+  lockOnClip: {fileID: 8300000, guid: ea0e87d37a5a2d344b0bd48a69f8428f, type: 3}
   launchClip: {fileID: 8300000, guid: 228128c889aab1a48be6c5954e01de56, type: 3}
 --- !u!50 &7833126223426769451
 Rigidbody2D:
