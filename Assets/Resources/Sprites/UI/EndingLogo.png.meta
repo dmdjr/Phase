@@ -29,6 +29,42 @@ TextureImporter:
   - first:
       213: 7217692199203274463
     second: EndingLogo_8
+  - first:
+      213: -1033701710979813482
+    second: EndingLogo_9
+  - first:
+      213: -1668710377979218387
+    second: EndingLogo_10
+  - first:
+      213: -5875506045720782153
+    second: EndingLogo_11
+  - first:
+      213: -1460918094874754136
+    second: EndingLogo_12
+  - first:
+      213: -1346646863041577205
+    second: EndingLogo_13
+  - first:
+      213: -6130548691635236295
+    second: EndingLogo_14
+  - first:
+      213: -6012896899721006016
+    second: EndingLogo_15
+  - first:
+      213: 1565885939230447813
+    second: EndingLogo_16
+  - first:
+      213: 668472208308678950
+    second: EndingLogo_17
+  - first:
+      213: -2849407383335384876
+    second: EndingLogo_18
+  - first:
+      213: -6593741039640571968
+    second: EndingLogo_19
+  - first:
+      213: -1452892549476706611
+    second: EndingLogo_20
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +111,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -166,10 +202,10 @@ TextureImporter:
       name: EndingLogo_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 113
-        width: 250
-        height: 122
+        x: 8
+        y: 72
+        width: 247
+        height: 166
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2c20ec6e4823b22459723a81beb6ecf2
+    spriteID: 05835d6a70d9ad542a98f04db402c67e
     internalID: 0
     vertices: []
     indices: 
@@ -196,13 +232,25 @@ TextureImporter:
     nameFileIdTable:
       EndingLogo_0: 577363555275742941
       EndingLogo_1: 4380030981736950114
+      EndingLogo_10: -1668710377979218387
+      EndingLogo_11: -5875506045720782153
+      EndingLogo_12: -1460918094874754136
+      EndingLogo_13: -1346646863041577205
+      EndingLogo_14: -6130548691635236295
+      EndingLogo_15: -6012896899721006016
+      EndingLogo_16: 1565885939230447813
+      EndingLogo_17: 668472208308678950
+      EndingLogo_18: -2849407383335384876
+      EndingLogo_19: -6593741039640571968
       EndingLogo_2: -3887750741751572525
+      EndingLogo_20: -1452892549476706611
       EndingLogo_3: 8404895227874137158
       EndingLogo_4: -254170629684919804
       EndingLogo_5: 7243599805413590077
       EndingLogo_6: -4705596655454537103
       EndingLogo_7: 2453765765127564459
       EndingLogo_8: 7217692199203274463
+      EndingLogo_9: -1033701710979813482
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
