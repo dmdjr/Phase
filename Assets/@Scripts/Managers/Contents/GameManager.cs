@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
                 Tilemap stageTilemap = stage.GetComponentInChildren<Tilemap>();
                 if (stageTilemap != null)
                 {
-                    stageTilemap.color = Color.white; 
+                    stageTilemap.color = Color.white;
                 }
                 if (stage.name == "Stage" + currentStageNum.ToString())
                 {
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
             // SaveManager.Instance.Save(save);
         }
     }
-    
+
     public void PlayerDie(PlayerController player)
     {
         SoundManager.Instance.PlaySfx(dieClip);
@@ -204,22 +204,25 @@ public class GameManager : MonoBehaviour
     private void UpdateBgmForStage(int stageNum)
     {
         AudioClip targetBgm;
+        float fadeDuration;
 
         if (stageNum >= 16 && stageNum <= 34)
         {
             // 16~34 스테이지는 BGM 2
             targetBgm = bgmClip2;
+            fadeDuration = 50.0f;
         }
         else
         {
             // 그 외 모든 스테이지 (1~15, 35~40)는 BGM 1
             targetBgm = bgmClip1;
+            fadeDuration = 1.5f;
         }
 
         // SoundManager에 BGM 재생/교체를 요청
         if (targetBgm != null)
         {
-            SoundManager.Instance.PlayBgm(targetBgm);
+            SoundManager.Instance.PlayBgm(targetBgm, fadeDuration);
         }
     }
     private void ResetObjects(Transform currentStage)
@@ -332,7 +335,7 @@ public class GameManager : MonoBehaviour
                 skillController.circleGrowSpeed = 0.3f;
                 skillController.releasePointMoveSpeed = 5f;
                 skillController.finalDashForce = 10f;
-                skillController.UpdateCircleSize(new Vector3(2f, 2f, 1f)); 
+                skillController.UpdateCircleSize(new Vector3(2f, 2f, 1f));
                 break;
 
             case 36:
@@ -348,7 +351,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 39:
-                skillController.enabled = false; 
+                skillController.enabled = false;
                 break;
         }
     }

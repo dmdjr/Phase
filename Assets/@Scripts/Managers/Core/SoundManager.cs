@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource _bgmSource;
     private AudioSource _sfxSource;
     private Coroutine _bgmFadeCoroutine;
-    public float bgmVolume = 0.5f;
+    public float bgmVolume = 1f;
     public float sfxVolume = 1f;
 
     private void Awake()
@@ -123,6 +123,12 @@ public class SoundManager : MonoBehaviour
 
     public void SetBgmVolume(float volume)
     {
+        if (_bgmFadeCoroutine != null)
+        {
+            StopCoroutine(_bgmFadeCoroutine);
+            _bgmFadeCoroutine = null; 
+        }
+
         bgmVolume = volume;
         _bgmSource.volume = bgmVolume;
     }
