@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  launchClip: {fileID: 8300000, guid: 772012eb64801454fac9f0f7b8d06ff6, type: 3}
+  launchClip: {fileID: 8300000, guid: 1f2425ee51acd4e4c973c1befac04ecf, type: 3}
 --- !u!82 &5405863387185620870
 AudioSource:
   m_ObjectHideFlags: 0
