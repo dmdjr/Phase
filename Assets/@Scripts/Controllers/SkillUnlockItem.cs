@@ -67,7 +67,7 @@ public class SkillUnlockItem : MonoBehaviour
                     break;
             }
             SoundManager.Instance.PlaySfx(launchClip);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

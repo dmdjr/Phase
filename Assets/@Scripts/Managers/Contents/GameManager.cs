@@ -228,15 +228,19 @@ public class GameManager : MonoBehaviour
     }
     private void ResetObjects(Transform currentStage)
     {
+        Dictionary<GameObject, bool> originalStates = new Dictionary<GameObject, bool>();
         foreach (Transform child in currentStage.transform)
         {
+            originalStates.Add(child.gameObject, child.gameObject.activeSelf);
             child.gameObject.SetActive(false);
         }
 
-        // 이후 다시 활성화
         foreach (Transform child in currentStage.transform)
         {
-            child.gameObject.SetActive(true);
+            if (originalStates[child.gameObject]) 
+            {
+                child.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -272,7 +276,11 @@ public class GameManager : MonoBehaviour
 
         // 5. 맵 상태 초기화
         ResetObjects(currentStage.transform);
-
+        Key[] keysInStage = currentStage.GetComponentsInChildren<Key>(true);
+        foreach (Key key in keysInStage)
+        {
+            key.gameObject.SetActive(true); 
+        }
         // 6. 리스폰 위치 찾기 및 플레이어 위치 이동
         respawnPoint = currentStage.transform.Find("RespawnPoint");
         if (respawnPoint != null)
@@ -359,7 +367,13 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("게임 재시작");
-
+        if (stages.Count > 0)
+        {
+            foreach (GameObject stage in stages)
+            {
+                ResetObjects(stage.transform);
+            }
+        }
         currentStageNum = 1;
         skillGrade = 0;
 
