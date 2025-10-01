@@ -382,5 +382,21 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<CameraController>().Init();
 
         UIManager.Instance.ShowMainMenu();
+
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            skillController = player.GetComponent<SkillController>();
+            if (skillController != null)
+            {
+                skillController.enabled = false;
+
+                skillController.releasePointMoveSpeed = 5f;
+                skillController.circleShrinkSpeed = 0.7f;
+                skillController.circleGrowSpeed = 0.3f;
+                skillController.finalDashForce = 10f;
+                skillController.UpdateCircleSize(new Vector3(2.5f, 2.5f, 1f)); 
+            }
+        }
     }
 }
