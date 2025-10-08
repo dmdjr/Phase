@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
@@ -237,7 +238,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Transform child in currentStage.transform)
         {
-            if (originalStates[child.gameObject]) 
+            if (originalStates[child.gameObject])
             {
                 child.gameObject.SetActive(true);
             }
@@ -276,10 +277,17 @@ public class GameManager : MonoBehaviour
 
         // 5. 맵 상태 초기화
         ResetObjects(currentStage.transform);
+
+        crackedTile[] crackedTilesInStage = currentStage.GetComponentsInChildren<crackedTile>(true);
+        foreach (crackedTile tile in crackedTilesInStage)
+        {
+            tile.gameObject.SetActive(true);
+        }
+
         Key[] keysInStage = currentStage.GetComponentsInChildren<Key>(true);
         foreach (Key key in keysInStage)
         {
-            key.gameObject.SetActive(true); 
+            key.gameObject.SetActive(true);
         }
         // 6. 리스폰 위치 찾기 및 플레이어 위치 이동
         respawnPoint = currentStage.transform.Find("RespawnPoint");
@@ -367,21 +375,33 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("게임 재시작");
-        if (stages.Count > 0)
-        {
-            foreach (GameObject stage in stages)
-            {
-                ResetObjects(stage.transform);
-            }
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        StartCoroutine(RestartRoutine());
+    }
+    private IEnumerator RestartRoutine()
+    {
+        yield return null;
+
         currentStageNum = 1;
         skillGrade = 0;
+        isPaused = false;
 
         Init();
 
-        Camera.main.GetComponent<CameraController>().Init();
+        if (Camera.main != null)
+        {
+            CameraController cameraController = Camera.main.GetComponent<CameraController>();
+            if (cameraController != null)
+            {
+                cameraController.Init();
+            }
+        }
 
-        UIManager.Instance.ShowMainMenu();
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowMainMenu();
+        }
 
         GameObject player = GameObject.Find("Player");
         if (player != null)
@@ -390,12 +410,11 @@ public class GameManager : MonoBehaviour
             if (skillController != null)
             {
                 skillController.enabled = false;
-
                 skillController.releasePointMoveSpeed = 5f;
                 skillController.circleShrinkSpeed = 0.7f;
                 skillController.circleGrowSpeed = 0.3f;
                 skillController.finalDashForce = 10f;
-                skillController.UpdateCircleSize(new Vector3(2.5f, 2.5f, 1f)); 
+                skillController.UpdateCircleSize(new Vector3(2.5f, 2.5f, 1f));
             }
         }
     }

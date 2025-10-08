@@ -99,6 +99,10 @@ public class UIManager : MonoBehaviour
     public void OnClickNewGame()
     {
         MainMenu.SetActive(false);
+        if (skillGuideSprite != null)
+        {
+            skillGuideSprite.SetActive(false);
+        }
         GameManager.Instance.currentStageNum = 1;
         GameManager.Instance.skillGrade = 0;
         SaveData loaded = SaveManager.Instance.Load();
