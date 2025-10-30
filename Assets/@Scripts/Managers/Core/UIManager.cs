@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
             LoadButton.GetComponent<Button>().enabled = true;
             LoadButton.GetComponentsInChildren<Image>()[1].color = Color.white;
         }
-        
+
         ClearImage.enabled = false;
         if (loaded.clearCnt > 0)
         {
@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.currentStageNum == 5)
+        if (GameManager.Instance.currentStageNum == 5 && GameManager.Instance.skillGrade == 1)
         {
             skillGuideSprite.SetActive(true);
         }
