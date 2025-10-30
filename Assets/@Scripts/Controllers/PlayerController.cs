@@ -12,23 +12,21 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
-    [Header("[�ٴ� üũ]")]
     public Transform groundCheck;
     public float groundRadius = 0.15f;
     public LayerMask groundLayer;
 
-    bool isGrounded; // �ٴ� ���� ���� ����
-    public bool isStop = false; // �ܺο��� �÷��̾� ���� ��� ���� ���� ����
+    bool isGrounded; 
+    public bool isStop = false;
     private CameraController cameraController;
-    private SkillController skillController; // SkillController�� ������ ����
-
+    private SkillController skillController; 
     void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
-        skillController = GetComponent<SkillController>(); // SkillController ������Ʈ�� ã�ƿ�
+        skillController = GetComponent<SkillController>();
     }
     void FixedUpdate()
     {
@@ -40,7 +38,7 @@ public class PlayerController : MonoBehaviour
             // Rigidbody2D.velocity = Vector2.zero;
             Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
         }
-        // ��ų�� ��� ���� �ƴ� ���� �÷��̾� �̵� ó�� + �ܺο��� ���� ��� ���� �ʴ� ���
+       
         if (skillController != null && !skillController.IsSkillActive && !isStop)
         {
             Movment();
@@ -49,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Movment()
     {
-        // ���� �̵� ó��
+      
         float horizontalInput = 0;
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -78,7 +76,7 @@ public class PlayerController : MonoBehaviour
         // origin ---
         // Rigidbody2D.velocity = new Vector2(horizontalInput * moveSpeed, currentYVelocity);
 
-        // �¿� ���� �� Move �ִϸ��̼�
+       
         if (horizontalInput == -1)
         {
             spriteRenderer.flipX = false;
@@ -89,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetBool("isWalking", horizontalInput != 0 && isGrounded);
 
-        // ���� ó��
+        
         if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
         {
             Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
@@ -99,16 +97,14 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn(Transform respawnPoint)
     {
-        // �ִϸ��̼� �߰��ϱ� 
-        // ��� �ð� ������
         if (respawnPoint != null)
         {
             transform.position = respawnPoint.position;
-            // �̵� �Ǵ� ���� ���� �ʱ�ȭ (�� �ϸ� �����̵� ������ �������� ���ӵ�)
+           
         }
     }
 
-    // player die animation�� ������ �����ӿ� �Ҵ�� �̺�Ʈ�� ȣ���ϴ� �Լ�
+    // player die animation
     /*public void OnDieAnimationEnd()
     {
         GameManager.Instance.PlayerDie(gameObject.GetComponent<PlayerController>());

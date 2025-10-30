@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject MainMenu;
-    public Image ClearImage;
+   // public Image ClearImage;
     public GameObject LoadButton;
     public GameObject PausePopup;
     public GameObject EndingLogo;
@@ -48,11 +48,11 @@ public class UIManager : MonoBehaviour
             LoadButton.GetComponentsInChildren<Image>()[1].color = Color.white;
         }
 
-        ClearImage.enabled = false;
+      /*  ClearImage.enabled = false;
         if (loaded.clearCnt > 0)
         {
             ClearImage.enabled = true;
-        }
+        }*/
 
         PausePopup.SetActive(false);
 
