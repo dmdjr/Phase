@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
 
     public Transform groundCheck;
-    public float groundRadius = 0.15f;
+    public float groundRadius = 0.2f;
     public LayerMask groundLayer;
 
     bool isGrounded; 
@@ -31,8 +31,19 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // �ٴ� üũ
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer) != null;
-        animator.SetBool("isGrounded", isGrounded);
+        Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+
+        if (collider != null)
+        {
+            isGrounded = true;
+            animator.SetBool("isGrounded", true);
+        }
+        else
+        {
+            isGrounded = false;
+            animator.SetBool("isGrounded", false);
+        }
+
         if (isGrounded) // Ground와의 마찰력 표현
         {
             // Rigidbody2D.velocity = Vector2.zero;
@@ -91,7 +102,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
         {
             Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpPower);
-            animator.SetTrigger("isJumping");
         }
     }
 
